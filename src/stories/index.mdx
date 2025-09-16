@@ -1,3 +1,134 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="README" />
+
+# 组件
+
+## General 通用
+
+### Button 按钮
+
+#### 常规按钮
+
+```tsx
+import Button from "@cloudstack-design/components/button";
+
+const handleClick = (e: any) => {};
+
+<Button onClick={handleClick}>常规按钮</Button>;
+```
+
+#### 超链接按钮
+
+```tsx
+import Button from "@cloudstack-design/components/button";
+import Link from "next/navigation";
+
+<Button as={Link} href="/">
+  超链接按钮
+</Button>;
+```
+
+### Typography 排版
+
+#### Title 标题
+
+```tsx
+import Typography from "@cloudstack-design/components/typography";
+
+<Typography.Title>排版 标题</Typography.Title>;
+```
+
+#### Text 文本
+
+## 布局 Layout
+
+### 分割线 Divider
+
+## 导航
+
+### Breadcrumb 面包屑
+
+### Tabs 标签页
+
+### Menu 菜单
+
+### Pagination 分页
+
+### Dropdown 下拉菜单
+
+## 数据
+
+### Form 表单
+
+### DatePicker 日期选择框
+
+### Input 输入框
+
+```tsx
+import { Input } from "@cloudstack-design/components/input";
+
+<Input placeholder="Please enter something..." />;
+```
+
+### Autocomplete 快速补全
+
+### Radio 单选框
+
+### Checkbox 多选框
+
+### Slider 滑动输入条
+
+### Switch 开关
+
+### Select 选择框
+
+```tsx
+import { Select } from "@cloudstack-design/components/select";
+
+const App = () => {
+  return (
+    <Select
+      options={[
+        { value: 1, label: "选项一" },
+        { value: 2, label: "选项二" },
+        { value: 3, label: "选项三" },
+      ]}
+    />
+  );
+};
+```
+
+### Upload 上传
+
+## 展示
+
+### Popover 气泡卡片
+
+### Accordion 手风琴
+
+### Table 表格
+
+### Tag 标签
+
+### Card 卡片
+
+### Descriptions 描述列表
+
+### Tooltip 提示
+
+### Skeleton 骨架屏
+
+## 信息反馈 Feedback
+
+### Alert 警告
+
+### Toast 吐司
+
+### Modal 对话框
+
+### Drawer 抽屉
+
+### Badge 徽章
+
+### Loading 加载中

@@ -23,3 +23,10 @@ export const Primary: Story = {
     children: "Button",
   },
 };
+
+export const Default: Story = {
+  args: {
+    children: "Button",
+    color: "default",
+  },
+};
