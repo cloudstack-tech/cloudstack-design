@@ -5,17 +5,6 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./styles": {
-      "import": "./dist/styles/index.css",
-      "require": "./dist/styles/index.css"
-    }
-  },
   "files": [
     "dist"
   ],
@@ -40,7 +29,6 @@
     "@eslint/eslintrc": "^3",
     "@storybook/addon-a11y": "9.1.6",
     "@storybook/addon-docs": "9.1.6",
-    "@storybook/addon-onboarding": "9.1.6",
     "@storybook/addon-vitest": "9.1.6",
     "@storybook/nextjs-vite": "^9.1.6",
     "@tailwindcss/postcss": "^4",

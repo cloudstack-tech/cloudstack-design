@@ -38,7 +38,7 @@ const InternalButton = React.forwardRef<HTMLButtonElement, InternalButtonProps>(
 
     const colors: Record<string, string> = {
       primary: cn(
-        " bg-btn-bg text-btn-text hover:bg-btn-bg-hover hover:shadow-btn-shadow active:bg-btn-bg-active border-btn-border border-0",
+        "bg-primary text-btn-text hover:bg-btn-bg-hover hover:shadow-btn-shadow active:bg-btn-bg-active border-btn-border border-0",
         "disabled:bg-btn-bg-disabled disabled:text-disable disabled:border-btn-border-disabled",
         "[&[data-loading=true]]:bg-btn-bg-loading [&[data-loading=true]]:border-btn-border-loading"
       ),
