@@ -55,7 +55,8 @@ const InternalButton = React.forwardRef<HTMLButtonElement, InternalButtonProps>(
       iconOnly && "min-h-8 min-w-8 p-0 aspect-square",
       colors[color],
       disabled && "cursor-not-allowed hover:shadow-none",
-      className
+      className,
+      "bg-btn-primary-bg"
     );
 
     return (

@@ -1,7 +1,1 @@
-@theme {
-  --color-primary: rgb(0, 100, 200);
-}
-
-@theme {
-  --color-btn-primary-bg: rgb(0, 100, 200);
-}
+@import "../components/Button/button.theme.css";
