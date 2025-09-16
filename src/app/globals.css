@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../packages/theme/index.css";
 
 html,
 body {

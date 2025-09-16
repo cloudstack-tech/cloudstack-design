@@ -1,3 +1,9 @@
+import { Button } from "@/packages";
+
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <Button>Button</Button>
+    </div>
+  );
 }

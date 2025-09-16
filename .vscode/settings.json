@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "tailwindCSS.classFunctions": ["cva", "cx", "cn", "clsx"],
+  "tailwindCSS.classAttributes": ["class", "className", "classNames"]
+}
