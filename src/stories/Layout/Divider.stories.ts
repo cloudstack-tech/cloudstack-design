@@ -1,4 +1,4 @@
-import { Divider } from "@/packages/components/Divider/divider";
+import { Divider } from "@/packages/components";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
@@ -6,6 +6,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
+  component: Divider,
   //   tags: ["autodocs"],
   argTypes: {},
 } satisfies Meta<typeof Divider>;

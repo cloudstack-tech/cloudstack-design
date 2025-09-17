@@ -55,18 +55,17 @@ const InternalButton = React.forwardRef<HTMLButtonElement, InternalButtonProps>(
       iconOnly && "min-h-8 min-w-8 p-0 aspect-square",
       colors[color],
       disabled && "cursor-not-allowed hover:shadow-none",
-      className,
-      "bg-btn-primary-bg"
+      className
     );
 
     return (
       <Component
         ref={ref}
         {...rest}
-        tabIndex={0}
-        className={buttonClassName}
         data-disabled={disabled}
         data-loading={loading}
+        tabIndex={0}
+        className={buttonClassName}
         onClick={handleClick}
         disabled={disabled || loading}
       >
