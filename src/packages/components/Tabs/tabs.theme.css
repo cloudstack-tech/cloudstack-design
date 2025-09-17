@@ -1,0 +1,24 @@
+/* Tab 底部边框动画 */
+.tab-container {
+  @apply relative flex items-center gap-2;
+}
+
+/* 平移动画样式 */
+.tab-slider {
+  @apply bg-primary absolute bottom-0 h-0.5 transition-all duration-300;
+}
+
+/* 闪烁展开动画样式 */
+.tab-flash {
+  @apply relative overflow-visible;
+}
+
+.tab-flash::after {
+  content: "";
+  @apply bg-primary absolute bottom-[-2px] left-1/2 h-0.5 w-0;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.tab-flash[data-active="true"]::after {
+  @apply left-0 w-full;
+}
