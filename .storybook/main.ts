@@ -21,7 +21,7 @@ const config: StorybookConfig = {
       process.env.NODE_ENV === "production" ? "/cloudstack-design/" : "/"
     }">
   `,
-  viteFinal: async (config) => {i
+  viteFinal: async (config) => {
     // 添加路径别名以匹配 Next.js 配置
     config.resolve = config.resolve || {};
     config.resolve.alias = {
