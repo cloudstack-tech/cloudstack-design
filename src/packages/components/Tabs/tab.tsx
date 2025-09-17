@@ -49,14 +49,14 @@ function Tab({
   ...props
 }: TabProps) {
   const tabClassName = cn(
-    "bg-transparent",
+    "bg-transparent text-default",
     // 当使用滑块动画时，不需要边框
     animation === "slide" ? "" : "border-b-2 border-b-transparent",
     // 当使用闪烁动画时，添加闪烁类
     animation === "flash" && "tab-flash",
     // 当使用默认动画时，使用原来的边框样式
     animation === "none" && active && "border-b-primary",
-    active && activeClassName,
+    active && cn("text-primary", activeClassName),
     className
   );
 
