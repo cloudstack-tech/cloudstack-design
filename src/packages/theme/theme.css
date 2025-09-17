@@ -5,6 +5,7 @@
 }
 
 @theme {
+  --color-default: rgb(51, 51, 51);
   --color-error: rgb(224, 0, 0);
 }
 

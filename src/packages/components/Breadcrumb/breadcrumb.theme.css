@@ -1,0 +1,5 @@
+@theme inline {
+  --color-breadcrumb-text: rgb(85, 85, 85);
+  --color-breadcrumb-text-active: rgb(170, 170, 170);
+  --color-breadcrumb-separator: rgb(203, 203, 203);
+}
