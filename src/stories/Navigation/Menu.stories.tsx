@@ -13,10 +13,6 @@ const meta = {
     layout: "fullscreen",
     nextjs: {
       appDirectory: true,
-      router: {
-        path: "/",
-        as: "/",
-      },
     },
   },
   tags: ["autodocs"],
@@ -27,13 +23,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  decorators: [
-    (Story) => (
-      <div className="h-screen w-full">
-        <Story />
-      </div>
-    ),
-  ],
+  //   decorators: [
+  //     (Story) => (
+  //       <div className="h-screen w-full">
+  //         <Story />
+  //       </div>
+  //     ),
+  //   ],
   args: {
     items: [
       {
