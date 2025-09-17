@@ -1,0 +1,17 @@
+@import "../../theme/theme.css";
+
+@theme {
+  --color-menu-title-text: var(--color-default);
+  --color-menu-bg: #fff;
+  --color-menu-border: rgb(229, 229, 229);
+
+  --color-menu-item-text: var(--color-default);
+  --color-menu-item-active-text: var(--color-primary);
+  --color-menu-item-hover-text: var(--color-menu-item-text);
+  --color-menu-item-disabled-text: var(--color-disabled-text);
+
+  --color-menu-item-bg: none;
+  --color-menu-item-hover-bg: rgb(245, 247, 250);
+  --color-menu-item-active-bg: var(--color-menu-item-hover-bg);
+  --color-menu-item-disabled-bg: none;
+}
