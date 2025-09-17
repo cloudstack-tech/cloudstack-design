@@ -1,0 +1,14 @@
+@theme {
+  --shadow-hover: 0 4px 8px 0 rgba(0, 0, 0, 0.08),
+    0 2px 4px 0 rgba(0, 0, 0, 0.16);
+}
+
+@theme {
+  --color-border-default: rgb(233, 233, 233);
+}
+
+@theme {
+  --color-disabled-text: rgb(204, 204, 204);
+  --color-disabled-bg: rgb(247, 249, 250);
+  --color-disabled-border: rgb(192, 198, 204);
+}

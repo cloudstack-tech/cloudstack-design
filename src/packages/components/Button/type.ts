@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
-import { ButtonVariants } from "./variants/variants";
+import { ButtonVariants } from "./variants";
 
 export type ButtonProps = {
   /**

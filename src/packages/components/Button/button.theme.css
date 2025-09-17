@@ -1,3 +1,20 @@
+@import "../../theme/style.css";
+
 @theme {
-  --color-btn-primary-bg: rgb(0, 100, 200);
+  --color-btn-border: rgb(192, 198, 204);
+}
+
+/* primary solid */
+@theme {
+  --color-btn-primary-solid-bg: rgb(0, 100, 200);
+  --color-btn-primary-solid-active-bg: rgb(0, 60, 120);
+  --color-btn-primary-solid-hover-bg: rgb(0, 82, 164);
+  --color-btn-primary-solid-disabled-bg: var(--color-disabled-bg);
+
+  --color-btn-primary-solid-text: rgb(255, 255, 255);
+  --color-btn-primary-solid-disabled-text: var(--color-disabled-text);
+
+  --color-btn-primary-solid-disabled-border: var(--color-disabled-border);
+
+  --shadow-btn-primary-solid-hover: var(--shadow-hover);
 }
