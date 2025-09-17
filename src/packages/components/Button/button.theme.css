@@ -1,4 +1,4 @@
-@import "../../theme/style.css";
+@import "../../theme/theme.css";
 
 @theme {
   --color-btn-border: rgb(192, 198, 204);
@@ -7,8 +7,8 @@
 /* primary solid */
 @theme {
   --color-btn-primary-solid-bg: rgb(0, 100, 200);
-  --color-btn-primary-solid-active-bg: rgb(0, 60, 120);
   --color-btn-primary-solid-hover-bg: rgb(0, 82, 164);
+  --color-btn-primary-solid-active-bg: rgb(0, 60, 120);
   --color-btn-primary-solid-disabled-bg: var(--color-disabled-bg);
 
   --color-btn-primary-solid-text: rgb(255, 255, 255);
@@ -16,5 +16,60 @@
 
   --color-btn-primary-solid-disabled-border: var(--color-disabled-border);
 
-  --shadow-btn-primary-solid-hover: var(--shadow-hover);
+  --shadow-btn-primary-solid-hover: var(--shadow-hover-base);
+  --shadow-btn-primary-solid-active: var(--shadow-hover-sm);
+}
+
+/* default solid */
+@theme {
+  --color-btn-default-solid-bg: rgb(239, 243, 248);
+  --color-btn-default-solid-hover-bg: rgb(247, 249, 250);
+  --color-btn-default-solid-active-bg: rgb(239, 243, 248);
+  --color-btn-default-solid-disabled-bg: rgb(246, 246, 246);
+
+  --color-btn-default-solid-text: rgb(51, 51, 51);
+  --color-btn-default-solid-hover-text: rgb(51, 51, 51);
+  --color-btn-default-solid-active-text: rgb(51, 51, 51);
+  --color-btn-default-solid-disabled-text: var(--color-disabled-text);
+
+  --color-btn-default-solid-border: rgb(203, 203, 203);
+  --color-btn-default-solid-hover-border: rgb(192, 198, 204);
+  --color-btn-default-solid-active-border: rgb(192, 198, 204);
+  --color-btn-default-solid-disabled-border: var(--color-disabled-border);
+
+  --shadow-btn-default-solid-hover: var(--shadow-hover-base);
+  --shadow-btn-default-solid-active: var(--shadow-hover-sm);
+}
+
+/* danger solid */
+@theme {
+  --color-btn-danger-solid-bg: color-mix(
+    in oklab,
+    var(--color-error) 5%,
+    transparent
+  );
+  --color-btn-danger-solid-hover-bg: color-mix(
+    in oklab,
+    var(--color-error) 10%,
+    transparent
+  );
+  --color-btn-danger-solid-active-bg: color-mix(
+    in oklab,
+    var(--color-error) 15%,
+    transparent
+  );
+  --color-btn-danger-solid-disabled-bg: rgb(255, 255, 255);
+
+  --color-btn-danger-solid-text: rgb(214, 38, 11);
+  --color-btn-danger-solid-hover-text: var(--color-btn-danger-solid-text);
+  --color-btn-danger-solid-active-text: var(--color-btn-danger-solid-text);
+  --color-btn-danger-solid-disabled-text: var(--color-disabled-text);
+
+  --color-btn-danger-solid-border: var(--color-btn-danger-solid-text);
+  --color-btn-danger-solid-hover-border: var(--color-btn-danger-solid-text);
+  --color-btn-danger-solid-active-border: var(--color-btn-danger-solid-text);
+  --color-btn-danger-solid-disabled-border: var(--color-disabled-border);
+
+  --shadow-btn-danger-solid-hover: var(--shadow-hover-base);
+  --shadow-btn-danger-solid-active: var(--shadow-hover-sm);
 }

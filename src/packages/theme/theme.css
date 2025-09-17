@@ -1,6 +1,11 @@
 @theme {
-  --shadow-hover: 0 4px 8px 0 rgba(0, 0, 0, 0.08),
+  --shadow-hover-sm: rgba(0, 0, 0, 0.16) 0px 1px 2px 0px;
+  --shadow-hover-base: 0 4px 8px 0 rgba(0, 0, 0, 0.08),
     0 2px 4px 0 rgba(0, 0, 0, 0.16);
+}
+
+@theme {
+  --color-error: rgb(224, 0, 0);
 }
 
 @theme {
