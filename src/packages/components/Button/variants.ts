@@ -8,9 +8,15 @@ export const buttonVariants = cva(
   ],
   {
     variants: {
+      size: {
+        sm: "min-h-6 px-3 data-[icon-only=true]:min-h-6 data-[icon-only=true]:min-w-6 data-[icon-only=true]:p-0 data-[icon-only=true]:aspect-square",
+        base: "min-h-8 px-4 data-[icon-only=true]:min-h-8 data-[icon-only=true]:min-w-8 data-[icon-only=true]:p-0 data-[icon-only=true]:aspect-square",
+        lg: "min-h-9 px-4.5 data-[icon-only=true]:min-h-10 data-[icon-only=true]:min-w-10 data-[icon-only=true]:p-0 data-[icon-only=true]:aspect-square",
+        icon: "",
+      },
       variant: {
         solid: "",
-        text: "",
+        text: "min-h-0 px-0",
         light: "",
         flat: "",
         outline: "",
@@ -19,12 +25,6 @@ export const buttonVariants = cva(
         primary: "",
         default: "",
         danger: "",
-      },
-      size: {
-        sm: "min-h-6 px-3 data-[icon-only=true]:min-h-6 data-[icon-only=true]:min-w-6 data-[icon-only=true]:p-0 data-[icon-only=true]:aspect-square",
-        base: "min-h-8 px-4 data-[icon-only=true]:min-h-8 data-[icon-only=true]:min-w-8 data-[icon-only=true]:p-0 data-[icon-only=true]:aspect-square",
-        lg: "min-h-9 px-4.5 data-[icon-only=true]:min-h-10 data-[icon-only=true]:min-w-10 data-[icon-only=true]:p-0 data-[icon-only=true]:aspect-square",
-        icon: "",
       },
     },
 
