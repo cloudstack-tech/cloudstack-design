@@ -60,7 +60,7 @@
   );
   --color-btn-danger-solid-disabled-bg: rgb(255, 255, 255);
 
-  --color-btn-danger-solid-text: rgb(214, 38, 11);
+  --color-btn-danger-solid-text: var(--color-danger);
   --color-btn-danger-solid-hover-text: var(--color-btn-danger-solid-text);
   --color-btn-danger-solid-active-text: var(--color-btn-danger-solid-text);
   --color-btn-danger-solid-disabled-text: var(--color-disabled-text);

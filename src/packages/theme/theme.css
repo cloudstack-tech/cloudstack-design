@@ -8,6 +8,7 @@
   --color-primary: rgb(0, 100, 200);
   --color-default: rgb(51, 51, 51);
   --color-error: rgb(224, 0, 0);
+  --color-danger: rgb(214, 38, 11);
 }
 
 @theme {
@@ -18,4 +19,8 @@
   --color-disabled-text: rgb(204, 204, 204);
   --color-disabled-bg: rgb(247, 249, 250);
   --color-disabled-border: rgb(192, 198, 204);
+}
+
+@theme {
+  --text-xxs: 0.675rem;
 }

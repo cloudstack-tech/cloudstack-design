@@ -4,3 +4,4 @@ export { Divider } from "./Divider";
 export { Breadcrumb } from "./Breadcrumb";
 export { Tabs } from "./Tabs";
 export { Menu } from "./Menu";
+export { Typography } from "./Typography";

@@ -123,7 +123,10 @@ export default function Tabs({
   return (
     <div
       ref={tabsRef}
-      className={cn("tab-container", className)}
+      className={cn(
+        "tab-container relative flex items-center gap-2",
+        className
+      )}
       data-active={value === activeTab}
     >
       {tabItems}
