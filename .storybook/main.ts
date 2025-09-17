@@ -13,7 +13,7 @@ const config: StorybookConfig = {
     name: "@storybook/nextjs-vite",
     options: {},
   },
-  staticDirs: ["..\\public"],
+  staticDirs: ["../public"],
   // GitHub Pages 部署配置
   managerHead: (head) => `
     ${head}
@@ -21,7 +21,7 @@ const config: StorybookConfig = {
       process.env.NODE_ENV === "production" ? "/cloudstack-design/" : "/"
     }">
   `,
-  viteFinal: async (config) => {
+  viteFinal: async (config) => {i
     // 添加路径别名以匹配 Next.js 配置
     config.resolve = config.resolve || {};
     config.resolve.alias = {
