@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { TabProps } from "./tab";
 import { cn } from "@/packages/utils";
-import "./tabs.theme.css";
 
 export type TabsProps = {
   /**
@@ -123,16 +122,13 @@ export default function Tabs({
   return (
     <div
       ref={tabsRef}
-      className={cn(
-        "tab-container relative flex items-center gap-2",
-        className
-      )}
+      className={cn("relative flex items-center gap-2", className)}
       data-active={value === activeTab}
     >
       {tabItems}
       {animation === "slide" && (
         <div
-          className="tab-slider"
+          className="bg-primary absolute bottom-0 h-0.5 transition-all duration-300"
           style={{
             left: `${sliderStyle.left}px`,
             width: `${sliderStyle.width}px`,

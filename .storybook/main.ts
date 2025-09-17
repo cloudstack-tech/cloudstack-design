@@ -14,6 +14,13 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ["..\\public"],
+  // GitHub Pages 部署配置
+  managerHead: (head) => `
+    ${head}
+    <base href="${
+      process.env.NODE_ENV === "production" ? "/cloudstack-design/" : "/"
+    }">
+  `,
   viteFinal: async (config) => {
     // 添加路径别名以匹配 Next.js 配置
     config.resolve = config.resolve || {};
