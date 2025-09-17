@@ -36,8 +36,8 @@ jobs:
         with:
           version: latest
 
-      - name: 安装依赖
-        run: pnpm install --frozen-lockfile
+      - name: 安装依赖 
+        run: pnpm install --no-frozen-lockfile
 
       - name: 构建 Storybook
         run: pnpm run build-storybook
