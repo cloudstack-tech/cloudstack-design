@@ -1,10 +1,14 @@
-import Card from "@/packages/components/Card";
+import { Card, FlatCard } from "@/packages/components";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import ExampleTabCard from "./Example-Tab-Card";
+import ExampleStatusCard from "./Example-Status-Card";
 
 const meta = {
   title: "Layout/Card",
   component: Card,
+  subcomponents: {
+    FlatCard,
+  },
   parameters: {
     layout: "centered",
   },
@@ -49,6 +53,22 @@ export const CollapsibleTitleCard: Story = {
   },
 };
 
+export const FlatCardStory: Story = {
+  render: () => (
+    <FlatCard title={"Flat Card Title"} collapsible>
+      FlatCard, This is a flat card
+    </FlatCard>
+  ),
+};
+
 export const TabCard: Story = {
   render: () => <ExampleTabCard />,
+};
+
+export const StatusCard: Story = {
+  render: () => (
+    <div className="min-w-4xl">
+      <ExampleStatusCard />
+    </div>
+  ),
 };

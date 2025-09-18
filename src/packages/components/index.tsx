@@ -5,3 +5,4 @@ export { Breadcrumb } from "./Breadcrumb";
 export { Tabs } from "./Tabs";
 export { Menu } from "./Menu";
 export { Typography } from "./Typography";
+export { Card, FlatCard } from "./Card";

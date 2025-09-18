@@ -14,7 +14,7 @@ export default function FlatCard({ children, ...props }: CubeCardProps) {
       classNames={{
         ...classNames,
         root: cn(
-          "bg-card-bg-secondary hover:bg-card-bg-secondary-hover border-0 text-xs hover:shadow-none",
+          "bg-btn-default-solid-hover-bg hover:bg-btn-default-solid-active-bg border-0",
           rootClassName
         ),
         content: cn(
@@ -23,6 +23,7 @@ export default function FlatCard({ children, ...props }: CubeCardProps) {
           classNames?.content
         ),
       }}
+      hoverable={false}
       {...rest}
     >
       {children}
