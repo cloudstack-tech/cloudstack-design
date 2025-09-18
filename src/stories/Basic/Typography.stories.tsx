@@ -113,6 +113,17 @@ export const Ellipsis: Story = {
     ),
   ],
   argTypes: {
+    color: {
+      control: { type: "select" },
+      options: [
+        "default",
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+      ],
+    },
     ellipsis: {
       control: { type: "object" },
     },

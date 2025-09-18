@@ -1,12 +1,20 @@
 import { cn } from "@/packages/utils";
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect, useRef } from "react";
+import ResizeObserver from "rc-resize-observer";
 import { Button } from "../Button";
+import EllipsisMeasure from "./EllipsisMeasure";
+import EllipsisTooltip from "./EllipsisTooltip";
+import { isStyleSupport, isEleEllipsis } from "./util";
 
 export type EllipsisProps =
   | boolean
   | {
-      rows: number;
-      expandable: boolean;
+      rows?: number;
+      expandable?: boolean | "collapsible";
+      suffix?: string;
+      symbol?: React.ReactNode | ((expanded: boolean) => React.ReactNode);
+      onEllipsis?: (ellipsis: boolean) => void;
+      tooltip?: React.ReactNode;
     };
 
 export type BaseTypographyProps = {
@@ -80,12 +88,82 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
     strikethrough = false,
   } = props;
 
+  // 内部引用
+  const typographyRef = useRef<HTMLElement>(null);
+
   // 展开/收起状态管理
   const [isExpanded, setIsExpanded] = useState(false);
 
+  // 省略相关状态
+  const [isLineClampSupport, setIsLineClampSupport] = useState(false);
+  const [isTextOverflowSupport, setIsTextOverflowSupport] = useState(false);
+  const [isJsEllipsis, setIsJsEllipsis] = useState(false);
+  const [isNativeEllipsis, setIsNativeEllipsis] = useState(false);
+  const [isNativeVisible, setIsNativeVisible] = useState(true);
+  const [ellipsisWidth, setEllipsisWidth] = useState(0);
+
+  // 解析省略配置
+  const enableEllipsis = !!ellipsis;
+  const ellipsisConfig =
+    typeof ellipsis === "object" ? ellipsis : { rows: 1, expandable: false };
+  const {
+    rows = 1,
+    expandable = false,
+    suffix,
+    symbol,
+    onEllipsis,
+    tooltip,
+  } = ellipsisConfig;
+
   // 检查是否需要展开功能
-  const isExpandable =
-    typeof ellipsis === "object" && ellipsis.expandable && ellipsis.rows;
+  const isExpandable = enableEllipsis && expandable;
+
+  // 合并的省略启用状态
+  const mergedEnableEllipsis =
+    enableEllipsis && (!isExpanded || expandable === "collapsible");
+
+  // 是否需要 JS 测量
+  const needMeasureEllipsis = React.useMemo(
+    () =>
+      mergedEnableEllipsis &&
+      (suffix !== undefined || onEllipsis || expandable || tooltip),
+    [mergedEnableEllipsis, suffix, onEllipsis, expandable, tooltip]
+  );
+
+  // 检查浏览器支持
+  useLayoutEffect(() => {
+    if (enableEllipsis && !needMeasureEllipsis) {
+      setIsLineClampSupport(isStyleSupport("webkitLineClamp"));
+      setIsTextOverflowSupport(isStyleSupport("textOverflow"));
+    }
+  }, [needMeasureEllipsis, enableEllipsis]);
+
+  // CSS 省略状态
+  const [cssEllipsis, setCssEllipsis] = useState(mergedEnableEllipsis);
+
+  const canUseCssEllipsis = React.useMemo(() => {
+    if (needMeasureEllipsis) {
+      return false;
+    }
+
+    if (rows === 1) {
+      return isTextOverflowSupport;
+    }
+
+    return isLineClampSupport;
+  }, [needMeasureEllipsis, isTextOverflowSupport, isLineClampSupport, rows]);
+
+  // 切换到 CSS 省略
+  useLayoutEffect(() => {
+    setCssEllipsis(canUseCssEllipsis && mergedEnableEllipsis);
+  }, [canUseCssEllipsis, mergedEnableEllipsis]);
+
+  // 合并的省略状态
+  const isMergedEllipsis =
+    mergedEnableEllipsis && (cssEllipsis ? isNativeEllipsis : isJsEllipsis);
+
+  const cssTextOverflow = mergedEnableEllipsis && rows === 1 && cssEllipsis;
+  const cssLineClamp = mergedEnableEllipsis && rows > 1 && cssEllipsis;
 
   // 处理展开/收起切换
   const handleToggleExpand = (e: React.MouseEvent) => {
@@ -93,6 +171,63 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
     setIsExpanded(!isExpanded);
   };
 
+  // 处理容器尺寸变化
+  const onResize = ({ offsetWidth }: { offsetWidth: number }) => {
+    setEllipsisWidth(offsetWidth);
+  };
+
+  // JS 省略回调
+  const onJsEllipsis = (jsEllipsis: boolean) => {
+    setIsJsEllipsis(jsEllipsis);
+
+    if (isJsEllipsis !== jsEllipsis) {
+      onEllipsis?.(jsEllipsis);
+    }
+  };
+
+  // 检测原生省略
+  React.useEffect(() => {
+    const textEle = typographyRef.current;
+
+    if (enableEllipsis && cssEllipsis && textEle) {
+      const currentEllipsis = isEleEllipsis(textEle);
+
+      if (isNativeEllipsis !== currentEllipsis) {
+        setIsNativeEllipsis(currentEllipsis);
+      }
+    }
+  }, [
+    enableEllipsis,
+    cssEllipsis,
+    children,
+    cssLineClamp,
+    isNativeVisible,
+    ellipsisWidth,
+  ]);
+
+  // 可见性检测
+  React.useEffect(() => {
+    const textEle = typographyRef.current;
+    if (
+      typeof IntersectionObserver === "undefined" ||
+      !textEle ||
+      !cssEllipsis ||
+      !mergedEnableEllipsis
+    ) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(() => {
+      setIsNativeVisible(!!textEle.offsetParent);
+    });
+    observer.observe(textEle);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [cssEllipsis, mergedEnableEllipsis]);
+
+  // 样式类名
   const fontSize = cn({
     "text-xxs": size === "xs",
     "text-xs": size === "sm",
@@ -123,117 +258,115 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
     "line-through": strikethrough,
   });
 
-  // 处理省略号样式 - 修复单行省略
-  const ellipsisStyle = cn({
-    // 单行省略 - 确保不会撑大父容器
-    "inline-block overflow-hidden whitespace-nowrap min-w-0": ellipsis === true,
-    // 多行省略 - 只用于非展开功能
-    "line-clamp overflow-hidden text-ellipsis":
-      typeof ellipsis === "object" && ellipsis.rows && !isExpandable,
-  });
-
-  // 处理多行省略的内联样式 - 只用于非展开功能
-  const inlineStyle = (() => {
-    // 单行省略的内联样式
-    if (ellipsis === true) {
-      return {
-        textOverflow: "ellipsis",
-        overflow: "hidden",
-        whiteSpace: "nowrap" as const,
-        maxWidth: "100%",
-        minWidth: 0, // 关键：允许收缩
-      };
-    }
-
-    // 多行省略的内联样式
-    if (typeof ellipsis === "object" && ellipsis.rows && !isExpandable) {
-      return {
-        display: "-webkit-box",
-        WebkitBoxOrient: "vertical" as const,
-        WebkitLineClamp: ellipsis.rows,
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-      };
-    }
-
-    return undefined;
-  })();
-
   const mergedClassName = cn(
     fontSize,
     fontWeight,
     fontStyle,
-    ellipsisStyle,
+    {
+      "overflow-hidden": cssTextOverflow,
+      "whitespace-nowrap": cssTextOverflow,
+      "text-ellipsis": cssTextOverflow,
+    },
     className
   );
 
   const baseClassName = `${mergedClassName} ${textColor}`.trim();
 
-  // 当需要展开功能且未展开时，我们需要特殊处理
-  if (isExpandable) {
-    return (
-      <Component className={baseClassName} onClick={onClick} ref={ref}>
-        {isExpanded ? (
-          // 展开状态：显示完整文本 + 收起按钮
-          <>
-            {children}
-            <Button
-              variant="text"
-              color="primary"
-              size="sm"
-              className={`ml-1 ${fontSize}`}
-              onClick={handleToggleExpand}
-            >
-              收起
-            </Button>
-          </>
-        ) : (
-          // 收起状态：将按钮内联到文本末尾
-          <div className="relative">
-            <div
-              className="overflow-hidden"
-              style={{
-                display: "-webkit-box",
-                WebkitBoxOrient: "vertical" as const,
-                WebkitLineClamp: (ellipsis as { rows: number }).rows,
-              }}
-            >
-              {children}
-            </div>
-            {/* 使用伪元素和绝对定位来放置展开按钮 */}
-            <div
-              className="absolute bottom-0 right-0 bg-white pl-2"
-              style={{
-                background: "linear-gradient(to right, transparent, white 20%)",
-              }}
-            >
-              <span className={cn(textColor, "leading-none mr-0.5")}>...</span>
-              <Button
-                variant="text"
-                color="primary"
-                size="sm"
-                className={`${fontSize} p-0 h-auto leading-none`}
-                onClick={handleToggleExpand}
-              >
-                展开
-              </Button>
-            </div>
-          </div>
-        )}
-      </Component>
-    );
-  }
+  // 渲染展开按钮
+  const renderExpand = () => {
+    if (!expandable) return null;
 
-  // 非展开功能的正常渲染
+    const symbolNode =
+      typeof symbol === "function" ? symbol(isExpanded) : symbol;
+    const defaultSymbol = isExpanded ? "收起" : "展开";
+
+    return (
+      <Button
+        key="expand"
+        variant="text"
+        color="primary"
+        size="sm"
+        className={`ml-1 ${fontSize} p-0 h-auto leading-none`}
+        onClick={handleToggleExpand}
+      >
+        {symbolNode || defaultSymbol}
+      </Button>
+    );
+  };
+
+  // 渲染省略内容
+  const renderEllipsis = (canEllipsis: boolean) => [
+    canEllipsis && !isExpanded && (
+      <span aria-hidden key="ellipsis">
+        ...
+      </span>
+    ),
+    suffix,
+    // 如果可展开，始终显示按钮（无论是否省略）
+    expandable && renderExpand(),
+  ];
+
+  // 内联样式
+  const inlineStyle: React.CSSProperties = {
+    ...(cssLineClamp && {
+      display: "-webkit-box",
+      WebkitBoxOrient: "vertical" as const,
+      WebkitLineClamp: rows,
+      overflow: "hidden",
+    }),
+  };
+
   return (
-    <Component
-      className={baseClassName}
-      style={inlineStyle}
-      onClick={onClick}
-      ref={ref}
-    >
-      {children}
-    </Component>
+    <ResizeObserver onResize={onResize} disabled={!mergedEnableEllipsis}>
+      {(resizeRef: React.RefObject<HTMLElement>) => (
+        <EllipsisTooltip
+          tooltipProps={{ title: tooltip }}
+          enableEllipsis={mergedEnableEllipsis}
+          isEllipsis={isMergedEllipsis}
+        >
+          <Component
+            className={baseClassName}
+            style={inlineStyle}
+            onClick={onClick}
+            ref={(node: HTMLElement) => {
+              // 合并多个 ref
+              if (typeof ref === "function") {
+                ref(node);
+              } else if (ref) {
+                ref.current = node;
+              }
+              if (resizeRef && typeof resizeRef === "object") {
+                resizeRef.current = node;
+              }
+              typographyRef.current = node;
+            }}
+          >
+            <EllipsisMeasure
+              enableMeasure={mergedEnableEllipsis && !cssEllipsis}
+              text={children}
+              rows={rows}
+              width={ellipsisWidth}
+              onEllipsis={onJsEllipsis}
+              expanded={isExpanded}
+              miscDeps={[isExpanded, fontSize]}
+            >
+              {(node, canEllipsis) => (
+                <>
+                  {node.length > 0 && canEllipsis && !isExpanded ? (
+                    <span key="show-content" aria-hidden>
+                      {node}
+                    </span>
+                  ) : (
+                    node
+                  )}
+                  {renderEllipsis(canEllipsis || isExpanded)}
+                </>
+              )}
+            </EllipsisMeasure>
+          </Component>
+        </EllipsisTooltip>
+      )}
+    </ResizeObserver>
   );
 };
 
