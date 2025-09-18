@@ -7,3 +7,4 @@ export { Menu } from "./Menu";
 export { Typography } from "./Typography";
 export { Card, FlatCard } from "./Card";
 export { Alert } from "./Alert";
+export * from "./Checkbox";

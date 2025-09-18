@@ -17,6 +17,10 @@
 }
 
 @theme {
+  --color-input-border: rgb(203, 203, 203);
+}
+
+@theme {
   --color-border-default: rgb(233, 233, 233);
 }
 
