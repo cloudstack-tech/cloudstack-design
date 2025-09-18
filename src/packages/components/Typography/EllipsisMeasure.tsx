@@ -95,6 +95,13 @@ export default function EllipsisMeasure(props: EllipsisProps) {
     }
   }, [width, text, rows, enableMeasure, nodeList, nodeLen]);
 
+  // 初始化时立即设置为需要省略状态（防止闪烁）
+  React.useLayoutEffect(() => {
+    if (enableMeasure && nodeLen > 0) {
+      setCanEllipsis(true); // 预设为需要省略
+    }
+  }, [enableMeasure, nodeLen]);
+
   // 测量过程
   React.useLayoutEffect(() => {
     if (needEllipsis === STATUS_MEASURE_PREPARE) {
@@ -164,6 +171,20 @@ export default function EllipsisMeasure(props: EllipsisProps) {
       return children(nodeList, false);
     }
 
+    // 如果还没有宽度信息，先应用 CSS 省略防止闪烁
+    if (!width && nodeLen > 0) {
+      return (
+        <span
+          style={{
+            ...lineClipStyle,
+            WebkitLineClamp: rows,
+          }}
+        >
+          {children(nodeList, true)}
+        </span>
+      );
+    }
+
     if (
       needEllipsis !== STATUS_MEASURE_NEED_ELLIPSIS ||
       !ellipsisCutIndex ||
@@ -203,6 +224,8 @@ export default function EllipsisMeasure(props: EllipsisProps) {
     enableMeasure,
     rows,
     canEllipsis,
+    width,
+    nodeLen,
     ...miscDeps,
   ]);
 

@@ -102,6 +102,10 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
   const [isNativeVisible, setIsNativeVisible] = useState(true);
   const [ellipsisWidth, setEllipsisWidth] = useState(0);
 
+  // 测量状态 - 用于防止闪烁
+  const [isMeasuring, setIsMeasuring] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
+
   // 解析省略配置
   const enableEllipsis = !!ellipsis;
   const ellipsisConfig =
@@ -158,6 +162,13 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
     setCssEllipsis(canUseCssEllipsis && mergedEnableEllipsis);
   }, [canUseCssEllipsis, mergedEnableEllipsis]);
 
+  // 监听测量开始
+  useLayoutEffect(() => {
+    if (needMeasureEllipsis && ellipsisWidth > 0 && !isInitialized) {
+      setIsMeasuring(true);
+    }
+  }, [needMeasureEllipsis, ellipsisWidth, isInitialized]);
+
   // 合并的省略状态
   const isMergedEllipsis =
     mergedEnableEllipsis && (cssEllipsis ? isNativeEllipsis : isJsEllipsis);
@@ -173,12 +184,16 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
 
   // 处理容器尺寸变化
   const onResize = ({ offsetWidth }: { offsetWidth: number }) => {
+    if (offsetWidth > 0 && !isInitialized) {
+      setIsInitialized(true);
+    }
     setEllipsisWidth(offsetWidth);
   };
 
   // JS 省略回调
   const onJsEllipsis = (jsEllipsis: boolean) => {
     setIsJsEllipsis(jsEllipsis);
+    setIsMeasuring(false); // 测量完成
 
     if (isJsEllipsis !== jsEllipsis) {
       onEllipsis?.(jsEllipsis);
@@ -266,6 +281,11 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
       "overflow-hidden": cssTextOverflow,
       "whitespace-nowrap": cssTextOverflow,
       "text-ellipsis": cssTextOverflow,
+      // 添加过渡效果，减少视觉跳跃
+      "transition-all duration-150 ease-in-out": mergedEnableEllipsis,
+      // 测量期间的样式
+      "opacity-100": isInitialized || !mergedEnableEllipsis,
+      "opacity-90": !isInitialized && mergedEnableEllipsis,
     },
     className
   );
@@ -297,7 +317,7 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
   // 渲染省略内容
   const renderEllipsis = (canEllipsis: boolean) => [
     canEllipsis && !isExpanded && (
-      <span aria-hidden key="ellipsis">
+      <span aria-hidden key="ellipsis" className="select-none">
         ...
       </span>
     ),
@@ -314,6 +334,14 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
       WebkitLineClamp: rows,
       overflow: "hidden",
     }),
+    // 在测量期间应用预设省略，防止闪烁
+    ...((isMeasuring || !isInitialized) &&
+      mergedEnableEllipsis && {
+        display: "-webkit-box",
+        WebkitBoxOrient: "vertical" as const,
+        WebkitLineClamp: rows,
+        overflow: "hidden",
+      }),
   };
 
   return (
