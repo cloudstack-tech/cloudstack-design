@@ -1,0 +1,7 @@
+@theme {
+  --color-card-bg: rgb(255, 255, 255);
+  --color-card-bg-secondary: rgb(247, 249, 250);
+  --color-card-bg-secondary-hover: rgb(239, 243, 248);
+  --color-card-border: var(--color-menu-border);
+  --shadow-card-shadow: var(--shadow-hover-lg);
+}

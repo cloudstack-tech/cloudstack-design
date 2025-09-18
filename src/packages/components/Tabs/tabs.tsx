@@ -128,7 +128,7 @@ export default function Tabs({
       {tabItems}
       {animation === "slide" && (
         <div
-          className="bg-primary absolute bottom-0 h-0.5 transition-all duration-300"
+          className="bg-primary-color absolute bottom-0 h-0.5 transition-all duration-300"
           style={{
             left: `${sliderStyle.left}px`,
             width: `${sliderStyle.width}px`,

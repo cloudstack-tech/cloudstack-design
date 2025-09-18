@@ -60,8 +60,8 @@ function Tab({
       active && "after:left-0 after:w-full",
     ],
     // 当使用默认动画时，使用原来的边框样式
-    animation === "none" && active && "border-b-primary",
-    active && cn("text-primary", activeClassName),
+    animation === "none" && active && "border-b-primary-color",
+    active && cn("text-primary-color", activeClassName),
     className
   );
 
