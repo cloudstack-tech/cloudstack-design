@@ -1,5 +1,6 @@
 import { Checkbox, CheckboxGroup } from "@/packages/components";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { ExampleCheckAll } from "./Example-CheckAll";
 
 const meta = {
   title: "Data/Checkbox",
@@ -28,6 +29,19 @@ export const Indeterminate: StoryObj<typeof meta> = {
     indeterminate: true,
     label: "Indeterminate Checkbox",
   },
+};
+
+export const Disabled: StoryObj<typeof meta> = {
+  args: {
+    disabled: true,
+  },
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      <Checkbox {...args} />
+      <Checkbox {...args} indeterminate />
+      <Checkbox {...args} value={true} />
+    </div>
+  ),
 };
 
 const checkboxGroupMeta = {
@@ -60,4 +74,8 @@ export const Group: StoryObj<typeof checkboxGroupMeta> = {
       {...args}
     />
   ),
+};
+
+export const CheckAll: StoryObj<typeof checkboxGroupMeta> = {
+  render: () => <ExampleCheckAll />,
 };

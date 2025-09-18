@@ -90,7 +90,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     const wrapperClasses = cn(
       "inline-flex items-center relative cursor-pointer select-none",
-      disabled ? "cursor-not-allowed opacity-50" : null,
+      disabled ? "cursor-not-allowed opacity-50 bg-disabled-bg" : null,
       className
     );
 
