@@ -1,0 +1,11 @@
+@theme {
+  --color-alert-primary-bg: rgb(232, 244, 255);
+
+  --color-alert-default-bg: rgb(246, 246, 246);
+
+  --color-alert-success-bg: rgb(233, 255, 234);
+
+  --color-alert-warning-bg: rgb(255, 247, 232);
+
+  --color-alert-error-bg: rgb(255, 232, 232);
+}

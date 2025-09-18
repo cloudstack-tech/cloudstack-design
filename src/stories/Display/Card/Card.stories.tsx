@@ -4,7 +4,7 @@ import ExampleTabCard from "./Example-Tab-Card";
 import ExampleStatusCard from "./Example-Status-Card";
 
 const meta = {
-  title: "Layout/Card",
+  title: "Display/Card",
   component: Card,
   subcomponents: {
     FlatCard,
@@ -21,6 +21,7 @@ const meta = {
 } satisfies Meta<typeof Card>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const NoTitleCard: Story = {
