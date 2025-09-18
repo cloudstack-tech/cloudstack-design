@@ -82,9 +82,6 @@ export const Title: Story = {
 };
 
 export const TextEllipsis: Story = {
-  parameters: {
-    layout: "fullscreen",
-  },
   decorators: [
     (Story) => (
       <div className="w-full p-4">

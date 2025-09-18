@@ -281,11 +281,6 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
       "overflow-hidden": cssTextOverflow,
       "whitespace-nowrap": cssTextOverflow,
       "text-ellipsis": cssTextOverflow,
-      // 添加过渡效果，减少视觉跳跃
-      "transition-all duration-150 ease-in-out": mergedEnableEllipsis,
-      // 测量期间的样式
-      "opacity-100": isInitialized || !mergedEnableEllipsis,
-      "opacity-90": !isInitialized && mergedEnableEllipsis,
     },
     className
   );
@@ -315,32 +310,33 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
   };
 
   // 渲染省略内容
-  const renderEllipsis = (canEllipsis: boolean) => [
-    canEllipsis && !isExpanded && (
-      <span aria-hidden key="ellipsis" className="select-none">
-        ...
-      </span>
-    ),
-    suffix,
-    // 如果可展开，始终显示按钮（无论是否省略）
-    expandable && renderExpand(),
-  ];
+  const renderEllipsis = (canEllipsis: boolean, actualLines?: number) => {
+    // 只有当实际行数大于设置行数时才显示展开按钮
+    const shouldShowExpand = expandable && (!actualLines || actualLines > rows);
+
+    return [
+      canEllipsis && !isExpanded && (
+        <span aria-hidden key="ellipsis" className="select-none">
+          ...
+        </span>
+      ),
+      suffix,
+      // 根据实际行数决定是否显示展开按钮
+      shouldShowExpand && renderExpand(),
+    ];
+  };
 
   // 内联样式
   const inlineStyle: React.CSSProperties = {
-    ...(cssLineClamp && {
-      display: "-webkit-box",
-      WebkitBoxOrient: "vertical" as const,
-      WebkitLineClamp: rows,
-      overflow: "hidden",
-    }),
-    // 在测量期间应用预设省略，防止闪烁
-    ...((isMeasuring || !isInitialized) &&
-      mergedEnableEllipsis && {
+    // 统一的省略样式，避免样式切换导致的位移
+    ...(mergedEnableEllipsis &&
+      (cssLineClamp || isMeasuring || !isInitialized) && {
         display: "-webkit-box",
         WebkitBoxOrient: "vertical" as const,
         WebkitLineClamp: rows,
         overflow: "hidden",
+        // 确保行高一致性
+        lineHeight: "1.5",
       }),
   };
 
@@ -378,7 +374,7 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
               expanded={isExpanded}
               miscDeps={[isExpanded, fontSize]}
             >
-              {(node, canEllipsis) => (
+              {(node, canEllipsis, actualLines) => (
                 <>
                   {node.length > 0 && canEllipsis && !isExpanded ? (
                     <span key="show-content" aria-hidden>
@@ -387,7 +383,7 @@ const Base: React.ForwardRefRenderFunction<HTMLElement, BaseTypographyProps> = (
                   ) : (
                     node
                   )}
-                  {renderEllipsis(canEllipsis || isExpanded)}
+                  {renderEllipsis(canEllipsis || isExpanded, actualLines)}
                 </>
               )}
             </EllipsisMeasure>

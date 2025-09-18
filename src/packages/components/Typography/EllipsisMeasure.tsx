@@ -10,7 +10,9 @@ export interface EllipsisProps {
   children: (
     cutChildren: React.ReactNode[],
     /** 告诉当前文本是否超出了行数限制，可以进行省略 */
-    canEllipsis: boolean
+    canEllipsis: boolean,
+    /** 实际行数信息 */
+    actualLines?: number
   ) => React.ReactNode;
   onEllipsis: (isEllipsis: boolean) => void;
   expanded: boolean;
@@ -78,10 +80,13 @@ export default function EllipsisMeasure(props: EllipsisProps) {
   // 测量 `rows-1` 高度，避免操作超出行高
   const descRowsEllipsisRef = React.useRef<MeasureTextRef>(null);
   const symbolRowEllipsisRef = React.useRef<MeasureTextRef>(null);
+  // 测量文本的实际行数
+  const actualLinesRef = React.useRef<MeasureTextRef>(null);
 
   const [canEllipsis, setCanEllipsis] = React.useState(false);
   const [needEllipsis, setNeedEllipsis] = React.useState(STATUS_MEASURE_NONE);
   const [ellipsisHeight, setEllipsisHeight] = React.useState(0);
+  const [actualLines, setActualLines] = React.useState(0);
   const [parentWhiteSpace, setParentWhiteSpace] = React.useState<
     React.CSSProperties["whiteSpace"] | null
   >(null);
@@ -115,13 +120,22 @@ export default function EllipsisMeasure(props: EllipsisProps) {
     } else if (needEllipsis === STATUS_MEASURE_START) {
       const isOverflow = !!needEllipsisRef.current?.isExceed();
 
+      // 计算实际行数
+      const actualHeight = actualLinesRef.current?.getHeight() || 0;
+      const singleLineHeight = symbolRowEllipsisRef.current?.getHeight() || 20; // 默认行高
+      const calculatedLines = Math.ceil(actualHeight / singleLineHeight);
+      setActualLines(calculatedLines);
+
+      // 只有当实际行数大于设置行数时才需要省略
+      const needsEllipsis = isOverflow && calculatedLines > rows;
+
       setNeedEllipsis(
-        isOverflow
+        needsEllipsis
           ? STATUS_MEASURE_NEED_ELLIPSIS
           : STATUS_MEASURE_NO_NEED_ELLIPSIS
       );
-      setEllipsisCutIndex(isOverflow ? [0, nodeLen] : null);
-      setCanEllipsis(isOverflow);
+      setEllipsisCutIndex(needsEllipsis ? [0, nodeLen] : null);
+      setCanEllipsis(needsEllipsis);
 
       // 获取省略行的基础高度
       const baseRowsEllipsisHeight = needEllipsisRef.current?.getHeight() || 0;
@@ -139,7 +153,7 @@ export default function EllipsisMeasure(props: EllipsisProps) {
 
       setEllipsisHeight(maxRowsHeight + 1);
 
-      onEllipsis(isOverflow);
+      onEllipsis(needsEllipsis);
     }
   }, [needEllipsis, rows, nodeLen, onEllipsis]);
 
@@ -180,7 +194,7 @@ export default function EllipsisMeasure(props: EllipsisProps) {
             WebkitLineClamp: rows,
           }}
         >
-          {children(nodeList, true)}
+          {children(nodeList, true, actualLines)}
         </span>
       );
     }
@@ -190,7 +204,7 @@ export default function EllipsisMeasure(props: EllipsisProps) {
       !ellipsisCutIndex ||
       ellipsisCutIndex[0] !== ellipsisCutIndex[1]
     ) {
-      const content = children(nodeList, false);
+      const content = children(nodeList, false, actualLines);
       // 限制最大行数以避免滚动条闪烁，除非不需要省略
       if (
         [STATUS_MEASURE_NO_NEED_ELLIPSIS, STATUS_MEASURE_NONE].includes(
@@ -213,7 +227,8 @@ export default function EllipsisMeasure(props: EllipsisProps) {
 
     return children(
       expanded ? nodeList : sliceNodes(nodeList, ellipsisCutIndex[0]),
-      canEllipsis
+      canEllipsis,
+      actualLines
     );
   }, [
     expanded,
@@ -278,7 +293,18 @@ export default function EllipsisMeasure(props: EllipsisProps) {
             }}
             ref={symbolRowEllipsisRef}
           >
-            {children([], true)}
+            {children([], true, actualLines)}
+          </MeasureText>
+
+          {/** 测量实际行数 - 不限制行数 */}
+          <MeasureText
+            style={{
+              ...measureStyle,
+              // 不应用行数限制，获取真实高度
+            }}
+            ref={actualLinesRef}
+          >
+            {fullContent}
           </MeasureText>
         </>
       )}
@@ -294,7 +320,7 @@ export default function EllipsisMeasure(props: EllipsisProps) {
             }}
             ref={cutMidRef}
           >
-            {children(sliceNodes(nodeList, cutMidIndex), true)}
+            {children(sliceNodes(nodeList, cutMidIndex), true, actualLines)}
           </MeasureText>
         )}
 
