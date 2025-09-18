@@ -45,9 +45,7 @@ export type TypographyProps = {
    */
   ellipsis?:
     | boolean
-    | Partial<
-        Pick<ellipsis, "rows" | "expandable" | "suffix" | "symbol" | "onExpand">
-      >;
+    | Pick<ellipsis, "rows" | "expandable" | "suffix" | "symbol" | "onExpand">;
   /**
    * 子元素
    */

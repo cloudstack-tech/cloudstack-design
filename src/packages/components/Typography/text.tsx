@@ -56,16 +56,6 @@ const InternalText = React.forwardRef<HTMLElement, TextProps>((props, ref) => {
     // 基础样式
     "inline-block transition-colors duration-200",
 
-    // 颜色变体
-    {
-      "text-default": color === "default",
-      "text-primary": color === "primary",
-      "text-secondary": color === "secondary",
-      "text-success": color === "success",
-      "text-warning": color === "warning",
-      "text-danger": color === "danger",
-    },
-
     // 文本大小
     {
       "text-xxs": size === "xs",
@@ -106,6 +96,19 @@ const InternalText = React.forwardRef<HTMLElement, TextProps>((props, ref) => {
 
     className
   );
+
+  // 单独处理颜色类名，避免与 text-size 冲突
+  const colorClassName = cn({
+    "text-default-color": color === "default",
+    "text-primary-color": color === "primary",
+    "text-secondary-color": color === "secondary",
+    "text-success-color": color === "success",
+    "text-warning-color": color === "warning",
+    "text-danger-color": color === "danger",
+  });
+
+  // 最终合并类名
+  const finalClassName = `${textClassName} ${colorClassName}`.trim();
 
   // 处理多行省略
   const ellipsisStyle = React.useMemo(() => {
@@ -151,7 +154,7 @@ const InternalText = React.forwardRef<HTMLElement, TextProps>((props, ref) => {
   return (
     <Component
       ref={ref}
-      className={textClassName}
+      className={finalClassName}
       style={ellipsisStyle}
       onClick={handleClick}
       {...rest}

@@ -14,8 +14,18 @@ const meta = {
       control: { type: "select" },
       options: ["xs", "sm", "base", "md", "lg", "xl"],
     },
-    onClick: {
-      action: "onClick",
+    underline: {
+      control: { type: "boolean" },
+    },
+    strikethrough: {
+      control: { type: "boolean" },
+    },
+    italic: {
+      control: { type: "boolean" },
+    },
+    weight: {
+      control: { type: "select" },
+      options: ["normal", "medium", "semibold", "bold"],
     },
   },
 } satisfies Meta<typeof Typography.Text>;
@@ -23,32 +33,52 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// 基础文本
-export const Basic: Story = {
+export const TextBasic: Story = {
   args: {
-    children: "这是一段基础文本",
-    color: "default",
-    ellipsis: false,
-    onClick: () => {},
+    size: "base",
+    weight: "normal",
+    italic: false,
+    underline: false,
+    strikethrough: false,
   },
+  render: (args) => (
+    <div className="max-w-4xl flex flex-col gap-4">
+      <Typography.Text {...args}>CloudStack Design (default)</Typography.Text>
+      <Typography.Text {...args} color="primary">
+        CloudStack Design (primary)
+      </Typography.Text>
+      <Typography.Text {...args} color="secondary">
+        CloudStack Design (secondary)
+      </Typography.Text>
+      <Typography.Text {...args} color="success">
+        CloudStack Design (success)
+      </Typography.Text>
+      <Typography.Text {...args} color="warning">
+        CloudStack Design (warning)
+      </Typography.Text>
+      <Typography.Text {...args} color="danger">
+        CloudStack Design (danger)
+      </Typography.Text>
+    </div>
+  ),
 };
 
 export const Ellipsis: Story = {
-  render: (args) => (
-    <div style={{ width: "800px", padding: "16px" }}>
-      <Typography.Text {...args} />
-    </div>
-  ),
-  argTypes: {
-    ellipsis: {
-      type: "boolean",
-    },
-  },
+  decorators: [
+    (Story) => (
+      <div className="max-w-4xl">
+        <Story />
+      </div>
+    ),
+  ],
   args: {
-    children:
-      "这是一段很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的文本，应该会被省略显示",
-    color: "primary",
-    ellipsis: true,
-    onClick: () => {},
+    ellipsis: {
+      rows: 3,
+      expandable: true,
+      suffix: "...",
+      symbol: "展开",
+      onExpand: () => {},
+    },
+    children: "CloudStack Design".repeat(100),
   },
 };
