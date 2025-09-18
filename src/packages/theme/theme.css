@@ -10,6 +10,9 @@
   --color-secondary-color: rgb(170, 170, 170);
   --color-error-color: rgb(224, 0, 0);
   --color-danger-color: rgb(214, 38, 11);
+
+  --color-success-color: rgb(0, 148, 49);
+  --color-warning-color: rgb(255, 160, 3);
 }
 
 @theme {
