@@ -45,22 +45,22 @@
 @theme {
   --color-btn-danger-solid-bg: color-mix(
     in oklab,
-    var(--color-error) 5%,
+    var(--color-error-color) 5%,
     transparent
   );
   --color-btn-danger-solid-hover-bg: color-mix(
     in oklab,
-    var(--color-error) 10%,
+    var(--color-error-color) 10%,
     transparent
   );
   --color-btn-danger-solid-active-bg: color-mix(
     in oklab,
-    var(--color-error) 15%,
+    var(--color-error-color) 15%,
     transparent
   );
   --color-btn-danger-solid-disabled-bg: rgb(255, 255, 255);
 
-  --color-btn-danger-solid-text: var(--color-danger);
+  --color-btn-danger-solid-text: var(--color-danger-color);
   --color-btn-danger-solid-hover-text: var(--color-btn-danger-solid-text);
   --color-btn-danger-solid-active-text: var(--color-btn-danger-solid-text);
   --color-btn-danger-solid-disabled-text: var(--color-disabled-text);

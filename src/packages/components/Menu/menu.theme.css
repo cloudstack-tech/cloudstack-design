@@ -1,12 +1,12 @@
 @import "../../theme/theme.css";
 
 @theme {
-  --color-menu-title-text: var(--color-default);
+  --color-menu-title-text: var(--color-default-color);
   --color-menu-bg: #fff;
   --color-menu-border: rgb(229, 229, 229);
 
-  --color-menu-item-text: var(--color-default);
-  --color-menu-item-active-text: var(--color-primary);
+  --color-menu-item-text: var(--color-default-color);
+  --color-menu-item-active-text: var(--color-primary-color);
   --color-menu-item-hover-text: var(--color-menu-item-text);
   --color-menu-item-disabled-text: var(--color-disabled-text);
 

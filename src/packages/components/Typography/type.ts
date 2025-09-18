@@ -43,21 +43,29 @@ export type TypographyProps = {
   /**
    * 是否省略
    */
-  ellipsis:
+  ellipsis?:
     | boolean
-    | Pick<ellipsis, "rows" | "expandable" | "suffix" | "symbol" | "onExpand">;
+    | Partial<
+        Pick<ellipsis, "rows" | "expandable" | "suffix" | "symbol" | "onExpand">
+      >;
   /**
    * 子元素
    */
-  children: ReactNode;
+  children?: ReactNode;
   /**
    * 类型
    */
-  color: "primary" | "secondary" | "success" | "warning" | "danger" | "default";
+  color?:
+    | "primary"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "danger"
+    | "default";
   /**
    * 点击事件
    */
-  onClick: (event: MouseEvent) => void;
+  onClick?: (event: MouseEvent) => void;
   /**
    * HTML 元素类型
    */
