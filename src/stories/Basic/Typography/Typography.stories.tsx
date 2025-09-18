@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { Typography } from "@/packages/components";
+import ExampleControlledEllipsis from "@/stories/Basic/Typography/Example-Controlled-Ellipsis";
 
 const meta = {
   title: "Basic/Typography",
@@ -133,4 +134,12 @@ export const Ellipsis: Story = {
     children:
       "CloudStack Design 是一个现代化的设计系统，提供了丰富的组件库和设计规范。它采用了最新的前端技术栈，包括 React、TypeScript、Tailwind CSS 等，为开发者提供了高效、灵活的开发体验。组件库包含了按钮、输入框、表格、弹窗等常用组件，每个组件都经过精心设计和优化，确保在各种场景下都能正常工作。设计系统还提供了完整的主题定制功能，开发者可以根据自己的需求调整颜色、字体、间距等样式属性。",
   },
+};
+
+export const ControlledEllipsis: Story = {
+  render: () => (
+    <div className="max-w-md">
+      <ExampleControlledEllipsis />
+    </div>
+  ),
 };
