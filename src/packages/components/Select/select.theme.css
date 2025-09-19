@@ -2,8 +2,10 @@
   --color-select-bg: rgb(255, 255, 255);
   --color-select-border: var(--color-input-border);
   --color-select-border-focus: var(--color-primary);
-  --color-select-value: var(--color-default);
   --color-select-placeholder: rgb(153, 153, 153);
+
+  --color-select-value: var(--color-default);
+  --color-select-value-focus: rgb(191 191 191);
 
   --color-select-item-text: var(--color-default);
   --color-select-item-text-hover: var(--color-default);

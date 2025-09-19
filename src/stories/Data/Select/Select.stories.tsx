@@ -27,9 +27,21 @@ const options = [
 
 export const Default: Story = {
   args: {
-    placeholder: "请选择一个选项",
-    className: "w-96",
-    options,
+    defaultValue: "noGroup",
+    options: [
+      {
+        label: "不分组",
+        value: "noGroup",
+      },
+      {
+        label: "按付费方式分组",
+        value: "byPaymentMethod",
+      },
+      {
+        label: "按可用区分析",
+        value: "byAvailabilityZone",
+      },
+    ],
   },
 };
 

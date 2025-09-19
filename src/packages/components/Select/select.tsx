@@ -9,7 +9,6 @@ import {
   SingleSelectProps,
   MultipleSelectProps,
 } from "./type";
-import { Input, InputRef } from "../Input";
 const Select = <T,>(props: SelectProps<T>) => {
   const {
     options = [],
@@ -26,7 +25,7 @@ const Select = <T,>(props: SelectProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const selectRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<InputRef>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // 判断是否为多选模式
   const isMultiple = props.mode === "multiple";
@@ -225,10 +224,11 @@ const Select = <T,>(props: SelectProps<T>) => {
       {/* 选择框 */}
       <div
         className={cn(
-          "border-input-border focus-within:border-primary flex min-h-8 w-full cursor-pointer items-center justify-between gap-2 border px-3 py-1 text-sm transition-all duration-150",
+          "border-select-border focus-within:border-select-border-focus flex min-h-8 w-full cursor-pointer items-center justify-between gap-2 border px-3 py-1 text-xs transition-all duration-150",
+          "hover:border-select-border-focus hover:shadow-active",
           {
             "cursor-not-allowed opacity-50": disabled,
-            "border-primary": isOpen && !disabled,
+            "border-select-border-focus": isOpen && !disabled,
           }
         )}
         onClick={handleInputClick}
@@ -237,7 +237,7 @@ const Select = <T,>(props: SelectProps<T>) => {
           {isMultiple && hasValue() ? (
             renderMultipleTags()
           ) : showSearch && isOpen ? (
-            <Input
+            <input
               ref={inputRef}
               type="text"
               value={searchValue}
@@ -250,9 +250,13 @@ const Select = <T,>(props: SelectProps<T>) => {
             />
           ) : (
             <span
-              className={cn("block truncate", {
-                "text-gray-400": !hasValue(),
-              })}
+              className={cn(
+                "block truncate duration-150 transition-all text-select-value",
+                {
+                  "text-select-placeholder": !hasValue(),
+                  "text-select-value-focus": isOpen,
+                }
+              )}
             >
               {getDisplayText()}
             </span>
@@ -263,15 +267,18 @@ const Select = <T,>(props: SelectProps<T>) => {
           {allowClear && hasValue() && !disabled && (
             <X
               size={16}
-              className="text-gray-400 hover:text-gray-600 cursor-pointer"
+              className="text-select-placeholder hover:text-gray-600 cursor-pointer"
               onClick={handleClear}
             />
           )}
           <ChevronDown
             size={16}
-            className={cn("text-gray-400 transition-transform duration-150", {
-              "rotate-180": isOpen,
-            })}
+            className={cn(
+              "text-select-placeholder transition-transform duration-150",
+              {
+                "rotate-180": isOpen,
+              }
+            )}
           />
         </div>
       </div>
@@ -279,12 +286,12 @@ const Select = <T,>(props: SelectProps<T>) => {
       {/* 下拉选项 */}
       {isOpen && (
         <div
-          className="border-input-border absolute left-0 right-0 top-full z-50 mt-1 border bg-white shadow-lg"
+          className="select-dropdown border-select-border absolute left-0 right-0 top-full z-50 mt-1 border shadow-lg min-w-fit py-2"
           style={{ maxHeight }}
         >
           <div className="overflow-auto" style={{ maxHeight: maxHeight - 2 }}>
             {filteredOptions.length === 0 ? (
-              <div className="px-3 py-2 text-center text-gray-400 text-sm">
+              <div className="px-3 py-2 mx-2 text-center text-select-placeholder text-xs">
                 {notFoundContent}
               </div>
             ) : (
@@ -292,18 +299,30 @@ const Select = <T,>(props: SelectProps<T>) => {
                 <div
                   key={String(option.value) + index}
                   className={cn(
-                    "flex cursor-pointer items-center justify-between px-3 py-2 text-sm transition-colors duration-150 hover:bg-gray-50",
+                    "select-none relative flex items-center justify-between gap-1 cursor-pointer text-xs px-3 py-1.5 mx-1 transition-colors duration-150 whitespace-nowrap",
+                    "bg-select-item-bg hover:bg-select-item-bg-hover",
+                    "text-select-item-text hover:text-select-item-text-hover",
                     {
                       "cursor-not-allowed opacity-50": option.disabled,
-                      "bg-primary/10 text-primary": isOptionSelected(option),
+                      "bg-select-item-bg-active text-select-item-text-active":
+                        isOptionSelected(option),
                     }
                   )}
                   onClick={() => handleOptionClick(option)}
                 >
-                  <span className="flex-1">{option.label}</span>
                   {isOptionSelected(option) && (
-                    <Check size={16} className="text-primary" />
+                    <Check className="absolute left-2" size={12} />
                   )}
+                  <span
+                    className={cn(
+                      "flex-1 pl-4",
+                      isOptionSelected(option)
+                        ? "text-select-item-text-active font-semibold"
+                        : ""
+                    )}
+                  >
+                    {option.label}
+                  </span>
                 </div>
               ))
             )}
