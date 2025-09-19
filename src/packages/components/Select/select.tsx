@@ -20,6 +20,7 @@ const Select = <T,>(props: SelectProps<T>) => {
     showSearch = false,
     filterOption,
     notFoundContent = "无数据",
+    showCheck = true,
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -286,10 +287,13 @@ const Select = <T,>(props: SelectProps<T>) => {
       {/* 下拉选项 */}
       {isOpen && (
         <div
-          className="select-dropdown border-select-border absolute left-0 right-0 top-full z-50 mt-1 border shadow-lg min-w-fit py-2"
+          className="select-dropdown border-select-border bg-select-bg absolute left-0 right-0 top-full z-50 mt-1 border shadow-lg min-w-fit"
           style={{ maxHeight }}
         >
-          <div className="overflow-auto" style={{ maxHeight: maxHeight - 2 }}>
+          <div
+            className="overflow-auto py-2"
+            style={{ maxHeight: maxHeight - 2 }}
+          >
             {filteredOptions.length === 0 ? (
               <div className="px-3 py-2 mx-2 text-center text-select-placeholder text-xs">
                 {notFoundContent}
@@ -299,7 +303,7 @@ const Select = <T,>(props: SelectProps<T>) => {
                 <div
                   key={String(option.value) + index}
                   className={cn(
-                    "select-none relative flex items-center justify-between gap-1 cursor-pointer text-xs px-3 py-1.5 mx-1 transition-colors duration-150 whitespace-nowrap",
+                    "select-none relative flex items-center justify-between gap-1 cursor-pointer text-xs px-3 py-2 mx-1 transition-colors duration-150 whitespace-nowrap",
                     "bg-select-item-bg hover:bg-select-item-bg-hover",
                     "text-select-item-text hover:text-select-item-text-hover",
                     {
@@ -310,12 +314,13 @@ const Select = <T,>(props: SelectProps<T>) => {
                   )}
                   onClick={() => handleOptionClick(option)}
                 >
-                  {isOptionSelected(option) && (
+                  {showCheck && isOptionSelected(option) && (
                     <Check className="absolute left-2" size={12} />
                   )}
                   <span
                     className={cn(
-                      "flex-1 pl-4",
+                      "flex-1",
+                      showCheck && "pl-4",
                       isOptionSelected(option)
                         ? "text-select-item-text-active font-semibold"
                         : ""

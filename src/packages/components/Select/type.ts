@@ -36,6 +36,10 @@ export interface BaseSelectProps<T = any> {
    */
   showSearch?: boolean;
   /**
+   * 是否显示选中状态
+   */
+  showCheck?: boolean;
+  /**
    * 搜索过滤函数
    */
   filterOption?: (input: string, option: SelectOption<T>) => boolean;

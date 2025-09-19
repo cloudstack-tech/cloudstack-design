@@ -38,7 +38,7 @@ export const Default: Story = {
         value: "byPaymentMethod",
       },
       {
-        label: "按可用区分析",
+        label: "按可用区分组",
         value: "byAvailabilityZone",
       },
     ],
@@ -48,7 +48,6 @@ export const Default: Story = {
 export const WithClear: Story = {
   args: {
     placeholder: "支持清除的选择框",
-    className: "w-96",
     options,
     allowClear: true,
   },
@@ -57,7 +56,6 @@ export const WithClear: Story = {
 export const WithSearch: Story = {
   args: {
     placeholder: "支持搜索的选择框",
-    className: "w-96",
     options,
     showSearch: true,
   },
@@ -67,7 +65,6 @@ export const Multiple: Story = {
   args: {
     mode: "multiple",
     placeholder: "多选模式",
-    className: "w-96",
     options,
     allowClear: true,
   },
@@ -77,7 +74,6 @@ export const MultipleWithSearch: Story = {
   args: {
     mode: "multiple",
     placeholder: "多选 + 搜索",
-    className: "w-96",
     options,
     showSearch: true,
     allowClear: true,
@@ -87,7 +83,6 @@ export const MultipleWithSearch: Story = {
 export const Disabled: Story = {
   args: {
     placeholder: "禁用状态",
-    className: "w-96",
     options,
     disabled: true,
   },
@@ -96,7 +91,6 @@ export const Disabled: Story = {
 export const WithDisabledOptions: Story = {
   args: {
     placeholder: "部分选项禁用",
-    className: "w-96",
     options: [
       { label: "可选择项1", value: "option1" },
       { label: "禁用项", value: "option2", disabled: true },
@@ -113,7 +107,7 @@ export const Controlled = () => {
   const [multipleValue, setMultipleValue] = useState<string[]>([]);
 
   return (
-    <div className="space-y-4 w-96">
+    <div className="space-y-4">
       <div>
         <h3 className="mb-2 text-sm font-medium">单选受控组件</h3>
         <Select<string>
