@@ -2,13 +2,15 @@
 
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import { cn } from "@/packages/utils";
-import { ChevronDown, X, Check } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import {
   SelectProps,
   SelectOption,
   SingleSelectProps,
   MultipleSelectProps,
 } from "./type";
+import SelectList from "./select-list";
+
 const Select = <T,>(props: SelectProps<T>) => {
   const {
     options = [],
@@ -161,16 +163,6 @@ const Select = <T,>(props: SelectProps<T>) => {
     }
   };
 
-  // 检查选项是否被选中
-  const isOptionSelected = (option: SelectOption<T>) => {
-    if (isMultiple) {
-      const values = (currentValue as T[]) || [];
-      return values.includes(option.value);
-    } else {
-      return currentValue === option.value;
-    }
-  };
-
   // 点击外部关闭下拉框
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -286,53 +278,16 @@ const Select = <T,>(props: SelectProps<T>) => {
 
       {/* 下拉选项 */}
       {isOpen && (
-        <div
-          className="select-dropdown border-select-border bg-select-bg absolute left-0 right-0 top-full z-50 mt-1 border shadow-lg min-w-fit"
-          style={{ maxHeight }}
-        >
-          <div
-            className="overflow-auto py-2"
-            style={{ maxHeight: maxHeight - 2 }}
-          >
-            {filteredOptions.length === 0 ? (
-              <div className="px-3 py-2 mx-2 text-center text-select-placeholder text-xs">
-                {notFoundContent}
-              </div>
-            ) : (
-              filteredOptions.map((option, index) => (
-                <div
-                  key={String(option.value) + index}
-                  className={cn(
-                    "select-none relative flex items-center justify-between gap-1 cursor-pointer text-xs px-3 py-2 mx-1 transition-colors duration-150 whitespace-nowrap",
-                    "bg-select-item-bg hover:bg-select-item-bg-hover",
-                    "text-select-item-text hover:text-select-item-text-hover",
-                    {
-                      "cursor-not-allowed opacity-50": option.disabled,
-                      "bg-select-item-bg-active text-select-item-text-active":
-                        isOptionSelected(option),
-                    }
-                  )}
-                  onClick={() => handleOptionClick(option)}
-                >
-                  {showCheck && isOptionSelected(option) && (
-                    <Check className="absolute left-2" size={12} />
-                  )}
-                  <span
-                    className={cn(
-                      "flex-1",
-                      showCheck && "pl-4",
-                      isOptionSelected(option)
-                        ? "text-select-item-text-active font-semibold"
-                        : ""
-                    )}
-                  >
-                    {option.label}
-                  </span>
-                </div>
-              ))
-            )}
-          </div>
-        </div>
+        <SelectList
+          options={filteredOptions}
+          value={isMultiple ? undefined : (currentValue as T)}
+          values={isMultiple ? (currentValue as T[]) : undefined}
+          multiple={isMultiple}
+          showCheck={showCheck}
+          onOptionClick={handleOptionClick}
+          maxHeight={maxHeight}
+          notFoundContent={notFoundContent}
+        />
       )}
     </div>
   );

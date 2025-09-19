@@ -45,3 +45,27 @@
 
   --text-md: 1.075rem;
 }
+
+/* Select 组件相关变量 */
+@theme {
+  /* Select 边框颜色 */
+  --color-select-border: rgb(217, 217, 217);
+  --color-select-border-focus: var(--color-primary);
+
+  /* Select 背景颜色 */
+  --color-select-bg: rgb(255, 255, 255);
+
+  /* Select 文本颜色 */
+  --color-select-value: var(--color-default);
+  --color-select-value-focus: var(--color-default);
+  --color-select-placeholder: rgb(156, 163, 175);
+
+  /* Select 选项颜色 */
+  --color-select-item-bg: transparent;
+  --color-select-item-bg-hover: rgb(243, 244, 246);
+  --color-select-item-bg-active: rgb(239, 246, 255);
+
+  --color-select-item-text: var(--color-default);
+  --color-select-item-text-hover: var(--color-default);
+  --color-select-item-text-active: var(--color-primary);
+}
