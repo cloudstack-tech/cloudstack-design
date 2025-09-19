@@ -3,7 +3,7 @@ import { Menu } from "@/packages/components";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
-  title: "Navigation/Menu",
+  title: "Navigation 导航/Menu 菜单",
   component: Menu,
   subcomponents: {
     MenuItem: Menu.Item,

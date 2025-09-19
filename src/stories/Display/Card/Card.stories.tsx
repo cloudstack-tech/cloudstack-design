@@ -4,7 +4,7 @@ import ExampleTabCard from "./Example-Tab-Card";
 import ExampleStatusCard from "./Example-Status-Card";
 
 const meta = {
-  title: "Display/Card",
+  title: "Display 展示/Card 卡片",
   component: Card,
   subcomponents: {
     FlatCard,

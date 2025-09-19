@@ -3,7 +3,7 @@ import { Tabs } from "@/packages/components";
 import { Grid, Grid2x2, List } from "lucide-react";
 
 const meta = {
-  title: "Navigation/Tabs",
+  title: "Navigation 导航/Tabs 标签",
   parameters: {
     layout: "centered",
   },

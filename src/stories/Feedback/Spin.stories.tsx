@@ -2,7 +2,7 @@ import { Spin } from "@/packages/components";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
-  title: "Feedback/Spin",
+  title: "Feedback 反馈/Spin 加载中",
   component: Spin,
   parameters: {
     layout: "centered",

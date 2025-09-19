@@ -5,7 +5,7 @@ import { fn } from "storybook/test";
 import { Button } from "@/packages/components";
 
 const meta = {
-  title: "Basic/Button",
+  title: "Basic 基础/Button 按钮",
   component: Button,
   parameters: {
     layout: "centered",

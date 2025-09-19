@@ -2,7 +2,7 @@ import { Breadcrumb } from "@/packages/components";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
-  title: "Navigation/Breadcrumb",
+  title: "Navigation 导航/Breadcrumb 面包屑",
   parameters: {
     layout: "centered",
   },

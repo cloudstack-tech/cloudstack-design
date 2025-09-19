@@ -4,7 +4,7 @@ import { Typography } from "@/packages/components";
 import ExampleControlledEllipsis from "@/stories/Basic/Typography/Example-Controlled-Ellipsis";
 
 const meta = {
-  title: "Basic/Typography",
+  title: "Basic 基础/Typography 文本",
   component: Typography.Base,
   subcomponents: {
     Text: Typography.Text,

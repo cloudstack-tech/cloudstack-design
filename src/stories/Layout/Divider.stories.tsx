@@ -2,7 +2,7 @@ import { Button, Divider } from "@/packages/components";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
-  title: "Layout/Divider",
+  title: "Layout 布局/Divider 分割线",
   component: Divider,
   parameters: {
     layout: "centered",

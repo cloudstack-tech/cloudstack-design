@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { ExampleCheckAll } from "./Example-CheckAll";
 
 const meta = {
-  title: "Data/Checkbox",
+  title: "Data 数据/Checkbox 复选框",
   component: Checkbox,
   parameters: {
     layout: "centered",
@@ -45,7 +45,7 @@ export const Disabled: StoryObj<typeof meta> = {
 };
 
 const checkboxGroupMeta = {
-  title: "Data/CheckboxGroup",
+  title: "Data 数据/Checkbox 复选框",
   component: CheckboxGroup,
   parameters: {
     layout: "centered",
