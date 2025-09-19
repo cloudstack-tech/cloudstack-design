@@ -1,0 +1,7 @@
+@theme {
+  --color-table-header-cell-bg: var(--color-btn-default-solid-bg);
+  --color-table-header-cell-border: var(--color-btn-default-solid-border);
+
+  --color-table-body-cell-bg: none;
+  --color-table-body-cell-border: var(--color-btn-default-solid-border);
+}

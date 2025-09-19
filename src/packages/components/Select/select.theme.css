@@ -1,0 +1,17 @@
+@theme {
+  --color-select-bg: rgb(255, 255, 255);
+  --color-select-border: var(--color-input-border);
+  --color-select-border-focus: var(--color-primary);
+  --color-select-value: var(--color-default);
+  --color-select-placeholder: rgb(153, 153, 153);
+
+  --color-select-item-text: var(--color-default);
+  --color-select-item-text-hover: var(--color-default);
+  --color-select-item-text-active: var(--color-default);
+  --color-select-item-text-disabled: var(--color-default);
+
+  --color-select-item-bg: none;
+  --color-select-item-bg-hover: var(--color-disabled-bg);
+  --color-select-item-bg-active: var(--color-disabled-bg);
+  --color-select-item-bg-disabled: none;
+}

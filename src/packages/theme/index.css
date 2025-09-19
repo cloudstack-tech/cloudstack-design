@@ -1,5 +1,9 @@
+@import "tailwindcss";
+
 @import "../components/Button/button.theme.css";
 @import "../components/Breadcrumb/breadcrumb.theme.css";
 @import "../components/Menu/menu.theme.css";
 @import "../components/Card/card.theme.css";
 @import "../components/Alert/alert.theme.css";
+@import "../components/Table/table.theme.css";
+@import "../components/Input/input.theme.css";
