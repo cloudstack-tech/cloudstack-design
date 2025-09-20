@@ -11,3 +11,4 @@ export * from "./Checkbox";
 export * from "./Table";
 export * from "./Input";
 export * from "./Select";
+export * from "./Toast";
