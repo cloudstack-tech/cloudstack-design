@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
-  title: "Data 数据/InputOTP 输入验证码",
+  title: "Data 数据/AutoComplete 自动补全",
 } satisfies Meta;
 
 export default meta;

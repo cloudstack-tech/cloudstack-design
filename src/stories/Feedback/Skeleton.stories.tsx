@@ -2,7 +2,7 @@ import { Skeleton } from "@/packages/components";
 import { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
-  title: "Display 展示/Skeleton 骨架屏",
+  title: "Feedback 反馈/Skeleton 骨架屏",
   component: Skeleton,
   parameters: {
     layout: "centered",

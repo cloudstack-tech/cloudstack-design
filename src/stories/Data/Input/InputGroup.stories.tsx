@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
-  title: "Feedback 反馈/Drawer 抽屉",
+  title: "Data 数据/Input Group 输入框组",
+  parameters: {
+    layout: "centered",
+  },
 } satisfies Meta;
 
 export default meta;

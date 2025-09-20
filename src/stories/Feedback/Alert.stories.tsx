@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import Link from "next/link";
 
 const meta = {
-  title: "Display 展示/Alert 警告",
+  title: "Feedback 反馈/Alert 警告",
   component: Alert,
   parameters: {
     layout: "centered",

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
-  title: "Display 展示/Modal 对话框",
+  title: "Feedback 反馈/Modal 对话框",
 } satisfies Meta;
 
 export default meta;
