@@ -18,3 +18,4 @@ export * from "./Badge";
 export * from "./Progress";
 export * from "./Skeleton";
 export * from "./Tag";
+export { default as Space } from "./Space";
