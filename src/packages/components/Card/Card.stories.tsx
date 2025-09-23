@@ -1,7 +1,7 @@
 import { Card, FlatCard } from "@/packages/components";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import ExampleTabCard from "./Example-Tab-Card";
-import ExampleStatusCard from "./Example-Status-Card";
+import ExampleTabCard from "./Examples/Example-Tab-Card";
+import ExampleStatusCard from "./Examples/Example-Status-Card";
 
 const meta = {
   title: "Display 展示/Card 卡片",

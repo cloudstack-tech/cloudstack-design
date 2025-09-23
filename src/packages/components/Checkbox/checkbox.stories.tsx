@@ -1,6 +1,6 @@
 import { Checkbox, CheckboxGroup } from "@/packages/components";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { ExampleCheckAll } from "./Example-CheckAll";
+import { ExampleCheckAll } from "./Examples/Example-CheckAll";
 
 const meta = {
   title: "Data 数据/Checkbox 复选框",

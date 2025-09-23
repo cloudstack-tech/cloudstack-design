@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { Typography } from "@/packages/components";
-import ExampleControlledEllipsis from "@/stories/Basic/Typography/Example-Controlled-Ellipsis";
+import ExampleControlledEllipsis from "@/packages/components/Typography/Example/Example-Controlled-Ellipsis";
 
 const meta = {
   title: "Basic 基础/Typography 文本",

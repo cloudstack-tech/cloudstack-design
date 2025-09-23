@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/packages/components";
-import { Typography } from "../../../packages/components/Typography";
+import { Typography } from "..";
 
 export default function ExampleControlledEllipsis() {
   const [rows, setRows] = useState(3);
