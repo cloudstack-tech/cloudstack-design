@@ -18,4 +18,6 @@ export * from "./Badge";
 export * from "./Progress";
 export * from "./Skeleton";
 export * from "./Tag";
+export { default as Flex } from "./Flex";
 export { default as Space } from "./Space";
+export { default as Stack, HStack, VStack } from "./Stack";

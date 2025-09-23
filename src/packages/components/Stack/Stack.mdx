@@ -1,0 +1,39 @@
+import { Meta, Controls, Canvas } from "@storybook/addon-docs/blocks";
+
+import * as StackStories from "./Stack.stories";
+
+<Meta of={StackStories} />
+
+# Stack 堆叠布局
+
+用于垂直或水平方向上元素堆叠的布局容器。
+
+## 何时使用
+
+- 需要将多个元素按垂直或水平方向堆叠排列
+- 需要在元素间设置统一的间距
+- 需要快速创建表单、列表、卡片等垂直布局
+- 需要创建导航栏、按钮组等水平布局
+- 需要在元素间添加分隔符
+
+## 组件变体
+
+- `Stack` - 主组件，默认垂直堆叠
+- `HStack` / `Stack.H` / `Stack.Horizontal` - 水平堆叠
+- `VStack` / `Stack.V` / `Stack.Vertical` - 垂直堆叠
+
+## 与其他布局组件的区别
+
+### 与 [Flex](/docs/layout-布局-flex-弹性布局--docs) 组件的区别
+
+- **Stack**: 专注于堆叠场景，提供更语义化的 API。默认垂直方向，使用 `spacing` 属性设置间距，提供 HStack/VStack 便捷组件。
+- **Flex**: 更底层的弹性布局组件，提供完整的 flexbox 控制能力。默认水平方向，使用 `gap` 属性设置间距，适合复杂的布局需求。
+
+### 与 [Space](/docs/layout-布局-space-间距--docs) 组件的区别
+
+- **Stack**: 为块级元素提供堆叠布局，不添加包裹元素。专注于垂直/水平堆叠，支持分隔符和多种对齐方式。
+- **Space**: 为内联元素提供间距，会为每个子元素添加包裹元素。主要用于行内元素的等距排列，适合简单的间距需求。
+
+## 属性
+
+<Controls />
