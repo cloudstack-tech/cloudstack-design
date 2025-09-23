@@ -41,9 +41,13 @@
 }
 
 @theme {
-  --text-xxs: 0.675rem;
+  --text-xxs: 0.55rem;
+  --text-xxs--line-height: calc(1 / 0.65);
+}
 
+@theme {
   --text-md: 1.075rem;
+  --text-md--line-height: calc(1 / 1.075);
 }
 
 /* Select 组件相关变量 */

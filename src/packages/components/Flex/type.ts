@@ -62,6 +62,11 @@ export type FlexProps = Omit<React.HTMLAttributes<HTMLDivElement>, "as"> & {
    */
   gap?: number;
   /**
+   * 是否换行
+   * @default false
+   */
+  wrap?: boolean;
+  /**
    * 自定义元素类型
    */
   as?: React.ElementType;

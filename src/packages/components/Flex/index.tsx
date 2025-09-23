@@ -13,7 +13,8 @@ const Flex = React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
     justify = "flex-start",
     align = "flex-start",
     flex,
-    gap = 1,
+    gap = 0,
+    wrap = false,
     as: Component = "div",
     ...rest
   } = props;
@@ -24,6 +25,7 @@ const Flex = React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
     {
       "flex-col": vertical,
       "flex-row": !vertical,
+      "flex-wrap": wrap,
     },
     justifyContentMap[justify] || "",
     alignItemsMap[align] || "",
