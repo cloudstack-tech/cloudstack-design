@@ -1,0 +1,164 @@
+@theme {
+  /* Accordion 容器样式 */
+  --accordion-bg: rgb(255, 255, 255);
+  --accordion-border: var(--color-border-default);
+  --accordion-border-radius: 0.5rem;
+  --accordion-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+  /* Accordion 面板样式 */
+  --accordion-item-border: var(--color-border-default);
+  --accordion-item-bg: transparent;
+  --accordion-item-bg-hover: rgba(0, 0, 0, 0.02);
+  --accordion-item-bg-active: rgba(var(--color-primary), 0.05);
+
+  /* Accordion 头部样式 */
+  --accordion-header-text: var(--color-default);
+  --accordion-header-text-hover: var(--color-default);
+  --accordion-header-text-active: var(--color-primary);
+  --accordion-header-text-disabled: var(--color-disabled-text);
+
+  --accordion-header-bg: transparent;
+  --accordion-header-bg-hover: var(--accordion-item-bg-hover);
+  --accordion-header-bg-active: var(--accordion-item-bg-active);
+  --accordion-header-bg-disabled: transparent;
+
+  /* Accordion 内容样式 */
+  --accordion-content-text: rgb(75, 85, 99);
+  --accordion-content-bg: transparent;
+  --accordion-content-padding: 1rem;
+
+  /* Accordion 图标样式 */
+  --accordion-icon-color: rgb(107, 114, 128);
+  --accordion-icon-color-hover: var(--color-primary);
+  --accordion-icon-color-active: var(--color-primary);
+  --accordion-icon-color-disabled: var(--color-disabled-text);
+
+  /* Accordion 动画 */
+  --accordion-transition-duration: 300ms;
+  --accordion-transition-timing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Accordion 尺寸 */
+  --accordion-header-padding-sm: 0.75rem;
+  --accordion-header-padding-base: 1rem;
+  --accordion-header-padding-lg: 1.25rem;
+
+  --accordion-content-padding-sm: 0.75rem;
+  --accordion-content-padding-base: 1rem;
+  --accordion-content-padding-lg: 1.25rem;
+
+  /* Accordion 字体大小 */
+  --accordion-header-font-size-sm: 0.875rem;
+  --accordion-header-font-size-base: 1rem;
+  --accordion-header-font-size-lg: 1.125rem;
+
+  --accordion-content-font-size-sm: 0.875rem;
+  --accordion-content-font-size-base: 0.875rem;
+  --accordion-content-font-size-lg: 1rem;
+}
+
+/* 自定义 CSS 类 */
+.accordion-container {
+  background-color: var(--accordion-bg);
+  border: 1px solid var(--accordion-border);
+  border-radius: var(--accordion-border-radius);
+}
+
+.accordion-container.variant-shadow {
+  box-shadow: var(--accordion-shadow);
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--accordion-item-border);
+  background-color: var(--accordion-item-bg);
+  transition: background-color var(--accordion-transition-duration)
+    var(--accordion-transition-timing);
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-item:hover {
+  background-color: var(--accordion-item-bg-hover);
+}
+
+.accordion-item.is-active {
+  background-color: var(--accordion-item-bg-active);
+}
+
+.accordion-item.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.accordion-header {
+  color: var(--accordion-header-text);
+  background-color: var(--accordion-header-bg);
+  transition: all var(--accordion-transition-duration)
+    var(--accordion-transition-timing);
+  font-weight: 500;
+}
+
+.accordion-header:hover:not(.is-disabled) {
+  color: var(--accordion-header-text-hover);
+  background-color: var(--accordion-header-bg-hover);
+}
+
+.accordion-header.is-active {
+  color: var(--accordion-header-text-active);
+  background-color: var(--accordion-header-bg-active);
+}
+
+.accordion-header.is-disabled {
+  color: var(--accordion-header-text-disabled);
+  background-color: var(--accordion-header-bg-disabled);
+  cursor: not-allowed;
+}
+
+.accordion-content {
+  color: var(--accordion-content-text);
+  background-color: var(--accordion-content-bg);
+  transition: all var(--accordion-transition-duration)
+    var(--accordion-transition-timing);
+  line-height: 1.6;
+}
+
+.accordion-icon {
+  color: var(--accordion-icon-color);
+  transition: all var(--accordion-transition-duration)
+    var(--accordion-transition-timing);
+  flex-shrink: 0;
+}
+
+.accordion-header:hover:not(.is-disabled) .accordion-icon {
+  color: var(--accordion-icon-color-hover);
+}
+
+.accordion-header.is-active .accordion-icon {
+  color: var(--accordion-icon-color-active);
+  transform: rotate(180deg);
+}
+
+.accordion-header.is-disabled .accordion-icon {
+  color: var(--accordion-icon-color-disabled);
+}
+
+/* 动画效果 - 使用 CSS Grid 实现更流畅的动画 */
+.accordion-content-wrapper {
+  display: grid;
+  transition: grid-template-rows var(--accordion-transition-duration)
+    var(--accordion-transition-timing);
+}
+
+.accordion-content-wrapper.is-expanded {
+  grid-template-rows: 1fr;
+}
+
+.accordion-content-wrapper.is-collapsed {
+  grid-template-rows: 0fr;
+}
+
+.accordion-content-inner {
+  overflow: hidden;
+}
