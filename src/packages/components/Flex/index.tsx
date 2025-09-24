@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { alignItemsMap, FlexProps, justifyContentMap } from "./type";
 
 const Flex = React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => {

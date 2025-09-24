@@ -5,7 +5,7 @@ import { type MenuItemProps, type MenuProps } from "./types";
 import MenuItem from "./ment-item";
 import { ChevronDownIcon, ChevronLeftIcon } from "lucide-react";
 import MenuDivider from "./menu-divider";
-import { cn } from "../../utils";
+import { cn } from "../../utilities";
 
 export default function Menu({
   title,

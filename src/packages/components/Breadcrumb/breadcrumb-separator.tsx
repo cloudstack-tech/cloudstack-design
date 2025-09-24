@@ -1,4 +1,4 @@
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 
 export interface BreadcrumbSeparatorProps {
   /**

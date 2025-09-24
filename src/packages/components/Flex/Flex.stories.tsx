@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import Flex from "./index";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 
 const meta = {
   title: "Layout 布局/Flex 弹性布局",

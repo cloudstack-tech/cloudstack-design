@@ -1,7 +1,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { MenuItemProps } from "./types";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 
 export default function MenuItem({
   label,

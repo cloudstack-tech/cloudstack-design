@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { SelectOption } from "./type";
 import SelectItem from "./select-item";
 

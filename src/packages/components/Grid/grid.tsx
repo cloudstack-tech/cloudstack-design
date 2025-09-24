@@ -1,6 +1,6 @@
 import React from "react";
 import { GridProps } from "./type";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 
 export const Grid = React.forwardRef<HTMLDivElement, GridProps>(
   (props, ref) => {

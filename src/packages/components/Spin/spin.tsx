@@ -1,4 +1,4 @@
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import type { SpinProps } from "./type";
 import { LoaderCircle } from "lucide-react";
 import React, { useMemo } from "react";

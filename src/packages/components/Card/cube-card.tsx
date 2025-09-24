@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 
 export type CubeCardProps = {
   /**

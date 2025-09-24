@@ -2,7 +2,7 @@
 
 import React from "react";
 import { StepProps } from "./type";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { CheckIcon, XIcon } from "lucide-react";
 
 export const StepItem = React.forwardRef<HTMLDivElement, StepProps>(

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import {
   StackProps,
   alignItemsMap,

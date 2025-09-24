@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { Check } from "lucide-react";
 import { SelectOption } from "./type";
 

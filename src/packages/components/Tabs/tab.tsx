@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { Button } from "../Button";
 import { ButtonProps } from "../Button/type";
 

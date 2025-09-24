@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { ChevronDown, X } from "lucide-react";
 import {
   SelectProps,

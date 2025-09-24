@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 
 export const alertVariants = cva(
   "alert text-default flex items-start gap-2 px-4 py-2 text-xs",

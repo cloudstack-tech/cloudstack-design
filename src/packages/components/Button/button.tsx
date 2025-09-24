@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ButtonProps } from "./type";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { Spin } from "../Spin";
 import { buttonVariants } from "./variants";
 

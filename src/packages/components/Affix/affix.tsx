@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { AffixProps, AffixState } from "./type";
 import { affixVariants, affixPlaceholderVariants } from "./variants";
 

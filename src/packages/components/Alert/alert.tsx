@@ -1,4 +1,4 @@
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import React, { useMemo } from "react";
 import { AlertProps } from "./type";
 import { alertVariants } from "./variants";

@@ -1,4 +1,4 @@
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import React, { useState, useLayoutEffect, useRef } from "react";
 import ResizeObserver from "rc-resize-observer";
 import { Button } from "../Button";

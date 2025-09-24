@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, useRef, useEffect } from "react";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import {
   AccordionProps,
   AccordionItemProps,

@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { Check, Minus } from "lucide-react";
 import React, { InputHTMLAttributes, forwardRef, useState } from "react";
 

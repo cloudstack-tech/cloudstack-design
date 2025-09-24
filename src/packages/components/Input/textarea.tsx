@@ -8,7 +8,7 @@ import {
   useEffect,
   useImperativeHandle,
 } from "react";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { X } from "lucide-react";
 
 export interface TextareaRef {

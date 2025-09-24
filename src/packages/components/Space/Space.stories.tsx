@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import Space from "./index";
 import { Button } from "../Button";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { Divider } from "../Divider";
 import Text from "../Typography/text";
 

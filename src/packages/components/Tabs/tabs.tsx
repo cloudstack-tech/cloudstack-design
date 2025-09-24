@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { TabProps } from "./tab";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 
 export type TabsProps = {
   /**

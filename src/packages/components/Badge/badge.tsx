@@ -2,7 +2,7 @@
 
 import React from "react";
 import { BadgeProps } from "./type";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 import { badgeVariants } from "./variants";
 
 export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(

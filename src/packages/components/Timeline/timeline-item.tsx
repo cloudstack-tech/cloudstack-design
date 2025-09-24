@@ -2,7 +2,7 @@
 
 import React from "react";
 import { TimelineItemProps } from "./type";
-import { cn } from "@/packages/utils";
+import { cn } from "@/packages/utilities";
 
 export const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
   (props, ref) => {
