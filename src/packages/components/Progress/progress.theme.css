@@ -1,0 +1,242 @@
+/* Progress 组件主题样式 */
+
+/* Progress 基础容器 */
+.progress-container {
+  @apply relative w-full;
+}
+
+/* Progress 线形进度条 */
+.progress-line {
+  @apply relative w-full rounded-full overflow-hidden;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.progress-line.small {
+  @apply h-1.5;
+}
+
+.progress-line.default {
+  @apply h-2;
+}
+
+.progress-line.large {
+  @apply h-3;
+}
+
+/* Progress 填充条 */
+.progress-fill {
+  @apply h-full transition-all duration-300 ease-out;
+  background-color: var(--color-primary);
+}
+
+.progress-fill.round {
+  @apply rounded-full;
+}
+
+.progress-fill.square {
+  @apply rounded-none;
+}
+
+/* 不同状态的颜色 */
+.progress-fill.success {
+  background-color: var(--color-success);
+}
+
+.progress-fill.error {
+  background-color: var(--color-error);
+}
+
+.progress-fill.warning {
+  background-color: var(--color-warning);
+}
+
+/* 成功分段 */
+.progress-success {
+  @apply absolute top-0 left-0 h-full transition-all duration-300 ease-out;
+  background-color: var(--color-success);
+}
+
+/* Progress 信息显示 */
+.progress-info {
+  @apply ml-2 text-sm flex-shrink-0;
+  color: var(--color-default);
+}
+
+.progress-info.small {
+  @apply text-xs;
+}
+
+.progress-info.large {
+  @apply text-base;
+}
+
+.progress-wrapper {
+  @apply flex items-center;
+}
+
+/* 状态图标 */
+.progress-icon {
+  @apply inline-flex items-center justify-center w-4 h-4;
+}
+
+.progress-icon.success {
+  color: var(--color-success);
+}
+
+.progress-icon.error {
+  color: var(--color-error);
+}
+
+.progress-icon.warning {
+  color: var(--color-warning);
+}
+
+/* 步骤进度条 */
+.progress-steps {
+  @apply flex;
+}
+
+.progress-step {
+  @apply flex-1 relative;
+}
+
+.progress-step:not(:last-child) {
+  @apply mr-2;
+}
+
+.progress-step-item {
+  @apply w-full rounded-sm transition-all duration-300;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.progress-step-item.small {
+  @apply h-1.5;
+}
+
+.progress-step-item.default {
+  @apply h-2;
+}
+
+.progress-step-item.large {
+  @apply h-3;
+}
+
+.progress-step-item.active {
+  background-color: var(--color-primary);
+}
+
+.progress-step-item.success {
+  background-color: var(--color-success);
+}
+
+.progress-step-item.error {
+  background-color: var(--color-error);
+}
+
+.progress-step-item.warning {
+  background-color: var(--color-warning);
+}
+
+/* 圆形进度条 */
+.progress-circle {
+  @apply relative inline-block;
+}
+
+.progress-circle-svg {
+  @apply transform -rotate-90;
+}
+
+.progress-circle-trail {
+  @apply fill-none;
+  stroke: rgba(0, 0, 0, 0.06);
+}
+
+.progress-circle-path {
+  @apply fill-none transition-all duration-300 ease-out;
+  stroke: var(--color-primary);
+  stroke-linecap: round;
+}
+
+.progress-circle-path.success {
+  stroke: var(--color-success);
+}
+
+.progress-circle-path.error {
+  stroke: var(--color-error);
+}
+
+.progress-circle-path.warning {
+  stroke: var(--color-warning);
+}
+
+/* 圆形进度条内容 */
+.progress-circle-content {
+  @apply absolute inset-0 flex items-center justify-center text-center;
+}
+
+.progress-circle-text {
+  @apply text-sm font-medium;
+  color: var(--color-default);
+}
+
+.progress-circle-text.small {
+  @apply text-xs;
+}
+
+.progress-circle-text.large {
+  @apply text-base;
+}
+
+/* 仪表盘进度条特殊样式 */
+.progress-dashboard .progress-circle-svg {
+  @apply transform rotate-0;
+}
+
+/* 渐变色支持 */
+.progress-gradient {
+  background: linear-gradient(
+    to right,
+    var(--gradient-from),
+    var(--gradient-to)
+  );
+}
+
+/* 动画效果 */
+.progress-active .progress-fill {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-active .progress-fill::before {
+  content: "";
+  @apply absolute inset-0 bg-white opacity-30;
+  background-image: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.5) 30%,
+    rgba(255, 255, 255, 0.5) 70%,
+    transparent 70%
+  );
+  background-size: 20px 20px;
+  animation: progress-stripes 0.8s linear infinite;
+}
+
+@keyframes progress-stripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 0;
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 640px) {
+  .progress-info {
+    @apply text-xs;
+  }
+
+  .progress-circle-text {
+    @apply text-xs;
+  }
+}
