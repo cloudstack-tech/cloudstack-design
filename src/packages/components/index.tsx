@@ -8,6 +8,7 @@ export { Typography } from "./Typography";
 export { Card, FlatCard } from "./Card";
 export { Alert } from "./Alert";
 export * from "./Accordion";
+export * from "./Affix";
 export * from "./Checkbox";
 export * from "./Table";
 export * from "./Input";
