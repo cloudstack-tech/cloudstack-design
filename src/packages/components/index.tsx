@@ -16,6 +16,7 @@ export * from "./Select";
 export * from "./Toast";
 export * from "./Slider";
 export * from "./Radio";
+export * from "./Switch";
 export * from "./Badge";
 export * from "./Progress";
 export * from "./Skeleton";

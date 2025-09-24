@@ -1,0 +1,177 @@
+/* Switch 组件主题样式 */
+
+/* Switch 基础容器 */
+.switch-wrapper {
+  @apply inline-flex items-center cursor-pointer select-none;
+}
+
+.switch-wrapper.disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
+/* 隐藏的原生 input */
+.switch-input {
+  @apply absolute hidden h-0 w-0 cursor-pointer opacity-0;
+}
+
+/* Switch 轨道 */
+.switch-track {
+  @apply relative inline-flex items-center rounded-full transition-all duration-200 ease-in-out;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.switch-track.checked {
+  background-color: var(--color-primary);
+}
+
+.switch-track.loading {
+  @apply cursor-wait;
+}
+
+/* 不同尺寸的轨道 */
+.switch-track.small {
+  @apply h-4 w-7 px-0.5;
+}
+
+.switch-track.default {
+  @apply h-6 w-11 px-0.5;
+}
+
+.switch-track.large {
+  @apply h-8 w-14 px-1;
+}
+
+/* Switch 滑块 */
+.switch-thumb {
+  @apply absolute bg-white rounded-full shadow-sm transition-all duration-200 ease-in-out transform;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.switch-thumb.checked {
+  @apply translate-x-full;
+}
+
+/* 不同尺寸的滑块 */
+.switch-thumb.small {
+  @apply w-3 h-3;
+}
+
+.switch-thumb.default {
+  @apply w-5 h-5;
+}
+
+.switch-thumb.large {
+  @apply w-6 h-6;
+}
+
+/* 聚焦状态 */
+.switch-wrapper:focus-within .switch-track {
+  @apply ring-2 ring-offset-2;
+  --tw-ring-color: var(--color-primary);
+}
+
+/* Hover 状态 */
+.switch-wrapper:not(.disabled):not(.loading):hover .switch-track {
+  @apply shadow-md;
+}
+
+.switch-wrapper:not(.disabled):not(.loading):hover .switch-thumb {
+  @apply shadow-lg;
+}
+
+/* 禁用状态 */
+.switch-wrapper.disabled .switch-track {
+  background-color: var(--color-disabled-bg);
+  border-color: var(--color-disabled-border);
+}
+
+.switch-wrapper.disabled .switch-track.checked {
+  background-color: var(--color-disabled-text);
+}
+
+.switch-wrapper.disabled .switch-thumb {
+  background-color: var(--color-disabled-bg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 加载状态 */
+.switch-loading {
+  @apply absolute inset-0 flex items-center justify-center;
+}
+
+.switch-loading-spinner {
+  @apply animate-spin rounded-full border-2 border-white border-t-transparent;
+}
+
+.switch-loading-spinner.small {
+  @apply w-2 h-2;
+}
+
+.switch-loading-spinner.default {
+  @apply w-3 h-3;
+}
+
+.switch-loading-spinner.large {
+  @apply w-4 h-4;
+}
+
+/* Switch 内容 */
+.switch-content {
+  @apply absolute inset-0 flex items-center justify-center text-white font-medium;
+  font-size: 0.625rem;
+}
+
+.switch-content.small {
+  font-size: 0.5rem;
+}
+
+.switch-content.default {
+  font-size: 0.625rem;
+}
+
+.switch-content.large {
+  font-size: 0.75rem;
+}
+
+/* Switch 标签 */
+.switch-label {
+  @apply ml-2 text-sm leading-none cursor-pointer select-none;
+  color: var(--color-default);
+}
+
+.switch-wrapper.disabled .switch-label {
+  color: var(--color-disabled-text);
+}
+
+/* 活跃状态动画 */
+.switch-wrapper:active:not(.disabled):not(.loading) .switch-thumb {
+  @apply scale-110;
+}
+
+/* 渐变背景效果（可选） */
+.switch-track.gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+.switch-track.gradient.checked {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    color-mix(in srgb, var(--color-primary) 80%, white) 100%
+  );
+}
+
+/* 响应式调整 */
+@media (max-width: 640px) {
+  .switch-thumb {
+    @apply shadow-none;
+  }
+
+  .switch-wrapper:not(.disabled):not(.loading):hover .switch-thumb {
+    @apply shadow-sm;
+  }
+}
