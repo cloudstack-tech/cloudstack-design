@@ -25,3 +25,4 @@ export { default as Space } from "./Space";
 export { default as Stack, HStack, VStack } from "./Stack";
 export { default as Grid } from "./Grid";
 export { default as Timeline } from "./Timeline";
+export { default as Steps } from "./Steps";
