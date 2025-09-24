@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import Space from "./index";
 import { Button } from "../Button";
 import { cn } from "@/packages/utils";
+import { Divider } from "../Divider";
+import Text from "../Typography/text";
 
 const meta = {
   title: "Layout 布局/Space 间距",
@@ -164,14 +166,14 @@ export const WithAlignment: Story = {
 
 export const WithSplit: Story = {
   args: {
-    split: <span className="text-gray-400">|</span>,
+    split: <Divider className="h-3" vertical />,
   },
   render: (args) => (
     <Space {...args}>
-      <span>首页</span>
-      <span>产品</span>
-      <span>关于我们</span>
-      <span>联系方式</span>
+      <Text>首页</Text>
+      <Text>产品</Text>
+      <Text>关于我们</Text>
+      <Text>联系方式</Text>
     </Space>
   ),
 };

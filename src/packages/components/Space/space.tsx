@@ -86,9 +86,10 @@ const Space = React.forwardRef<HTMLDivElement, SpaceProps>((props, ref) => {
       result.push(child);
       if (index < childrenArray.length - 1) {
         result.push(
-          <span key={`split-${index}`} className={cn("flex-shrink-0")}>
-            {split}
-          </span>
+          split
+          //   <span key={`split-${index}`} className={cn("flex-shrink-0")}>
+          //     {split}
+          //   </span>
         );
       }
     });
