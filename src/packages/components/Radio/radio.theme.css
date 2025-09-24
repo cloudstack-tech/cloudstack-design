@@ -1,0 +1,87 @@
+/* Radio 组件主题样式 */
+
+/* Radio 基础样式 */
+.radio-wrapper {
+  @apply inline-flex items-center relative cursor-pointer select-none;
+}
+
+.radio-wrapper.disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
+.radio-input {
+  @apply absolute hidden h-0 w-0 cursor-pointer opacity-0;
+}
+
+.radio-indicator {
+  @apply relative flex items-center justify-center w-4 h-4 border-2 rounded-full transition-all duration-200 ease-in-out;
+  border-color: var(--color-border-default);
+  background-color: white;
+}
+
+/* 选中状态 */
+.radio-indicator.checked {
+  border-color: var(--color-primary);
+  background-color: white;
+}
+
+.radio-indicator.checked::after {
+  content: "";
+  @apply absolute w-2 h-2 rounded-full;
+  background-color: var(--color-primary);
+}
+
+/* 聚焦状态 */
+.radio-wrapper:focus-within .radio-indicator {
+  @apply ring-2 ring-offset-1;
+  --tw-ring-color: var(--color-primary);
+}
+
+/* Hover 状态 */
+.radio-wrapper:not(.disabled):hover .radio-indicator {
+  border-color: var(--color-primary);
+}
+
+.radio-wrapper:not(.disabled):hover .radio-indicator:not(.checked) {
+  background-color: rgba(var(--color-primary), 0.05);
+}
+
+/* 禁用状态 */
+.radio-wrapper.disabled .radio-indicator {
+  border-color: var(--color-disabled-border);
+  background-color: var(--color-disabled-bg);
+}
+
+.radio-wrapper.disabled .radio-indicator.checked::after {
+  background-color: var(--color-disabled-text);
+}
+
+/* 标签样式 */
+.radio-label {
+  @apply ml-2 text-sm leading-none cursor-pointer select-none;
+  color: var(--color-default);
+}
+
+.radio-wrapper.disabled .radio-label {
+  color: var(--color-disabled-text);
+}
+
+/* RadioGroup 样式 */
+.radio-group {
+  @apply flex gap-4;
+}
+
+.radio-group.vertical {
+  @apply flex-col gap-2;
+}
+
+.radio-group.horizontal {
+  @apply flex-row flex-wrap;
+}
+
+/* 响应式调整 */
+@media (max-width: 640px) {
+  .radio-group.horizontal {
+    @apply flex-col gap-2;
+  }
+}
