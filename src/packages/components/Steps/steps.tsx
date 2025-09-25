@@ -4,7 +4,6 @@ import React from "react";
 import { StepsProps, StepStatus } from "./type";
 import { StepItem } from "./step-item";
 import { cn } from "@/packages/utilities";
-import "./steps.theme.css";
 
 export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
   (props, ref) => {

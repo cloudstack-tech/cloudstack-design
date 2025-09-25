@@ -4,7 +4,6 @@ import React, { useState, useCallback } from "react";
 import { SliderProps, SliderMark } from "./type";
 import { useSlider } from "./useSlider";
 import { cn } from "@/packages/utilities";
-import "./slider.theme.css";
 
 export const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
   (props, ref) => {

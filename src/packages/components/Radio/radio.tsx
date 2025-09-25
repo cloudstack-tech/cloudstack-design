@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { RadioProps } from "./type";
 import { cn } from "@/packages/utilities";
-import "./radio.theme.css";
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   (props, ref) => {

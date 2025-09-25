@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { SwitchProps } from "./type";
 import { cn } from "@/packages/utilities";
-import "./switch.theme.css";
 
 export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
   (props, ref) => {

@@ -4,7 +4,6 @@ import React, { useMemo } from "react";
 import { ProgressProps, ProgressStatus } from "./type";
 import { cn } from "@/packages/utilities";
 import { CheckIcon, XIcon, AlertTriangleIcon } from "lucide-react";
-import "./progress.theme.css";
 
 export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
   (props, ref) => {
