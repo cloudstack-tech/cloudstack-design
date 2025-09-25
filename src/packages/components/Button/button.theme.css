@@ -41,6 +41,14 @@
   --shadow-btn-default-solid-active: var(--shadow-hover-sm);
 }
 
+/* default flat */
+@theme {
+  --color-btn-default-flat-bg: rgb(247, 249, 250);
+  --color-btn-default-flat-hover-bg: rgb(239, 243, 248);
+  --color-btn-default-flat-active-bg: rgb(239, 243, 248);
+  --color-btn-default-flat-disabled-bg: rgb(246, 246, 246);
+}
+
 /* danger solid */
 @theme {
   --color-btn-danger-solid-bg: color-mix(

@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { fn } from "storybook/test";
 
-import { Button } from "@/packages/components";
+import { Button, Flex } from "@/packages/components";
+import { NumView } from "./Examples";
 
 const meta = {
   title: "Basic 基础/Button 按钮",
@@ -321,4 +322,21 @@ export const DangerVariantsAndSizes: Story = {
       </div>
     </div>
   ),
+};
+
+export const NumViewExample = {
+  render: (args: any) => {
+    return (
+      <Flex vertical>
+        <Flex gap={2} className="w-64">
+          <NumView value={2} className="flex-1 justify-between">
+            节省计划
+          </NumView>
+          <NumView value={0} className="flex-1 justify-between">
+            资源包
+          </NumView>
+        </Flex>
+      </Flex>
+    );
+  },
 };

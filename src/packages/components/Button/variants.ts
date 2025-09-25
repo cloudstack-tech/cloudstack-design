@@ -102,7 +102,9 @@ export const buttonVariants = cva(
         variant: "flat",
         color: "default",
         class: cn(
-          "text-btn-default-solid-text bg-btn-default-solid-hover-bg active:text-btn-default-solid-active-text active:bg-btn-default-solid-active-bg"
+          "text-btn-default-solid-text bg-btn-default-flat-bg",
+          "hover:text-btn-default-solid-hover-text hover:bg-btn-default-flat-hover-bg",
+          "active:text-btn-default-solid-active-text active:bg-btn-default-flat-active-bg"
         ),
       },
       // Default + Light
