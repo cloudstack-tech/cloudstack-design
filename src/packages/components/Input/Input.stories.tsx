@@ -6,6 +6,7 @@ import { useState } from "react";
 const meta = {
   title: "Data 数据/Input 输入框",
   component: Input,
+  subcomponents: { Textarea },
   parameters: {
     layout: "centered",
   },
