@@ -1,5 +1,5 @@
 import { cn } from "@/packages/utilities";
-import { Button, type ButtonProps } from "../";
+import { Button, type ButtonProps } from "..";
 
 export const NumView = ({
   value,

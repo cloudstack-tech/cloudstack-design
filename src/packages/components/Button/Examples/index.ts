@@ -1,1 +1,1 @@
-export * from "./NumView";
+export * from "./StatButton";

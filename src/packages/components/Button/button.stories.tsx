@@ -324,7 +324,7 @@ export const DangerVariantsAndSizes: Story = {
   ),
 };
 
-export const NumViewExample = {
+export const StatButton = {
   render: (args: any) => {
     return (
       <Flex vertical>
