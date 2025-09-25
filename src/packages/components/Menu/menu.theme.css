@@ -1,5 +1,3 @@
-@import "../../theme/theme.css";
-
 @theme {
   --color-menu-title-text: var(--color-default-color);
   --color-menu-bg: #fff;

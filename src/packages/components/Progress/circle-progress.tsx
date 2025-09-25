@@ -124,7 +124,19 @@ export const CircleProgress = React.forwardRef<
     if (format) {
       const formattedContent = format(normalizedPercent, successPercent);
       return (
-        <div className={cn("progress-circle-text", size)}>
+        <div
+          className={cn(
+            "progress-circle-text font-medium",
+            {
+              "text-xs": size === "small",
+              "text-sm": size === "default",
+              "text-base": size === "large",
+            },
+            // 响应式调整
+            "max-sm:text-xs"
+          )}
+          style={{ color: "var(--color-default)" }}
+        >
           {formattedContent}
         </div>
       );
@@ -132,14 +144,47 @@ export const CircleProgress = React.forwardRef<
 
     if (icon) {
       return (
-        <div className={cn("progress-circle-text", size)}>
-          <div className={cn("progress-icon", finalStatus)}>{icon}</div>
+        <div
+          className={cn(
+            "progress-circle-text font-medium",
+            {
+              "text-xs": size === "small",
+              "text-sm": size === "default",
+              "text-base": size === "large",
+            },
+            // 响应式调整
+            "max-sm:text-xs"
+          )}
+          style={{ color: "var(--color-default)" }}
+        >
+          <div
+            className="progress-icon inline-flex items-center justify-center w-4 h-4"
+            style={{
+              color:
+                finalStatus === "success"
+                  ? "var(--color-success)"
+                  : finalStatus === "error"
+                  ? "var(--color-error)"
+                  : finalStatus === "warning"
+                  ? "var(--color-warning)"
+                  : "var(--color-default)",
+            }}
+          >
+            {icon}
+          </div>
         </div>
       );
     }
 
     return (
-      <div className={cn("progress-circle-text", size)}>
+      <div
+        className={cn("progress-circle-text font-medium", {
+          "text-xs": size === "small",
+          "text-sm": size === "default",
+          "text-base": size === "large",
+        })}
+        style={{ color: "var(--color-default)" }}
+      >
         <div>{normalizedPercent}%</div>
       </div>
     );
@@ -149,7 +194,7 @@ export const CircleProgress = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "progress-circle",
+        "progress-circle relative inline-block",
         { "progress-dashboard": isDashboard },
         className
       )}
@@ -157,7 +202,10 @@ export const CircleProgress = React.forwardRef<
       {...rest}
     >
       <svg
-        className="progress-circle-svg"
+        className={cn("progress-circle-svg", {
+          "transform -rotate-90": !isDashboard,
+          "transform rotate-0": isDashboard,
+        })}
         width={svgSize}
         height={svgSize}
         viewBox={`0 0 ${svgSize} ${svgSize}`}
@@ -180,7 +228,7 @@ export const CircleProgress = React.forwardRef<
 
         {/* 背景轨道 */}
         <path
-          className="progress-circle-trail"
+          className="progress-circle-trail fill-none"
           d={getPathString()}
           strokeWidth={strokeWidth || 6}
           fillOpacity="0"
@@ -192,7 +240,7 @@ export const CircleProgress = React.forwardRef<
         {/* 成功分段 */}
         {successPercent > 0 && (
           <path
-            className="progress-circle-path success"
+            className="progress-circle-path success fill-none transition-all duration-300 ease-out"
             d={getPathString()}
             strokeWidth={strokeWidth || 6}
             fillOpacity="0"
@@ -207,7 +255,7 @@ export const CircleProgress = React.forwardRef<
 
         {/* 主进度路径 */}
         <path
-          className={cn("progress-circle-path", finalStatus)}
+          className="progress-circle-path fill-none transition-all duration-300 ease-out"
           d={getPathString()}
           strokeWidth={strokeWidth || 6}
           fillOpacity="0"
@@ -224,7 +272,7 @@ export const CircleProgress = React.forwardRef<
       </svg>
 
       {/* 中心内容 */}
-      <div className="progress-circle-content">
+      <div className="progress-circle-content absolute inset-0 flex items-center justify-center text-center">
         {renderContent()}
         {children}
       </div>

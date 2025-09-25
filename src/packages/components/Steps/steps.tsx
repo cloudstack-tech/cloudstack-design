@@ -55,6 +55,8 @@ export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
             disabled={item.disabled}
             isLast={isLast}
             stepNumber={index}
+            direction={direction}
+            size={size}
             onClick={clickable ? handleStepClick : undefined}
           />
         );
@@ -76,13 +78,16 @@ export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
         const isLast = index === childArray.length - 1;
 
         // 克隆子元素并添加必要属性
+        const childProps = child.props as any;
         return React.cloneElement(child, {
-          ...child.props,
+          ...childProps,
           key: child.key || index,
-          status: child.props.status || status,
+          status: childProps.status || status,
           isLast,
           stepNumber: index,
-          onClick: clickable ? handleStepClick : child.props.onClick,
+          direction,
+          size,
+          onClick: clickable ? handleStepClick : childProps.onClick,
         });
       });
     };
@@ -92,7 +97,16 @@ export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
     return (
       <div
         ref={ref}
-        className={cn("steps", direction, size, className)}
+        className={cn(
+          "steps flex items-start",
+          {
+            "flex-col": direction === "vertical",
+            "flex-row": direction === "horizontal",
+            // 响应式：小屏幕下水平步骤条变为垂直
+            "max-sm:flex-col": direction === "horizontal",
+          },
+          className
+        )}
         {...rest}
       >
         {stepsContent}

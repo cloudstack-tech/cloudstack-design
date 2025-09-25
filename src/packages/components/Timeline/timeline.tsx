@@ -41,10 +41,13 @@ export const Timeline = React.forwardRef<HTMLUListElement, TimelineProps>(
         }
 
         // 克隆元素并添加属性
+        const childProps = child.props as any;
         return React.cloneElement(child, {
-          ...child.props,
+          ...childProps,
           isLast,
           position,
+          mode, // 传递模式给子组件
+          reverse, // 传递反向状态给子组件
           key: child.key || index,
         });
       });
@@ -54,10 +57,19 @@ export const Timeline = React.forwardRef<HTMLUListElement, TimelineProps>(
       <ul
         ref={ref}
         className={cn(
-          "timeline",
+          "timeline list-none p-0 m-0 group",
+          // 模式样式
           `mode-${mode}`,
+          // 交替模式的中心线
           {
-            reverse,
+            "relative before:content-[''] before:absolute before:left-1/2 before:top-0 before:w-0.5 before:bg-gray-200 before:h-full before:transform before:-translate-x-1/2":
+              mode === "alternate",
+          },
+          // 反向显示
+          {
+            "flex flex-col-reverse": reverse,
+          },
+          {
             "show-label": showLabel,
           },
           className

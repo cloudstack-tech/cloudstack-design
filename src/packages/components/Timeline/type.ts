@@ -61,6 +61,16 @@ export interface TimelineItemProps
    * 在左侧还是右侧显示内容（仅在 alternate 模式下生效）
    */
   position?: "left" | "right";
+
+  /**
+   * Timeline 模式（从父组件传递）
+   */
+  mode?: TimelineMode;
+
+  /**
+   * 是否反向显示（从父组件传递）
+   */
+  reverse?: boolean;
 }
 
 /**

@@ -67,6 +67,18 @@ export interface StepProps
    * 自定义样式类名
    */
   className?: string;
+
+  /**
+   * 步骤条方向（从父组件传递）
+   * @default "horizontal"
+   */
+  direction?: StepsDirection;
+
+  /**
+   * 步骤条尺寸（从父组件传递）
+   * @default "default"
+   */
+  size?: StepsSize;
 }
 
 /**

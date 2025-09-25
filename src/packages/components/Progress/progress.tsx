@@ -60,20 +60,74 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
       if (format) {
         const formattedContent = format(normalizedPercent, successPercent);
         return (
-          <div className={cn("progress-info", size)}>{formattedContent}</div>
+          <div
+            className={cn(
+              "progress-info ml-2 flex-shrink-0",
+              {
+                "text-xs": size === "small",
+                "text-sm": size === "default",
+                "text-base": size === "large",
+              },
+              // 响应式调整
+              "max-sm:text-xs"
+            )}
+            style={{ color: "var(--color-default)" }}
+          >
+            {formattedContent}
+          </div>
         );
       }
 
       if (icon) {
         return (
-          <div className={cn("progress-info", size)}>
-            <div className={cn("progress-icon", finalStatus)}>{icon}</div>
+          <div
+            className={cn(
+              "progress-info ml-2 flex-shrink-0",
+              {
+                "text-xs": size === "small",
+                "text-sm": size === "default",
+                "text-base": size === "large",
+              },
+              // 响应式调整
+              "max-sm:text-xs"
+            )}
+            style={{ color: "var(--color-default)" }}
+          >
+            <div
+              className="progress-icon inline-flex items-center justify-center w-4 h-4"
+              style={{
+                color:
+                  finalStatus === "success"
+                    ? "var(--color-success)"
+                    : finalStatus === "error"
+                    ? "var(--color-error)"
+                    : finalStatus === "warning"
+                    ? "var(--color-warning)"
+                    : "var(--color-default)",
+              }}
+            >
+              {icon}
+            </div>
           </div>
         );
       }
 
       return (
-        <div className={cn("progress-info", size)}>{normalizedPercent}%</div>
+        <div
+          className={cn(
+            "progress-info ml-2 flex-shrink-0",
+            {
+              "text-xs": size === "small",
+              "text-sm": size === "default",
+              "text-base": size === "large",
+            },
+            // 响应式调整
+            "max-sm:text-xs"
+          )}
+          style={{ color: "var(--color-default)" }}
+        >
+          {normalizedPercent}%
+        </div>
       );
     };
 
@@ -85,20 +139,39 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
       const completedSteps = Math.floor((normalizedPercent / 100) * steps);
 
       return (
-        <div className="progress-steps">
+        <div className="progress-steps flex">
           {Array.from({ length: steps }, (_, index) => {
             const isActive = index < completedSteps;
             const isPartial =
               index === completedSteps && normalizedPercent % stepWidth !== 0;
 
             return (
-              <div key={index} className="progress-step">
+              <div
+                key={index}
+                className={cn("progress-step flex-1 relative", {
+                  "mr-2": index < steps - 1,
+                })}
+              >
                 <div
-                  className={cn("progress-step-item", size, {
-                    active: isActive || isPartial,
-                    [finalStatus]: isActive || isPartial,
-                  })}
+                  className={cn(
+                    "progress-step-item w-full rounded-sm transition-all duration-300",
+                    {
+                      "h-1.5": size === "small",
+                      "h-2": size === "default",
+                      "h-3": size === "large",
+                    }
+                  )}
                   style={{
+                    backgroundColor:
+                      isActive || isPartial
+                        ? finalStatus === "success"
+                          ? "var(--color-success)"
+                          : finalStatus === "error"
+                          ? "var(--color-error)"
+                          : finalStatus === "warning"
+                          ? "var(--color-warning)"
+                          : "var(--color-primary)"
+                        : "rgba(0, 0, 0, 0.06)",
                     opacity: isPartial
                       ? (normalizedPercent % stepWidth) / stepWidth
                       : isActive
@@ -127,33 +200,58 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
           const direction = strokeColor.direction || "to right";
           fillStyle.background = `linear-gradient(${direction}, ${strokeColor.from}, ${strokeColor.to})`;
         }
+      } else {
+        // 使用状态颜色
+        fillStyle.backgroundColor =
+          finalStatus === "success"
+            ? "var(--color-success)"
+            : finalStatus === "error"
+            ? "var(--color-error)"
+            : finalStatus === "warning"
+            ? "var(--color-warning)"
+            : "var(--color-primary)";
       }
 
       // 处理线宽
-      const lineStyle: React.CSSProperties = {};
+      const lineStyle: React.CSSProperties = {
+        backgroundColor: trailColor || "rgba(0, 0, 0, 0.06)",
+      };
       if (strokeWidth) {
         lineStyle.height = `${strokeWidth}px`;
       }
-      if (trailColor) {
-        lineStyle.backgroundColor = trailColor;
-      }
 
       return (
-        <div className={cn("progress-line", size)} style={lineStyle}>
+        <div
+          className={cn(
+            "progress-line relative w-full rounded-full overflow-hidden",
+            {
+              "h-1.5": size === "small" && !strokeWidth,
+              "h-2": size === "default" && !strokeWidth,
+              "h-3": size === "large" && !strokeWidth,
+            }
+          )}
+          style={lineStyle}
+        >
           {/* 成功分段 */}
           {successPercent > 0 && (
             <div
-              className="progress-success"
+              className="progress-success absolute top-0 left-0 h-full transition-all duration-300 ease-out"
               style={{
                 width: `${successPercent}%`,
-                backgroundColor: success?.strokeColor,
+                backgroundColor: success?.strokeColor || "var(--color-success)",
               }}
             />
           )}
 
           {/* 主进度条 */}
           <div
-            className={cn("progress-fill", finalStatus, strokeLinecap)}
+            className={cn(
+              "progress-fill h-full transition-all duration-300 ease-out",
+              {
+                "rounded-full": strokeLinecap === "round",
+                "rounded-none": strokeLinecap === "square",
+              }
+            )}
             style={fillStyle}
           />
         </div>
@@ -161,8 +259,12 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
     };
 
     return (
-      <div ref={ref} className={cn("progress-container", className)} {...rest}>
-        <div className="progress-wrapper">
+      <div
+        ref={ref}
+        className={cn("progress-container relative w-full", className)}
+        {...rest}
+      >
+        <div className="progress-wrapper flex items-center">
           {steps ? renderSteps() : renderLine()}
           {renderInfo()}
         </div>

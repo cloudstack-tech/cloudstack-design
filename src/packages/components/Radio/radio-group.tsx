@@ -47,7 +47,17 @@ export const RadioGroup = <T extends any>({
 
   return (
     <div
-      className={cn("radio-group", direction, classNames?.root, className)}
+      className={cn(
+        "radio-group flex gap-4",
+        {
+          "flex-col gap-2": direction === "vertical",
+          "flex-row flex-wrap": direction === "horizontal",
+          // 响应式：水平布局在小屏幕下变为垂直
+          "max-sm:flex-col max-sm:gap-2": direction === "horizontal",
+        },
+        classNames?.root,
+        className
+      )}
       role="radiogroup"
       aria-disabled={disabled}
       {...rest}
@@ -56,7 +66,7 @@ export const RadioGroup = <T extends any>({
         <Radio
           key={`${groupName}-${option.value}-${index}`}
           name={groupName}
-          value={option.value}
+          value={option.value as string | number}
           checked={value === option.value}
           disabled={disabled || option.disabled}
           label={option.label}
@@ -68,17 +78,18 @@ export const RadioGroup = <T extends any>({
       {children &&
         React.Children.map(children, (child, index) => {
           if (React.isValidElement(child) && child.type === Radio) {
+            const childProps = child.props as any;
             return React.cloneElement(child, {
-              ...child.props,
+              ...childProps,
               key: child.key || `${groupName}-child-${index}`,
               name: groupName,
-              checked: value === child.props.value,
-              disabled: disabled || child.props.disabled,
+              checked: value === childProps.value,
+              disabled: disabled || childProps.disabled,
               onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-                handleChange(child.props.value);
-                child.props.onChange?.(event);
+                handleChange(childProps.value);
+                childProps.onChange?.(event);
               },
-              className: cn(classNames?.radio, child.props.className),
+              className: cn(classNames?.radio, childProps.className),
             });
           }
           return child;
