@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { RadioGroupProps } from "./type";
 import { Radio } from "./radio";
 import { cn } from "@/packages/utilities";
-import "./radio.theme.css";
 
 export const RadioGroup = <T extends any>({
   options,

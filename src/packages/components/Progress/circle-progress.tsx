@@ -4,7 +4,6 @@ import React, { useMemo } from "react";
 import { CircleProgressProps, ProgressStatus } from "./type";
 import { cn } from "@/packages/utilities";
 import { CheckIcon, XIcon, AlertTriangleIcon } from "lucide-react";
-import "./progress.theme.css";
 
 export const CircleProgress = React.forwardRef<
   HTMLDivElement,

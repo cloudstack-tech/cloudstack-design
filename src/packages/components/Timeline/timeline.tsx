@@ -4,7 +4,6 @@ import React from "react";
 import { TimelineProps } from "./type";
 import { TimelineItem } from "./timeline-item";
 import { cn } from "@/packages/utilities";
-import "./timeline.theme.css";
 
 export const Timeline = React.forwardRef<HTMLUListElement, TimelineProps>(
   (props, ref) => {

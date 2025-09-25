@@ -14,7 +14,6 @@ import {
   accordionContentVariants,
   accordionIconVariants,
 } from "./variants";
-import "./accordion.theme.css";
 
 // 默认展开图标
 const DefaultExpandIcon = ({ isActive }: { isActive: boolean }) => (
