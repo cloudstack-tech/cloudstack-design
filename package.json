@@ -38,7 +38,14 @@
     "deploy-storybook": "pnpm run build-storybook && gh-pages -d storybook-static",
     "predeploy": "pnpm run build-storybook",
     "prepublishOnly": "pnpm run build:lib",
-    "publish:npm": "npm publish"
+    "publish:npm": "npm publish",
+    "version:patch": "npm version patch && git push && git push --tags",
+    "version:minor": "npm version minor && git push && git push --tags",
+    "version:major": "npm version major && git push && git push --tags",
+    "release:patch": "pnpm version:patch",
+    "release:minor": "pnpm version:minor",
+    "release:major": "pnpm version:major",
+    "release:npm": "git add . && git commit -m 'chore: prepare for npm release [publish-npm]' && git push"
   },
   "dependencies": {
     "@tanstack/react-table": "^8.21.3",

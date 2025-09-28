@@ -1,0 +1,158 @@
+name: Release and Publish
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    outputs:
+      version-changed: ${{ steps.version-check.outputs.changed }}
+      version: ${{ steps.get-version.outputs.version }}
+      prev-version: ${{ steps.version-check.outputs.prev-version }}
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: 获取当前版本
+        id: get-version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: 检查版本是否变化
+        id: version-check
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+
+          # 获取上一次提交的版本
+          git checkout HEAD~1
+          PREV_VERSION=$(node -p "require('./package.json').version" 2>/dev/null || echo "0.0.0")
+          git checkout -
+
+          echo "当前版本: $CURRENT_VERSION"
+          echo "之前版本: $PREV_VERSION"
+          echo "prev-version=$PREV_VERSION" >> $GITHUB_OUTPUT
+
+          if [ "$CURRENT_VERSION" != "$PREV_VERSION" ]; then
+            echo "版本已变化，将触发发布"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "版本未变化，跳过发布"
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+  release:
+    needs: check-version
+    if: needs.check-version.outputs.version-changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: 设置 pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: 安装依赖
+        run: pnpm install --no-frozen-lockfile
+
+      - name: 运行测试
+        run: |
+          if [ -f "pnpm test" ]; then
+            pnpm test
+          else
+            echo "未找到测试脚本，跳过测试"
+          fi
+
+      - name: 构建组件库
+        run: pnpm run build:lib
+
+      - name: 生成 Changelog
+        id: changelog
+        run: |
+          VERSION="${{ needs.check-version.outputs.version }}"
+          PREV_VERSION="${{ needs.check-version.outputs.prev-version }}"
+
+          # 生成简单的changelog
+          echo "## 🚀 版本 $VERSION" > changelog.md
+          echo "" >> changelog.md
+          echo "### 📝 更新内容" >> changelog.md
+
+          # 获取两个版本之间的提交信息
+          if [ "$PREV_VERSION" != "0.0.0" ]; then
+            PREV_TAG=$(git tag -l "v$PREV_VERSION" | head -1)
+            if [ -n "$PREV_TAG" ]; then
+              git log --pretty=format:"- %s (%an)" $PREV_TAG..HEAD >> changelog.md
+            else
+              git log --pretty=format:"- %s (%an)" --since="1 week ago" >> changelog.md
+            fi
+          else
+            echo "- 🎉 首次发布" >> changelog.md
+          fi
+
+          echo "" >> changelog.md
+          echo "### 📦 安装方式" >> changelog.md
+          echo "\`\`\`bash" >> changelog.md
+          echo "npm install cloudstack-design@$VERSION" >> changelog.md
+          echo "# 或者" >> changelog.md
+          echo "pnpm add cloudstack-design@$VERSION" >> changelog.md
+          echo "\`\`\`" >> changelog.md
+
+          # 输出changelog内容
+          CHANGELOG_CONTENT=$(cat changelog.md)
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG_CONTENT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: 创建 GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ needs.check-version.outputs.version }}
+          release_name: Release v${{ needs.check-version.outputs.version }}
+          body: ${{ steps.changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
+
+      - name: 发布到 NPM
+        if: contains(github.event.head_commit.message, '[publish-npm]')
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  notify:
+    needs: [check-version, release]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: 通知结果
+        run: |
+          if [ "${{ needs.check-version.outputs.version-changed }}" == "true" ]; then
+            if [ "${{ needs.release.result }}" == "success" ]; then
+              echo "🎉 成功发布版本 v${{ needs.check-version.outputs.version }}"
+              echo "📦 GitHub Release: https://github.com/${{ github.repository }}/releases/tag/v${{ needs.check-version.outputs.version }}"
+            else
+              echo "❌ 发布失败"
+            fi
+          else
+            echo "ℹ️ 版本未变化，跳过发布"
+          fi
