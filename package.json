@@ -1,6 +1,6 @@
 {
   "name": "cloudstack-design",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "A modern React component library for cloud computing interfaces",
   "keywords": [
