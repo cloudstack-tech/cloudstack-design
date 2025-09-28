@@ -17,6 +17,9 @@
     "type": "git",
     "url": "https://github.com/rokuko/cloudstack-design.git"
   },
+  "publishConfig": {
+    "@rokuko:registry": "https://npm.pkg.github.com"
+  },
   "homepage": "https://github.com/rokuko/cloudstack-design#readme",
   "bugs": {
     "url": "https://github.com/rokuko/cloudstack-design/issues"
@@ -45,7 +48,9 @@
     "release:patch": "pnpm version:patch",
     "release:minor": "pnpm version:minor",
     "release:major": "pnpm version:major",
-    "release:npm": "git add . && git commit -m 'chore: prepare for npm release [publish-npm]' && git push"
+    "release:npm": "git add . && git commit -m 'chore: prepare for npm release [publish-npm]' && git push",
+    "release:github": "git add . && git commit -m 'chore: prepare for github packages release [publish-github]' && git push",
+    "release:all": "git add . && git commit -m 'chore: prepare for dual release [publish-all]' && git push"
   },
   "dependencies": {
     "@tanstack/react-table": "^8.21.3",

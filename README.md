@@ -17,12 +17,24 @@
 
 ## 📦 安装
 
+### 从 npm 安装（推荐）
+
 ```bash
 npm install cloudstack-design
 # 或
 pnpm add cloudstack-design
 # 或
 yarn add cloudstack-design
+```
+
+### 从 GitHub Packages 安装
+
+```bash
+# 配置 registry
+echo "@rokuko:registry=https://npm.pkg.github.com" >> .npmrc
+
+# 安装包
+npm install @rokuko/cloudstack-design
 ```
 
 ## 🚀 快速开始
@@ -138,30 +150,42 @@ pnpm run build-storybook
 
 ## 📋 发布流程
 
-本项目采用自动化发布流程：
+本项目采用自动化多平台发布流程：
 
 - 🔄 **自动 Release**: 推送到 main 分支时自动创建 GitHub Release
-- 📦 **npm 发布**: 可选择同时发布到 npm
+- 📦 **npm 发布**: 发布到 npm 官方仓库
+- 🏢 **GitHub Packages**: 发布到 GitHub Packages
 - 📝 **Changelog**: 自动生成版本更新说明
 
-查看详细发布指南：**[📖 发布流程文档](./RELEASE_GUIDE.md)**
+查看详细指南：
 
-### 快速发布
+- **[📖 发布流程文档](./RELEASE_GUIDE.md)** - 完整发布指南
+- **[📦 GitHub Packages 指南](./GITHUB_PACKAGES_GUIDE.md)** - GitHub Packages 配置
+
+### 发布选项
 
 ```bash
-# 修复版本 (0.1.0 → 0.1.1)
-pnpm run release:patch
+# 1. 仅 GitHub Release（默认）
+pnpm run release:patch      # 0.1.0 → 0.1.1
 
-# 功能版本 (0.1.0 → 0.2.0)
-pnpm run release:minor
+# 2. 发布到 npm
+pnpm run release:patch      # 先更新版本
+pnpm run release:npm        # 发布到 npm
 
-# 重大版本 (0.1.0 → 1.0.0)
-pnpm run release:major
+# 3. 发布到 GitHub Packages
+pnpm run release:patch      # 先更新版本
+pnpm run release:github     # 发布到 GitHub Packages
+
+# 4. 双平台发布
+pnpm run release:patch      # 先更新版本
+pnpm run release:all        # 同时发布到 npm 和 GitHub Packages
 ```
 
 ## 📖 相关文档
 
 - **[🚀 发布指南](./RELEASE_GUIDE.md)** - 自动化发布流程说明
+- **[📦 GitHub Packages 指南](./GITHUB_PACKAGES_GUIDE.md)** - GitHub Packages 配置和使用
+- **[🔑 NPM 配置指南](./NPM_SETUP_GUIDE.md)** - NPM Token 配置说明
 - **[📚 Storybook 部署](./STORYBOOK_DEPLOYMENT.md)** - Storybook 部署到 GitHub Pages
 
 ## 🤝 贡献
