@@ -1,0 +1,39 @@
+# 开发文件
+src/
+.next/
+.storybook/
+storybook-static/
+public/
+stories/
+
+# 配置文件
+next.config.ts
+tailwind.config.ts
+postcss.config.mjs
+eslint.config.mjs
+vitest.config.ts
+tsconfig.json
+tsconfig.build.json
+tsup.config.ts
+deploy.js
+
+# 文档和测试
+*.md
+**/*.stories.tsx
+**/*.test.tsx
+**/*.spec.tsx
+
+# 开发依赖
+node_modules/
+.git/
+.gitignore
+.env*
+
+# IDE
+.vscode/
+.idea/
+
+# 其他
+*.log
+.DS_Store
+Thumbs.db

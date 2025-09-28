@@ -143,6 +143,23 @@ export const useSlider = ({
       }
     };
 
+    const handleTouchMove = (event: TouchEvent) => {
+      if (!event.touches[0]) return;
+
+      // 创建一个模拟的 MouseEvent 对象
+      const mouseEvent = {
+        clientX: event.touches[0].clientX,
+        clientY: event.touches[0].clientY,
+        preventDefault: () => event.preventDefault(),
+      } as MouseEvent;
+
+      if (range && dragHandle !== null) {
+        handleRangeDrag(mouseEvent, dragHandle);
+      } else {
+        handleSingleDrag(mouseEvent);
+      }
+    };
+
     const handleMouseUp = () => {
       setDragging(false);
       setDragHandle(null);
@@ -153,13 +170,13 @@ export const useSlider = ({
     document.addEventListener("mouseup", handleMouseUp);
 
     // 触摸事件支持
-    document.addEventListener("touchmove", handleMouseMove);
+    document.addEventListener("touchmove", handleTouchMove);
     document.addEventListener("touchend", handleMouseUp);
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("touchmove", handleMouseMove);
+      document.removeEventListener("touchmove", handleTouchMove);
       document.removeEventListener("touchend", handleMouseUp);
     };
   }, [
