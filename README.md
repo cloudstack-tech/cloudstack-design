@@ -144,9 +144,24 @@ pnpm run dev
 # 构建组件库
 pnpm run build:lib
 
+# 监听模式构建（开发时）
+pnpm run build:lib:watch
+
 # 构建Storybook
 pnpm run build-storybook
 ```
+
+### 本地联调开发
+
+```bash
+# 启动组件库监听构建
+pnpm run build:lib:watch
+
+# 在应用项目中使用本地路径
+# package.json: "cloudstack-design": "file:../cloudstack-design"
+```
+
+> 📖 查看 **[本地开发联调指南](./LOCAL_DEVELOPMENT_GUIDE.md)** 了解完整的 alpha 阶段快速开发方案
 
 ## 📋 发布流程
 
@@ -183,6 +198,7 @@ pnpm run release:all        # 同时发布到 npm 和 GitHub Packages
 
 ## 📖 相关文档
 
+- **[🛠️ 本地开发联调指南](./LOCAL_DEVELOPMENT_GUIDE.md)** - alpha 阶段快速联调方案
 - **[🚀 发布指南](./RELEASE_GUIDE.md)** - 自动化发布流程说明
 - **[📦 GitHub Packages 指南](./GITHUB_PACKAGES_GUIDE.md)** - GitHub Packages 配置和使用
 - **[🔑 NPM 配置指南](./NPM_SETUP_GUIDE.md)** - NPM Token 配置说明
