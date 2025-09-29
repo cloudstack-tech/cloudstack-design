@@ -7,10 +7,20 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
-  external: ["react", "react-dom"],
+  external: [
+    "react",
+    "react-dom",
+    "react/jsx-runtime",
+    "react/jsx-dev-runtime",
+  ],
+  loader: {
+    ".tsx": "tsx",
+  },
   esbuildOptions(options) {
     options.banner = {
       js: '"use client";',
     };
+    options.jsx = "automatic";
+    options.jsxImportSource = "react";
   },
 });
