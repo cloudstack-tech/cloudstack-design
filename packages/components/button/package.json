@@ -1,0 +1,34 @@
+{
+  "name": "@cloudstack-design/button",
+  "version": "1.0.0",
+  "description": "Button component for CloudStack Design",
+  "keywords": [
+    "button"
+  ],
+  "author": "CloudStackDesign <support@cloudstack-design.com>",
+  "homepage": "https://cloudstack-design.com",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudstack-tech/cloudstack-design.git",
+    "directory": "packages/components/button"
+  },
+  "bugs": {
+    "url": "https://github.com/cloudstack-tech/cloudstack-design/issues"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast --watch",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  }
+}

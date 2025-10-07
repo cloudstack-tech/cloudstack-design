@@ -1,0 +1,33 @@
+{
+  "name": "@cloudstack-design/react",
+  "version": "1.0.0",
+  "description": "🚀 Modern Cloud React UI library.",
+  "author": "CloudStackDesign <support@cloudstack-design.com>",
+  "homepage": "https://cloudstack-design.com",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "cloudstack-design",
+    "ui",
+    "components",
+    "library"
+  ],
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup --dts",
+    "dev": "pnpm build:fast --watch",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "dependencies": {
+    "@cloudstack-design/theme": "workspace:*",
+    "@cloudstack-design/button": "workspace:*"
+  }
+}
