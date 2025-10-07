@@ -1,0 +1,34 @@
+{
+  "name": "@cloudstack-design/template",
+  "version": "1.0.0",
+  "description": "Template component for CloudStack Design",
+  "keywords": [
+    "template"
+  ],
+  "author": "CloudStackDesign <support@cloudstack-design.com>",
+  "homepage": "https://cloudstack-design.com",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudstack-tech/cloudstack-design.git",
+    "directory": "packages/components/template"
+  },
+  "bugs": {
+    "url": "https://github.com/cloudstack-tech/cloudstack-design/issues"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast --watch",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  }
+}
