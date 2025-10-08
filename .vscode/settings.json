@@ -1,5 +1,9 @@
 {
-    "files.associations": {
-        "*.css": "tailwindcss"
-    }
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "tailwindCSS.experimental.configFile": {
+    "apps/docs/src/app/globals.css": "apps/docs/**/*",
+    "apps/storybook/.storybook/style.css": ["packages/core/theme/**/*", "packages/components/**/*"]
+  }
 }
