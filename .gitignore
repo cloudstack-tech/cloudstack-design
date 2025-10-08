@@ -19,6 +19,7 @@ coverage
 /build
 dist/
 storybook-static
+*storybook.log
 
 # misc
 .DS_Store
