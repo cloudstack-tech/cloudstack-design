@@ -99,6 +99,8 @@ importers:
 
   packages/components/button: {}
 
+  packages/components/template: {}
+
   packages/core/react:
     dependencies:
       '@cloudstack-design/button':
@@ -108,7 +110,14 @@ importers:
         specifier: workspace:*
         version: link:../theme
 
-  packages/core/theme: {}
+  packages/core/theme:
+    dependencies:
+      tailwind-variants:
+        specifier: ^3.1.1
+        version: 3.1.1(tailwindcss@4.1.14)
+      tailwindcss:
+        specifier: '>=4.0.0'
+        version: 4.1.14
 
 packages:
 
@@ -2505,6 +2514,16 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  tailwind-variants@3.1.1:
+    resolution: {integrity: sha512-ftLXe3krnqkMHsuBTEmaVUXYovXtPyTK7ckEfDRXS8PBZx0bAUas+A0jYxuKA5b8qg++wvQ3d2MQ7l/xeZxbZQ==}
+    engines: {node: '>=16.x', pnpm: '>=7.x'}
+    peerDependencies:
+      tailwind-merge: '>=3.0.0'
+      tailwindcss: '*'
+    peerDependenciesMeta:
+      tailwind-merge:
+        optional: true
 
   tailwindcss@4.1.14:
     resolution: {integrity: sha512-b7pCxjGO98LnxVkKjaZSDeNuljC4ueKUddjENJOADtubtdo8llTaJy7HwBMeLNSSo2N5QIAgklslK1+Ir8r6CA==}
@@ -5120,6 +5139,10 @@ snapshots:
       has-flag: 4.0.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  tailwind-variants@3.1.1(tailwindcss@4.1.14):
+    dependencies:
+      tailwindcss: 4.1.14
 
   tailwindcss@4.1.14: {}
 

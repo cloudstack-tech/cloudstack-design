@@ -48,5 +48,8 @@
       "cjs",
       "esm"
     ]
+  },
+  "dependencies": {
+    "tailwind-variants": "^3.1.1"
   }
 }
