@@ -1,7 +1,7 @@
 # CloudStack Design
 
 <div align="center">
-  <img width="128" height="128" alt="Logo" src="https://raw.githubusercontent.com/cloudstack-tech/cloudstack-design/main/raws/logo.png">
+  <img style="border-radius: 12px" width="96" height="96" alt="Logo" src="https://raw.githubusercontent.com/cloudstack-tech/cloudstack-design/main/raws/logo.png">
   <p>专为云原生/云计算场景打造的现代化组件库</p>
 
   <p>
