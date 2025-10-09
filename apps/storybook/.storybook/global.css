@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@source "../../../packages/components/**/src/**/*.{ts,tsx,js,jsx}";
+
+@plugin "./cloudstack-design.ts" {
+}

@@ -8,4 +8,4 @@ const meta = {
 
 export default meta;
 
-export const Default = () => <Button />;
+export const Default = () => <Button>Button</Button>;

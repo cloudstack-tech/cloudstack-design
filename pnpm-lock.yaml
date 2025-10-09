@@ -103,6 +103,12 @@ importers:
 
   apps/storybook:
     dependencies:
+      '@cloudstack-design/react':
+        specifier: workspace:^
+        version: link:../../packages/core/react
+      '@cloudstack-design/theme':
+        specifier: workspace:^
+        version: link:../../packages/core/theme
       next:
         specifier: 15.5.4
         version: 15.5.4(@babel/core@7.28.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -192,8 +198,9 @@ importers:
       tailwind-variants:
         specifier: ^3.1.1
         version: 3.1.1(tailwindcss@4.1.14)
+    devDependencies:
       tailwindcss:
-        specifier: '>=4.0.0'
+        specifier: ^4
         version: 4.1.14
 
 packages:
