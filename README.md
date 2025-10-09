@@ -1,7 +1,8 @@
 # CloudStack Design
 
 <div align="center">
-  <p>专为云原生/云计算场景打造的现代化组件库</p>
+  <img width="128" height="128" alt="Logo" src="https://raw.githubusercontent.com/cloudstack-tech/cloudstack-design/main/raws/logo.png">
+  <pre>“云栈互联出品的专为云原生/云计算场景打造的现代化组件库”</pre>
 </div>
 
 ## 特性
