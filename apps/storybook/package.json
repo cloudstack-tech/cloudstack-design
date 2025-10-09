@@ -1,12 +1,13 @@
 {
-  "name": "storybook",
+  "name": "@cloudstack-design/storybook",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
+    "next:dev": "next dev --turbopack",
+    "next:build": "next build --turbopack",
+    "next:start": "next start",
     "lint": "eslint",
+    "dev": "pnpm storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

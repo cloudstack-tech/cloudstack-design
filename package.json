@@ -11,6 +11,9 @@
   ],
   "author": "CloudStack",
   "license": "MIT",
+  "scripts": {
+    "storybook": "pnpm --filter @cloudstack-design/storybook dev"
+  },
   "devDependencies": {
     "@swc/core": "^1.13.5",
     "@swc/jest": "^0.2.39",
