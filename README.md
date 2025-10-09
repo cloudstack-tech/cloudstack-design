@@ -3,6 +3,39 @@
 <div align="center">
   <img width="128" height="128" alt="Logo" src="https://raw.githubusercontent.com/cloudstack-tech/cloudstack-design/main/raws/logo.png">
   <p>专为云原生/云计算场景打造的现代化组件库</p>
+
+  <p>
+    <!-- <a href="https://www.npmjs.com/package/@cloudstack-design/react">
+      <img src="https://img.shields.io/npm/v/@cloudstack-design/react.svg?style=flat-square" alt="npm version" />
+    </a>
+    <a href="https://www.npmjs.com/package/@cloudstack-design/react">
+      <img src="https://img.shields.io/npm/dm/@cloudstack-design/react.svg?style=flat-square" alt="npm downloads" />
+    </a> -->
+    <!-- <a href="https://github.com/cloudstack-tech/cloudstack-design/actions">
+      <img src="https://img.shields.io/github/actions/workflow/status/cloudstack-tech/cloudstack-design/ci.yml?style=flat-square" alt="build status" />
+    </a> -->
+    <a href="https://github.com/cloudstack-tech/cloudstack-design/releases">
+      <img src="https://img.shields.io/github/v/release/cloudstack-tech/cloudstack-design.svg?style=flat-square&logo=github&logoColor=white" alt="latest release" />
+    </a>
+    <a href="https://github.com/cloudstack-tech/cloudstack-design/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/cloudstack-tech/cloudstack-design.svg?style=flat-square&logo=opensourceinitiative&logoColor=white" alt="license" />
+    </a>
+    <a href="https://tailwindcss.com/">
+      <img src="https://img.shields.io/badge/Tailwind_CSS-v4+-38bdf8.svg?style=flat-square&logo=tailwind-css&logoColor=white" alt="tailwind css" />
+    </a>
+    <a href="https://nextjs.org/">
+      <img src="https://img.shields.io/badge/Next.js-15+-000000.svg?style=flat-square&logo=next.js&logoColor=white" alt="next.js" />
+    </a>
+    <a href="https://www.typescriptlang.org/">
+      <img src="https://img.shields.io/badge/TypeScript-5.0+-3178c6.svg?style=flat-square&logo=typescript&logoColor=white" alt="typescript" />
+    </a>
+    <a href="https://react.dev/">
+      <img src="https://img.shields.io/badge/React-18+-61dafb.svg?style=flat-square&logo=react&logoColor=black" alt="react" />
+    </a>
+    <a href="https://github.com/cloudstack-tech/cloudstack-design/pulls">
+      <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&logo=github&logoColor=white" alt="PRs Welcome" />
+    </a>
+  </p>
 </div>
 
 ## 特性
@@ -156,22 +189,6 @@ pnpm build
 # 构建特定包
 pnpm --filter @cloudstack-design/button build
 ```
-
-## 创建新组件
-
-我们提供了便捷的脚本来创建新组件：
-
-```bash
-pnpm new-component <component-name>
-```
-
-这将基于 `packages/components/template` 创建一个新的组件包，包含：
-
-- 组件源码
-- 测试文件
-- Storybook 故事
-- 示例代码
-- README 文档
 
 ## 贡献指南
 
