@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* @import "../../../packages/core/theme/src/global.css"; */
+@import "../../../packages/core/theme/src/global.css";
 
 @source "../../../packages/**/src/**/*.{ts,tsx,js,jsx}";
 @source "../../../packages/**/stories/**/*.{ts,tsx,js,jsx}";

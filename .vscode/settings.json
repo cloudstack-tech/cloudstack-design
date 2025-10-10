@@ -2,8 +2,13 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "tailwindCSS.classAttributes": ["class", "className"],
+  "tailwindCSS.classFunctions": ["tv"],
   "tailwindCSS.experimental.configFile": {
     "apps/docs/src/app/globals.css": "apps/docs/**/*",
-    "apps/storybook/.storybook/global.css": ["packages/core/theme/**", "packages/components/**"]
+    "apps/storybook/.storybook/global.css": ["packages/core/theme/**/*", "packages/components/**/*"]
   }
 }

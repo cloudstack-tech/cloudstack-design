@@ -29,12 +29,13 @@ const button = tv({
     "select-none",
     "whitespace-nowrap",
     "min-w-max",
-    "font-normal",
     "subpixel-antialiased",
     "overflow-hidden",
     "tap-highlight-transparent",
     "transform-gpu data-[pressed=true]:scale-[0.97]",
     "cursor-pointer",
+    "text-xs",
+    "font-medium",
   ],
   variants: {
     variant: {
@@ -45,9 +46,9 @@ const button = tv({
       outline: "",
     },
     size: {
-      sm: "px-3 min-w-16 h-8 text-tiny gap-2 rounded-small",
-      md: "px-4 min-w-20 h-10 text-small gap-2 rounded-medium",
-      lg: "px-6 min-w-24 h-12 text-medium gap-3 rounded-large",
+      sm: "min-h-6 px-3",
+      md: "min-h-8 px-4",
+      lg: "min-h-9 px-4.5",
     },
     color: {
       default: "",
@@ -57,25 +58,9 @@ const button = tv({
       warning: "",
       danger: "",
     },
-    radius: {
-      none: "rounded-none",
-      sm: "rounded-small",
-      md: "rounded-medium",
-      lg: "rounded-large",
-      full: "rounded-full",
-    },
-    fullWidth: {
-      true: "w-full",
-    },
-    isDisabled: {
-      true: "opacity-disabled pointer-events-none",
-    },
-    isInGroup: {
-      true: "[&:not(:first-child):not(:last-child)]:rounded-none",
-    },
     isIconOnly: {
-      true: "px-0 !gap-0",
-      false: "[&>svg]:max-w-[theme(spacing.8)]",
+      true: "",
+      false: "",
     },
   },
   defaultVariants: {
@@ -85,13 +70,39 @@ const button = tv({
     fullWidth: false,
     isDisabled: false,
     isInGroup: false,
+    isIconOnly: false,
   },
   compoundVariants: [
     // solid / color
     {
       variant: "solid",
       color: "default",
-      class: colorVariants.solid.default,
+      class: [
+        // base
+        "bg-btn-solid-default-bg text-btn-solid-default-text",
+        // hover
+        "hover:bg-btn-solid-default-hover-bg",
+        // active
+        "active:bg-btn-solid-default-active-bg text-btn-solid-default-text",
+        // disabled
+        "disabled:bg-btn-solid-default-disabled-bg",
+      ],
+    },
+
+    // primary / color
+    {
+      variant: "solid",
+      color: "primary",
+      class: [
+        // base
+        "bg-btn-solid-primary-bg text-btn-solid-primary-text",
+        // hover
+        "hover:bg-btn-solid-primary-hover-bg",
+        // active
+        "active:bg-btn-solid-primary-active-bg",
+        // disabled
+        "disabled:bg-btn-solid-primary-disabled-bg",
+      ],
     },
   ],
 });

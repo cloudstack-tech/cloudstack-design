@@ -19,9 +19,7 @@ const twPlugin = () => {
       return {
         theme: {
           extend: {
-            colors: {
-              "btn-solid-default-bg": "black",
-            },
+            colors: {},
           },
         },
       };
