@@ -1,5 +1,5 @@
 const solid = {
-  default: ["bg-blue-500"],
+  default: ["bg-btn-solid-default-bg"],
 };
 
 export const colorVariants = {

@@ -7,13 +7,26 @@ interface CloudstackDesignOptions {
 }
 
 const twPlugin = () => {
-  return plugin.withOptions<CloudstackDesignOptions>((options = {}) => {
-    return ({addBase, addUtilities, addVariant, addComponents}) => {
-      addBase({});
-      addUtilities({});
-      addComponents({});
-    };
-  });
+  return plugin.withOptions<CloudstackDesignOptions>(
+    (options = {}) => {
+      return ({addBase, addUtilities, addVariant, addComponents}) => {
+        addBase({});
+        addUtilities({});
+        addComponents({});
+      };
+    },
+    () => {
+      return {
+        theme: {
+          extend: {
+            colors: {
+              "btn-solid-default-bg": "black",
+            },
+          },
+        },
+      };
+    },
+  );
 };
 
 export const cloudstackDesign = (): ReturnType<

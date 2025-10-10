@@ -1,11 +1,17 @@
 import {Button} from "../src";
-import type {Meta} from "@storybook/nextjs-vite";
+import type {Meta, StoryFn, StoryObj} from "@storybook/nextjs-vite";
 
 const meta = {
   title: "Components/Button",
   component: Button,
-} as Meta<typeof Button>;
+} satisfies Meta<typeof Button>;
 
 export default meta;
 
-export const Default = () => <Button>Button</Button>;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    children: "Button",
+  },
+};
