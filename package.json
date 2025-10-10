@@ -19,7 +19,8 @@
     "turbo:graph": "pnpm build --graph=dependency-graph.png",
     "sb": "pnpm --filter @cloudstack-design/storybook dev",
     "build:sb": "pnpm --filter @cloudstack-design/storybook build",
-    "start:sb": "pnpm --filter @cloudstack-design/storybook start"
+    "start:sb": "pnpm --filter @cloudstack-design/storybook start",
+    "create:cmp": "plop component"
   },
   "devDependencies": {
     "@swc/core": "^1.13.5",
@@ -33,6 +34,7 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
     "clean-package": "^2.2.0",
+    "plop": "^4.0.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "rimraf": "^6.0.1",
