@@ -12,7 +12,14 @@
   "author": "CloudStack",
   "license": "MIT",
   "scripts": {
-    "storybook": "pnpm --filter @cloudstack-design/storybook dev"
+    "dev": "pnpm sb",
+    "build": "turbo build --filter=!@cloudstack-design/docs --filter=!@cloudstack-design/storybook",
+    "build:fast": "turbo run build:fast --filter=!@cloudstack-design/docs --filter=!@cloudstack-design/storybook",
+    "turbo:clean": "turbo clean && rimraf ./node_modules/.cache/turbo",
+    "turbo:graph": "pnpm build --graph=dependency-graph.png",
+    "sb": "pnpm --filter @cloudstack-design/storybook dev",
+    "build:sb": "pnpm --filter @cloudstack-design/storybook build",
+    "start:sb": "pnpm --filter @cloudstack-design/storybook start"
   },
   "devDependencies": {
     "@swc/core": "^1.13.5",
@@ -28,11 +35,14 @@
     "clean-package": "^2.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
+    "turbo": "^2.5.8",
     "typescript": "^5.9.3"
   },
   "dependencies": {
     "@storybook/nextjs-vite": "^9.1.10",
     "tailwindcss": "^4.1.14"
-  }
+  },
+  "packageManager": "pnpm@10.6.2"
 }

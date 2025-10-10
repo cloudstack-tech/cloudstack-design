@@ -1,0 +1,26 @@
+import React from "react";
+import {Meta} from "@storybook/react";
+import { {{componentName}} } from "@cloudstack-design/theme";
+
+import { {{capitalize componentName}}, {{capitalize componentName}}Props } from "../src";
+
+export default {
+  title: "Components/{{capitalize componentName}}",
+  component: {{capitalize componentName}},
+  argTypes: {
+  },
+} as Meta<typeof {{capitalize componentName}}>;
+
+const defaultProps = {
+  ...{{componentName}}.defaultVariants,
+};
+
+const Template = (args: {{capitalize componentName}}Props) => <{{capitalize componentName}} {...args} />;
+
+
+export const Default = {
+  render: Template,
+  args: {
+    ...defaultProps,
+  }
+}

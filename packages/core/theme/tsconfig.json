@@ -1,7 +1,7 @@
 {
   "extends": "../../../tsconfig.json",
-  "include": ["src/**/*"],
-  "exclude": ["**/*.js"],
+  "include": ["src/index.ts"],
+  "exclude": ["**/*.js", "**/*.css"],
   "compilerOptions": {
     "moduleResolution": "bundler"
   }
