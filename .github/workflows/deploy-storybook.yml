@@ -1,0 +1,75 @@
+name: Deploy Storybook
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 设置 pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: 获取 pnpm store 目录
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: 设置 pnpm 缓存
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: 安装依赖
+        run: pnpm install --no-frozen-lockfile
+
+      - name: 构建 Storybook
+        run: pnpm run build:sb
+        env:
+          # 确保静态资源路径正确
+          NODE_ENV: production
+
+      - name: 创建 .nojekyll 文件
+        run: touch ./storybook-static/.nojekyll
+
+      - name: 设置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传 artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./storybook-static
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

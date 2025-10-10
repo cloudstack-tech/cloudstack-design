@@ -19,8 +19,8 @@
     "turbo:clean": "turbo clean && rimraf ./node_modules/.cache/turbo",
     "turbo:graph": "pnpm build --graph=dependency-graph.png",
     "sb": "pnpm --filter @cloudstack-design/storybook dev",
-    "build:sb": "pnpm --filter @cloudstack-design/storybook build",
-    "start:sb": "pnpm --filter @cloudstack-design/storybook start",
+    "build:sb": "pnpm --filter @cloudstack-design/storybook build:sb",
+    "start:sb": "pnpm --filter @cloudstack-design/storybook start:sb",
     "create:cmp": "plop component"
   },
   "devDependencies": {

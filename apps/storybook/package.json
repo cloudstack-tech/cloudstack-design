@@ -9,7 +9,8 @@
     "lint": "eslint",
     "dev": "pnpm storybook",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build:sb": "storybook build -o ../../storybook-static",
+    "start:sb": "pnpm storybook"
   },
   "dependencies": {
     "@cloudstack-design/react": "workspace:^",
