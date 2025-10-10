@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+@import "../../node_modules/@cloudstack-design/theme/dist/global.css";
+@source "../../node_modules/@cloudstack-design/theme/dist/**/*.{ts,tsx,js,jsx}";
+@plugin "./cloudstack-design";

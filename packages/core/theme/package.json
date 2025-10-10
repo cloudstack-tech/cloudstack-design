@@ -16,7 +16,9 @@
   "main": "src/index.ts",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "plugin.js",
+    "plugin.d.ts"
   ],
   "publishConfig": {
     "access": "public"

@@ -15,6 +15,7 @@
     "dev": "pnpm sb",
     "build": "turbo build --filter=!@cloudstack-design/docs --filter=!@cloudstack-design/storybook",
     "build:fast": "turbo run build:fast --filter=!@cloudstack-design/docs --filter=!@cloudstack-design/storybook",
+    "dev:docs": "turbo dev --filter=@cloudstack-design/docs",
     "turbo:clean": "turbo clean && rimraf ./node_modules/.cache/turbo",
     "turbo:graph": "pnpm build --graph=dependency-graph.png",
     "sb": "pnpm --filter @cloudstack-design/storybook dev",
