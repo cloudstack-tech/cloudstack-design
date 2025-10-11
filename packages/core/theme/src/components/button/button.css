@@ -1,8 +1,8 @@
 /* solid primary */
 @theme {
-  --color-btn-solid-primary-bg: rgb(0, 100, 200);
-  --color-btn-solid-primary-hover-bg: rgb(0, 82, 164);
-  --color-btn-solid-primary-active-bg: rgb(0, 60, 120);
+  --color-btn-solid-primary-bg: var(--color-primary);
+  --color-btn-solid-primary-hover-bg: var(--color-primary-hover);
+  --color-btn-solid-primary-active-bg: var(--color-primary-active);
   --color-btn-solid-primary-disabled-bg: var(--color-disabled-bg);
 
   --color-btn-solid-primary-text: rgb(255, 255, 255);
@@ -10,9 +10,9 @@
   --color-btn-solid-primary-active-text: rgb(255, 255, 255);
   --color-btn-solid-primary-disabled-text: var(--color-disabled-text);
 
-  --color-btn-solid-primary-border: rgb(0, 100, 200);
-  --color-btn-solid-primary-hover-border: rgb(0, 82, 164);
-  --color-btn-solid-primary-active-border: rgb(0, 60, 120);
+  --color-btn-solid-primary-border: var(--color-primary);
+  --color-btn-solid-primary-hover-border: var(--color-primary-hover);
+  --color-btn-solid-primary-active-border: var(--color-primary-active);
   --color-btn-solid-primary-disabled-border: var(--color-disabled-border);
 }
 
@@ -23,9 +23,9 @@
   --color-btn-solid-default-active-bg: rgb(239, 243, 248);
   --color-btn-solid-default-disabled-bg: rgb(246, 246, 246);
 
-  --color-btn-solid-default-text: rgb(51, 51, 51);
-  --color-btn-solid-default-hover-text: rgb(51, 51, 51);
-  --color-btn-solid-default-active-text: rgb(51, 51, 51);
+  --color-btn-solid-default-text: var(--color-default);
+  --color-btn-solid-default-hover-text: var(--color-default);
+  --color-btn-solid-default-active-text: var(--color-default);
   --color-btn-solid-default-disabled-text: var(--color-disabled-text);
 
   --color-btn-solid-default-border: rgb(192, 198, 204);

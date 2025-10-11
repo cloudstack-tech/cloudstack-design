@@ -1,5 +1,13 @@
 @theme {
   --color-primary: rgb(0, 100, 200);
+  --color-primary-hover: rgb(0, 82, 164);
+  --color-primary-active: rgb(0, 60, 120);
+}
+
+@theme {
+  --color-default: rgb(51, 51, 51);
+  --color-default-hover: rgb(61, 61, 61);
+  --color-default-active: rgb(41, 41, 41);
 }
 
 @theme {
