@@ -39,6 +39,7 @@
     "@cloudstack-design/system": ">=2.4.18"
   },
   "dependencies": {
+    "@cloudstack-design/shared-utils": "workspace:*",
     "@cloudstack-design/react-utils": "workspace:*"
   },
   "devDependencies": {

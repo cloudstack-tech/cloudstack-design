@@ -21,7 +21,9 @@
     "sb": "pnpm --filter @cloudstack-design/storybook dev",
     "build:sb": "pnpm --filter @cloudstack-design/storybook build:sb",
     "start:sb": "pnpm --filter @cloudstack-design/storybook start:sb",
-    "create:cmp": "plop component"
+    "init:cmp": "plop component",
+    "init:pkg": "plop package",
+    "init:hook": "plop hook"
   },
   "devDependencies": {
     "@swc/core": "^1.13.5",
