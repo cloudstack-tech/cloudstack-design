@@ -6,17 +6,19 @@
   --color-btn-solid-primary-disabled-bg: var(--color-disabled-bg);
 
   --color-btn-solid-primary-text: rgb(255, 255, 255);
+  --color-btn-solid-primary-hover-text: rgb(255, 255, 255);
+  --color-btn-solid-primary-active-text: rgb(255, 255, 255);
   --color-btn-solid-primary-disabled-text: var(--color-disabled-text);
 
+  --color-btn-solid-primary-border: rgb(0, 100, 200);
+  --color-btn-solid-primary-hover-border: rgb(0, 82, 164);
+  --color-btn-solid-primary-active-border: rgb(0, 60, 120);
   --color-btn-solid-primary-disabled-border: var(--color-disabled-border);
-
-  --shadow-btn-solid-primary-hover: var(--shadow-hover-base);
-  --shadow-btn-solid-primary-active: var(--shadow-hover-sm);
 }
 
 /* solid default  */
 @theme {
-  --color-btn-solid-default-bg: rgb(239, 243, 248);
+  --color-btn-solid-default-bg: #fff;
   --color-btn-solid-default-hover-bg: rgb(247, 249, 250);
   --color-btn-solid-default-active-bg: rgb(239, 243, 248);
   --color-btn-solid-default-disabled-bg: rgb(246, 246, 246);
@@ -26,11 +28,8 @@
   --color-btn-solid-default-active-text: rgb(51, 51, 51);
   --color-btn-solid-default-disabled-text: var(--color-disabled-text);
 
-  --color-btn-solid-default-border: rgb(203, 203, 203);
+  --color-btn-solid-default-border: rgb(192, 198, 204);
   --color-btn-solid-default-hover-border: rgb(192, 198, 204);
   --color-btn-solid-default-active-border: rgb(192, 198, 204);
   --color-btn-solid-default-disabled-border: var(--color-disabled-border);
-
-  --shadow-btn-solid-default-hover: var(--shadow-hover-base);
-  --shadow-btn-solid-default-active: var(--shadow-hover-sm);
 }
