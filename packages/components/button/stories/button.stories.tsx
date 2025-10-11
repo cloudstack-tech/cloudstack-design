@@ -186,3 +186,23 @@ export const DefaultVariantsAndSizes: Story = {
     </div>
   ),
 };
+
+export const CustomStyles: Story = {
+  args: {
+    disabled: false,
+  },
+  argTypes: {
+    disabled: {control: "boolean"},
+  },
+  render: (args) => (
+    <div className="space-y-4">
+      <Button
+        size="md"
+        className="border-none bg-linear-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+        {...args}
+      >
+        按钮
+      </Button>
+    </div>
+  ),
+};

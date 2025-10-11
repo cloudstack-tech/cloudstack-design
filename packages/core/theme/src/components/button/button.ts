@@ -48,8 +48,8 @@ const button = tv({
     },
     size: {
       sm: "min-h-6 px-3",
-      md: "min-h-7 px-4",
-      lg: "min-h-8 px-4.5",
+      md: "min-h-8 px-4",
+      lg: "min-h-8.5 px-4.5",
     },
     color: {
       default: "",
