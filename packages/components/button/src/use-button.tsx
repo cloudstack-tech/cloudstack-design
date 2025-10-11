@@ -1,6 +1,7 @@
 import {ReactRef, useDOMRef} from "@cloudstack-design/react-utils";
 import type {HTMLCloudStackDesignProps, PropGetter} from "@cloudstack-design/system";
 import {button, ButtonVariantProps} from "@cloudstack-design/theme";
+import {dataAttr} from "@cloudstack-design/shared-utils";
 import {useCallback, useMemo} from "react";
 
 interface Props extends HTMLCloudStackDesignProps<"button"> {
@@ -26,6 +27,8 @@ export const useButton = (props: UseButtonProps) => {
 
   const domRef = useDOMRef(ref);
 
+  const isDisabled = restProps.disabled;
+
   const styles = useMemo(
     () =>
       button({
@@ -40,11 +43,11 @@ export const useButton = (props: UseButtonProps) => {
   const getButtonProps: PropGetter = useCallback(
     (props = {}) => {
       return {
-        "data-disabled": props.isDisabled,
+        "data-disabled": dataAttr(isDisabled),
         className: styles,
       };
     },
-    [styles, restProps],
+    [styles, isDisabled],
   );
 
   return {
