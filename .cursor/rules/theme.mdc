@@ -5,4 +5,4 @@ alwaysApply: true
 ---
 
 1. This is a component library which is used in cloud compute.
-2. Don't use tailwind default color as theme, here is a `src/packages/theme/theme.css` css variable themes.
+2. Don't use tailwind default color as theme, here is themes package in `src/packages/core/theme`.
