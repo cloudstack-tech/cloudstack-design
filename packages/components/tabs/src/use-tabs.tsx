@@ -1,9 +1,9 @@
 import {ReactRef, useDOMRef} from "@cloudstack-design/react-utils";
-import type {HTMLCloudStackDesignProps} from "@cloudstack-design/system";
+import {HTMLCloudStackDesignProps} from "@cloudstack-design/system";
 import {tabs, TabsVariantProps, TabsSlots} from "@cloudstack-design/theme";
 import {useMemo, useState, useCallback, useRef, useEffect, ReactNode, ElementType} from "react";
 
-interface Props {
+interface Props extends HTMLCloudStackDesignProps<"div"> {
   /**
    * Ref to the tabs element
    */
@@ -32,10 +32,6 @@ interface Props {
    * Class names for different slots
    */
   classNames?: Partial<Record<TabsSlots, string>>;
-  /**
-   * Additional className for the base element
-   */
-  className?: string;
 }
 
 export type UseTabsProps = Props & TabsVariantProps;

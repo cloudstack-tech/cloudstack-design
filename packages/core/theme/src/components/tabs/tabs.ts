@@ -113,16 +113,25 @@ const tabs = tv({
     isDisabled: false,
   },
   compoundVariants: [
-    // variant: solid
+    // ==================== variant: solid ====================
     {
       variant: "solid",
       color: "default",
       class: {
         tab: [
-          "text-btn-solid-default-text",
-          "hover:bg-btn-solid-default-hover-bg",
-          "data-[active=true]:bg-btn-solid-default-hover-bg",
-          "data-[active=true]:text-btn-solid-default-text",
+          // base
+          "bg-tab-default-bg",
+          "text-tab-default-text",
+          // hover
+          "hover:bg-tab-default-hover-bg",
+          "hover:text-tab-default-hover-text",
+          // active
+          "data-[active=true]:bg-tab-default-active-bg",
+          "data-[active=true]:text-tab-default-active-text",
+          "data-[active=true]:font-semibold",
+          // disabled
+          "data-[disabled=true]:bg-tab-default-disabled-bg",
+          "data-[disabled=true]:text-tab-default-disabled-text",
         ],
         slider: "hidden",
       },
@@ -132,25 +141,43 @@ const tabs = tv({
       color: "primary",
       class: {
         tab: [
-          "text-btn-solid-default-text",
-          "hover:bg-btn-solid-primary-hover-bg/10",
-          "hover:text-btn-solid-primary-bg",
-          "data-[active=true]:bg-btn-solid-primary-bg",
-          "data-[active=true]:text-btn-solid-primary-text",
+          // base
+          "bg-tab-primary-bg",
+          "text-tab-primary-text",
+          // hover
+          "hover:bg-tab-primary-hover-bg",
+          "hover:text-tab-primary-hover-text",
+          // active
+          "data-[active=true]:bg-tab-primary-active-bg",
+          "data-[active=true]:text-tab-primary-active-text",
+          "data-[active=true]:font-semibold",
+          // disabled
+          "data-[disabled=true]:bg-tab-primary-disabled-bg",
+          "data-[disabled=true]:text-tab-primary-disabled-text",
         ],
         slider: "hidden",
       },
     },
-    // variant: light
+
+    // ==================== variant: light ====================
     {
       variant: "light",
       color: "default",
       class: {
         tab: [
-          "text-btn-solid-default-text",
-          "hover:bg-btn-solid-default-hover-bg",
-          "data-[active=true]:bg-btn-solid-default-hover-bg",
-          "data-[active=true]:text-btn-solid-default-text",
+          // base
+          "bg-tab-default-bg",
+          "text-tab-default-text",
+          // hover
+          "hover:bg-tab-default-hover-bg",
+          "hover:text-tab-default-hover-text",
+          // active
+          "data-[active=true]:bg-tab-default-active-bg",
+          "data-[active=true]:text-tab-default-active-text",
+          "data-[active=true]:font-semibold",
+          // disabled
+          "data-[disabled=true]:bg-tab-default-disabled-bg",
+          "data-[disabled=true]:text-tab-default-disabled-text",
         ],
         slider: "hidden",
       },
@@ -160,26 +187,43 @@ const tabs = tv({
       color: "primary",
       class: {
         tab: [
-          "text-btn-solid-default-text",
-          "hover:bg-btn-solid-primary-hover-bg/10",
-          "hover:text-btn-solid-primary-bg",
-          "data-[active=true]:bg-btn-solid-primary-hover-bg/20",
-          "data-[active=true]:text-btn-solid-primary-bg",
+          // base
+          "bg-tab-primary-bg",
+          "text-tab-primary-text",
+          // hover
+          "hover:bg-tab-primary-hover-bg",
+          "hover:text-tab-primary-hover-text",
+          // active
+          "data-[active=true]:bg-tab-primary-hover-bg",
+          "data-[active=true]:text-tab-primary-hover-text",
+          "data-[active=true]:font-semibold",
+          // disabled
+          "data-[disabled=true]:bg-tab-primary-disabled-bg",
+          "data-[disabled=true]:text-tab-primary-disabled-text",
         ],
         slider: "hidden",
       },
     },
-    // variant: underlined
+
+    // ==================== variant: underlined ====================
     {
       variant: "underlined",
       color: "default",
       class: {
         tab: [
-          "text-btn-solid-default-text",
-          "hover:text-btn-solid-default-hover-text",
-          "data-[active=true]:text-btn-solid-default-text",
+          // base
+          "bg-transparent",
+          "text-tab-default-text",
+          // hover - 添加背景色
+          "hover:bg-tab-default-hover-bg",
+          "hover:text-tab-default-hover-text",
+          // active
+          "data-[active=true]:text-tab-underlined-default-active-text",
+          "data-[active=true]:font-semibold",
+          // disabled
+          "data-[disabled=true]:text-tab-default-disabled-text",
         ],
-        slider: "bg-btn-solid-default-border",
+        slider: "bg-tab-underlined-default-indicator",
       },
     },
     {
@@ -187,14 +231,23 @@ const tabs = tv({
       color: "primary",
       class: {
         tab: [
-          "text-btn-solid-default-text",
-          "hover:text-btn-solid-primary-bg",
-          "data-[active=true]:text-btn-solid-primary-bg",
+          // base
+          "bg-transparent",
+          "text-tab-primary-text",
+          // hover - 添加背景色
+          "hover:bg-tab-primary-hover-bg",
+          "hover:text-tab-primary-hover-text",
+          // active
+          "data-[active=true]:text-tab-underlined-primary-active-text",
+          "data-[active=true]:font-semibold",
+          // disabled
+          "data-[disabled=true]:text-tab-primary-disabled-text",
         ],
-        slider: "bg-btn-solid-primary-bg",
+        slider: "bg-tab-underlined-primary-indicator",
       },
     },
-    // animation: flash - active state
+
+    // ==================== animation: flash ====================
     {
       animation: "flash",
       class: {
@@ -205,7 +258,7 @@ const tabs = tv({
       animation: "flash",
       color: "default",
       class: {
-        tab: ["after:bg-btn-solid-default-border"],
+        tab: ["after:bg-tab-underlined-default-indicator"],
         slider: "hidden",
       },
     },
@@ -213,11 +266,12 @@ const tabs = tv({
       animation: "flash",
       color: "primary",
       class: {
-        tab: ["after:bg-btn-solid-primary-bg"],
+        tab: ["after:bg-tab-underlined-primary-indicator"],
         slider: "hidden",
       },
     },
-    // animation: none
+
+    // ==================== animation: none ====================
     {
       animation: "none",
       class: {
@@ -229,7 +283,7 @@ const tabs = tv({
       variant: "underlined",
       color: "default",
       class: {
-        tab: ["data-[active=true]:border-b-btn-solid-default-border"],
+        tab: ["data-[active=true]:border-b-tab-underlined-default-indicator"],
       },
     },
     {
@@ -237,7 +291,7 @@ const tabs = tv({
       variant: "underlined",
       color: "primary",
       class: {
-        tab: ["data-[active=true]:border-b-btn-solid-primary-bg"],
+        tab: ["data-[active=true]:border-b-tab-underlined-primary-indicator"],
       },
     },
   ],

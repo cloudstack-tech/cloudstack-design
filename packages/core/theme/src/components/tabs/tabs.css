@@ -1,44 +1,56 @@
-/* Tabs Base Styles */
-.cloudstack-tabs {
-  @apply relative flex items-center gap-2;
+/* Tabs - Default color scheme */
+@theme {
+  /* Default - base state */
+  --color-tab-default-bg: transparent;
+  --color-tab-default-text: var(--color-default);
+  --color-tab-default-border: transparent;
+
+  /* Default - hover state */
+  --color-tab-default-hover-bg: rgb(247, 249, 250);
+  --color-tab-default-hover-text: var(--color-default);
+  --color-tab-default-hover-border: transparent;
+
+  /* Default - active state */
+  --color-tab-default-active-bg: rgb(239, 243, 248);
+  --color-tab-default-active-text: var(--color-default);
+  --color-tab-default-active-border: rgb(192, 198, 204);
+
+  /* Default - disabled state */
+  --color-tab-default-disabled-bg: transparent;
+  --color-tab-default-disabled-text: var(--color-disabled-text);
+  --color-tab-default-disabled-border: var(--color-disabled-border);
 }
 
-/* Tab Item Base Styles */
-.cloudstack-tab {
-  @apply relative inline-flex items-center justify-center;
-  @apply cursor-pointer select-none;
-  @apply transition-all duration-200;
-  @apply text-xs font-medium;
-  @apply px-4 min-h-8;
+/* Tabs - Primary color scheme */
+@theme {
+  /* Primary - base state */
+  --color-tab-primary-bg: transparent;
+  --color-tab-primary-text: var(--color-default);
+  --color-tab-primary-border: transparent;
+
+  /* Primary - hover state */
+  --color-tab-primary-hover-bg: rgb(230, 242, 255);
+  --color-tab-primary-hover-text: var(--color-primary);
+  --color-tab-primary-hover-border: transparent;
+
+  /* Primary - active state */
+  --color-tab-primary-active-bg: var(--color-primary);
+  --color-tab-primary-active-text: rgb(255, 255, 255);
+  --color-tab-primary-active-border: var(--color-primary);
+
+  /* Primary - disabled state */
+  --color-tab-primary-disabled-bg: transparent;
+  --color-tab-primary-disabled-text: var(--color-disabled-text);
+  --color-tab-primary-disabled-border: var(--color-disabled-border);
 }
 
-/* Slider Animation */
-.cloudstack-tabs-slider {
-  @apply absolute bottom-0 h-0.5;
-  @apply transition-all duration-300 ease-in-out;
-}
+/* Tabs - Underlined variant specific colors */
+@theme {
+  /* Underlined - slider/indicator color */
+  --color-tab-underlined-default-indicator: rgb(192, 198, 204);
+  --color-tab-underlined-primary-indicator: var(--color-primary);
 
-/* Flash Animation */
-.cloudstack-tab-flash {
-  @apply relative overflow-visible;
-}
-
-.cloudstack-tab-flash::after {
-  content: "";
-  @apply absolute bottom-[-2px] left-1/2 h-0.5 w-0;
-  @apply transition-[width,left] duration-300 ease-in-out;
-}
-
-.cloudstack-tab-flash[data-active="true"]::after {
-  @apply left-0 w-full;
-}
-
-/* Active State */
-.cloudstack-tab[data-active="true"] {
-  @apply font-semibold;
-}
-
-/* Disabled State */
-.cloudstack-tab[data-disabled="true"] {
-  @apply opacity-50 cursor-not-allowed;
+  /* Underlined - active text colors */
+  --color-tab-underlined-default-active-text: var(--color-default);
+  --color-tab-underlined-primary-active-text: var(--color-primary);
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import {Tabs, Tab} from "../src";
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
+import {Grid2x2, List} from "lucide-react";
 
 const meta = {
   title: "Components/Tabs",
@@ -302,4 +303,27 @@ export const Controlled: Story = {
       </div>
     );
   },
+};
+
+export const Example: Story = {
+  render: () => (
+    <Tabs defaultActiveKey="产品目录视图" animation="slide">
+      <Tab
+        key="产品目录视图"
+        tabKey="产品目录视图"
+        icon={<Grid2x2 size={12} />}
+        className="data-[active=true]:font-bold"
+      >
+        产品目录视图
+      </Tab>
+      <Tab
+        key="资源列表视图"
+        tabKey="资源列表视图"
+        icon={<List size={12} />}
+        className="data-[active=true]:font-bold"
+      >
+        资源列表视图
+      </Tab>
+    </Tabs>
+  ),
 };
