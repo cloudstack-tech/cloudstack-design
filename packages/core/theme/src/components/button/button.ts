@@ -172,11 +172,11 @@ const button = tv({
       color: "primary",
       class: [
         // base
-        "text-btn-solid-primary-text bg-btn-solid-primary-hover-bg",
+        "text-btn-solid-primary-bg bg-[rgb(239,243,248)]",
         // hover
-        "hover:text-btn-solid-primary-hover-text hover:bg-btn-solid-primary-hover-bg",
+        "hover:text-btn-solid-primary-hover-bg",
         // active
-        "active:text-btn-solid-primary-active-text active:bg-btn-solid-primary-active-bg",
+        "active:text-btn-solid-primary-active-bg",
       ],
     },
 
