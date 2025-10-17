@@ -1,9 +1,9 @@
 import {ReactRef, useDOMRef} from "@cloudstack-design/react-utils";
-import type {PropGetter} from "@cloudstack-design/system";
+import {HTMLCloudStackDesignProps, type PropGetter} from "@cloudstack-design/system";
 import {dataAttr} from "@cloudstack-design/shared-utils";
 import {useCallback, ReactNode, ElementType} from "react";
 
-interface Props {
+interface Props extends Omit<HTMLCloudStackDesignProps<"button">, "onClick"> {
   /**
    * Ref to the tab element
    */
