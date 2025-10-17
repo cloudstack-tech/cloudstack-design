@@ -4,3 +4,5 @@ export type {
   HTMLCloudStackDesignProps,
   PropGetter,
 } from "@cloudstack-design/system-rsc";
+
+export {mapPropsVariants} from "@cloudstack-design/system-rsc";

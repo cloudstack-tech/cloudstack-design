@@ -1,0 +1,44 @@
+/* Tabs Base Styles */
+.cloudstack-tabs {
+  @apply relative flex items-center gap-2;
+}
+
+/* Tab Item Base Styles */
+.cloudstack-tab {
+  @apply relative inline-flex items-center justify-center;
+  @apply cursor-pointer select-none;
+  @apply transition-all duration-200;
+  @apply text-xs font-medium;
+  @apply px-4 min-h-8;
+}
+
+/* Slider Animation */
+.cloudstack-tabs-slider {
+  @apply absolute bottom-0 h-0.5;
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Flash Animation */
+.cloudstack-tab-flash {
+  @apply relative overflow-visible;
+}
+
+.cloudstack-tab-flash::after {
+  content: "";
+  @apply absolute bottom-[-2px] left-1/2 h-0.5 w-0;
+  @apply transition-[width,left] duration-300 ease-in-out;
+}
+
+.cloudstack-tab-flash[data-active="true"]::after {
+  @apply left-0 w-full;
+}
+
+/* Active State */
+.cloudstack-tab[data-active="true"] {
+  @apply font-semibold;
+}
+
+/* Disabled State */
+.cloudstack-tab[data-disabled="true"] {
+  @apply opacity-50 cursor-not-allowed;
+}
