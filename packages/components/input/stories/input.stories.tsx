@@ -167,6 +167,11 @@ export const States: Story = {
         <Input placeholder="错误状态" defaultValue="无效的邮箱" isInvalid />
         <p className="text-xs text-red-600 mt-1">请输入有效的邮箱地址</p>
       </div>
+      <div>
+        <p className="text-xs text-gray-500 mb-1">警告状态</p>
+        <Input placeholder="警告状态" defaultValue="需要验证的输入" isWarning />
+        <p className="text-xs text-amber-600 mt-1">建议使用更强的密码</p>
+      </div>
     </div>
   ),
 };
@@ -258,6 +263,12 @@ export const TextareaExample: Story = {
         <label className="block text-xs font-medium mb-1">错误状态</label>
         <Textarea placeholder="错误的文本区域" rows={3} isInvalid />
         <p className="text-xs text-red-600 mt-1">内容不能为空</p>
+      </div>
+
+      <div>
+        <label className="block text-xs font-medium mb-1">警告状态</label>
+        <Textarea placeholder="警告的文本区域" rows={3} isWarning />
+        <p className="text-xs text-amber-600 mt-1">内容可能过短</p>
       </div>
     </div>
   ),

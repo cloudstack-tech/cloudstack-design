@@ -72,6 +72,10 @@ export default function InputExample() {
             <Input placeholder="错误状态" defaultValue="无效的输入" isInvalid />
             <p className="text-xs text-red-600 mt-1">此字段为必填项</p>
           </div>
+          <div>
+            <Input placeholder="警告状态" defaultValue="需要验证的输入" isWarning />
+            <p className="text-xs text-amber-600 mt-1">建议使用更强的密码</p>
+          </div>
         </div>
       </div>
 

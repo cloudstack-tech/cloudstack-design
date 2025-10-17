@@ -23,6 +23,10 @@
   --color-input-error-border: rgb(220, 38, 38);
   --color-input-error-text: rgb(220, 38, 38);
 
+  /* Warning */
+  --color-input-warning-border: rgb(245, 158, 11);
+  --color-input-warning-text: rgb(245, 158, 11);
+
   /* Success */
   --color-input-success-border: rgb(34, 197, 94);
   --color-input-success-text: rgb(34, 197, 94);

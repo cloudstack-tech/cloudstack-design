@@ -41,6 +41,10 @@ interface Props extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "size"
    */
   isInvalid?: boolean;
   /**
+   * Whether the textarea is in warning state
+   */
+  isWarning?: boolean;
+  /**
    * Custom class names for different slots
    */
   classNames?: Partial<Record<InputSlots, string>>;
@@ -62,6 +66,7 @@ export const useTextarea = (props: UseTextareaProps) => {
     onBlur,
     disabled: isDisabled = false,
     isInvalid = false,
+    isWarning = false,
     allowClear = false,
     allowResize = false,
     autoSize = false,
@@ -126,10 +131,11 @@ export const useTextarea = (props: UseTextareaProps) => {
         size: "md", // Textarea always uses md size
         isDisabled,
         isInvalid,
+        isWarning,
         isFocused,
         fullWidth,
       }),
-    [variant, isDisabled, isInvalid, isFocused, fullWidth],
+    [variant, isDisabled, isInvalid, isWarning, isFocused, fullWidth],
   );
 
   const handleChange = useCallback(
@@ -161,21 +167,37 @@ export const useTextarea = (props: UseTextareaProps) => {
     [onBlur],
   );
 
-  const handleClear = useCallback(() => {
-    if (isDisabled) return;
+  const handleClear = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    const event = {
-      target: {value: ""},
-      currentTarget: {value: ""},
-    } as ChangeEvent<HTMLTextAreaElement>;
+      if (isDisabled) return;
 
-    if (!isControlled) {
-      setInternalValue("");
-    }
+      if (!isControlled) {
+        setInternalValue("");
+      }
 
-    onChange?.(event);
-    textareaRef.current?.focus();
-  }, [isDisabled, isControlled, onChange]);
+      // Always update the DOM textarea value
+      if (textareaRef.current) {
+        textareaRef.current.value = "";
+
+        // Trigger onChange if provided
+        if (onChange) {
+          const syntheticEvent = {
+            ...e,
+            target: textareaRef.current,
+            currentTarget: textareaRef.current,
+          } as unknown as ChangeEvent<HTMLTextAreaElement>;
+
+          onChange(syntheticEvent);
+        }
+
+        textareaRef.current.focus();
+      }
+    },
+    [isDisabled, isControlled, onChange],
+  );
 
   const hasValue = useCallback(() => {
     return currentValue != null && String(currentValue).length > 0;
@@ -240,7 +262,7 @@ export const useTextarea = (props: UseTextareaProps) => {
 
   const getClearButtonProps = useCallback(
     () => ({
-      onClick: handleClear,
+      onMouseDown: handleClear,
       className: slots.clearButton({
         class: [classNames?.clearButton, "absolute top-3 right-3"],
       }),

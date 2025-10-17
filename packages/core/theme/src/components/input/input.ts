@@ -103,6 +103,12 @@ const input = tv({
       },
       false: {},
     },
+    isWarning: {
+      true: {
+        inputWrapper: "border-input-warning-border",
+      },
+      false: {},
+    },
     isFocused: {
       true: {
         inputWrapper: ["border-input-focus-border", "ring-2", "ring-input-focus-ring"],
@@ -123,6 +129,7 @@ const input = tv({
     size: "md",
     isDisabled: false,
     isInvalid: false,
+    isWarning: false,
     isFocused: false,
     fullWidth: true,
   },
@@ -157,6 +164,22 @@ const input = tv({
       isInvalid: true,
       class: {
         inputWrapper: "hover:border-input-error-border hover:shadow-input-hover",
+      },
+    },
+    // Warning state - keep warning border on hover
+    {
+      isDisabled: false,
+      isWarning: true,
+      class: {
+        inputWrapper: "hover:border-input-warning-border hover:shadow-input-hover",
+      },
+    },
+    // Focused + Warning state - warning border takes priority
+    {
+      isFocused: true,
+      isWarning: true,
+      class: {
+        inputWrapper: "border-input-warning-border ring-amber-500/20",
       },
     },
   ],

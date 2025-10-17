@@ -40,6 +40,10 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "pr
    */
   isInvalid?: boolean;
   /**
+   * Whether the input is in warning state
+   */
+  isWarning?: boolean;
+  /**
    * Custom class names for different slots
    */
   classNames?: Partial<Record<InputSlots, string>>;
@@ -61,6 +65,7 @@ export const useInput = (props: UseInputProps) => {
     onBlur,
     disabled: isDisabled = false,
     isInvalid = false,
+    isWarning = false,
     allowClear = false,
     prefix,
     suffix,
@@ -98,10 +103,11 @@ export const useInput = (props: UseInputProps) => {
         size,
         isDisabled,
         isInvalid,
+        isWarning,
         isFocused,
         fullWidth,
       }),
-    [variant, size, isDisabled, isInvalid, isFocused, fullWidth],
+    [variant, size, isDisabled, isInvalid, isWarning, isFocused, fullWidth],
   );
 
   const handleChange = useCallback(
@@ -133,27 +139,43 @@ export const useInput = (props: UseInputProps) => {
     [onBlur],
   );
 
-  const handleClear = useCallback(() => {
-    if (isDisabled) return;
+  const handleClear = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    const event = {
-      target: {value: ""},
-      currentTarget: {value: ""},
-    } as ChangeEvent<HTMLInputElement>;
+      if (isDisabled) return;
 
-    if (!isControlled) {
-      setInternalValue("");
-    }
+      if (!isControlled) {
+        setInternalValue("");
+      }
 
-    onChange?.(event);
-    inputRef.current?.focus();
-  }, [isDisabled, isControlled, onChange]);
+      // Always update the DOM input value
+      if (inputRef.current) {
+        inputRef.current.value = "";
+
+        // Trigger onChange if provided
+        if (onChange) {
+          const syntheticEvent = {
+            ...e,
+            target: inputRef.current,
+            currentTarget: inputRef.current,
+          } as unknown as ChangeEvent<HTMLInputElement>;
+
+          onChange(syntheticEvent);
+        }
+
+        inputRef.current.focus();
+      }
+    },
+    [isDisabled, isControlled, onChange],
+  );
 
   const hasValue = useCallback(() => {
     return currentValue != null && String(currentValue).length > 0;
   }, [currentValue]);
 
-  const showClearIcon = allowClear && hasValue() && !isDisabled && isFocused;
+  const showClearIcon = allowClear && hasValue() && !isDisabled;
 
   const getBaseProps = useCallback(
     () => ({
@@ -195,7 +217,7 @@ export const useInput = (props: UseInputProps) => {
 
   const getClearButtonProps = useCallback(
     () => ({
-      onClick: handleClear,
+      onMouseDown: handleClear,
       className: slots.clearButton({class: classNames?.clearButton}),
     }),
     [handleClear, slots, classNames],

@@ -41,6 +41,7 @@ function App() {
 | `placeholder` | `string`                               | -            | 占位符文本         |
 | `disabled`    | `boolean`                              | `false`      | 是否禁用           |
 | `isInvalid`   | `boolean`                              | `false`      | 是否为错误状态     |
+| `isWarning`   | `boolean`                              | `false`      | 是否为警告状态     |
 | `allowClear`  | `boolean`                              | `false`      | 是否显示清除按钮   |
 | `prefix`      | `ReactNode`                            | -            | 前缀内容           |
 | `suffix`      | `ReactNode`                            | -            | 后缀内容           |
@@ -55,6 +56,7 @@ function App() {
 | `placeholder` | `string`                               | -            | 占位符文本                   |
 | `disabled`    | `boolean`                              | `false`      | 是否禁用                     |
 | `isInvalid`   | `boolean`                              | `false`      | 是否为错误状态               |
+| `isWarning`   | `boolean`                              | `false`      | 是否为警告状态               |
 | `allowClear`  | `boolean`                              | `false`      | 是否显示清除按钮             |
 | `allowResize` | `boolean`                              | `false`      | 是否允许手动调整大小         |
 | `autoSize`    | `boolean \| {minRows, maxRows}`        | `false`      | 是否自动调整高度             |
@@ -120,13 +122,24 @@ interface TextareaRef {
 <Input defaultValue="可清除的内容" allowClear placeholder="带清除按钮" />
 ```
 
-### 错误状态
+### 错误和警告状态
 
 ```tsx
+{
+  /* 错误状态 */
+}
 <div>
   <Input placeholder="错误状态" defaultValue="无效的输入" isInvalid />
   <p className="text-xs text-red-600 mt-1">此字段为必填项</p>
-</div>
+</div>;
+
+{
+  /* 警告状态 */
+}
+<div>
+  <Input placeholder="警告状态" defaultValue="需要验证" isWarning />
+  <p className="text-xs text-amber-600 mt-1">建议使用更强的密码</p>
+</div>;
 ```
 
 ### 受控模式
