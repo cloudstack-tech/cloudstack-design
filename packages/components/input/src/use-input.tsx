@@ -175,7 +175,7 @@ export const useInput = (props: UseInputProps) => {
     return currentValue != null && String(currentValue).length > 0;
   }, [currentValue]);
 
-  const showClearIcon = allowClear && hasValue() && !isDisabled;
+  const showClearIcon = allowClear && hasValue() && !isDisabled && isFocused;
 
   const getBaseProps = useCallback(
     () => ({
