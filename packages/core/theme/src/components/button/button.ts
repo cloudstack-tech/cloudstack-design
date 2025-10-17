@@ -199,7 +199,7 @@ const button = tv({
       variant: "outline",
       color: "primary",
       class: [
-        "text-btn-solid-default-text",
+        "text-btn-solid-primary-bg",
         // hover
         "hover:text-btn-solid-primary-hover-text hover:bg-btn-solid-primary-hover-bg",
         "border border-btn-solid-primary-border hover:border-btn-solid-primary-hover-border",
