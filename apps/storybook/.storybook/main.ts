@@ -8,8 +8,8 @@ const config: StorybookConfig = {
   stories: [
     "./welcome.mdx",
     // Only include stories from component source directories, not from node_modules
-    "../../../packages/components/*/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../../../packages/components/*/stories/**/*.mdx",
+    "../../../packages/components/*/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     // "../../../packages/core/theme/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [

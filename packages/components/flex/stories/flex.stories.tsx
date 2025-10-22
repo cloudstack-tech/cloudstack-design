@@ -3,7 +3,7 @@ import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 import {Flex} from "../src";
 
 const meta = {
-  title: "Layout 布局/Flex 弹性布局",
+  title: "Components/Layout 布局/Flex 弹性布局",
   component: Flex,
   parameters: {
     layout: "centered",
