@@ -6,3 +6,4 @@ export * from "./flex";
 export * from "./space";
 export * from "./grid";
 export * from "./stack";
+export * from "./divider";
