@@ -232,6 +232,31 @@ importers:
         specifier: 18.3.0
         version: 18.3.0(react@18.3.0)
 
+  packages/components/flex:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
   packages/components/input:
     dependencies:
       '@cloudstack-design/react-utils':
@@ -339,6 +364,10 @@ importers:
         version: 18.3.0
 
   packages/core/system-rsc:
+    dependencies:
+      '@react-types/shared':
+        specifier: 3.32.1
+        version: 3.32.1(react@18.3.0)
     devDependencies:
       clean-package:
         specifier: 2.2.0
@@ -998,6 +1027,11 @@ packages:
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
+
+  '@react-types/shared@3.32.1':
+    resolution: {integrity: sha512-famxyD5emrGGpFuUlgOP6fVW2h/ZaF405G5KDi3zPHzyjAWys/8W6NAVJtNbkCkhedmvL0xOhvt8feGXyXaw5w==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
   '@rollup/pluginutils@5.3.0':
     resolution: {integrity: sha512-5EdhGZtnu3V88ces7s53hhfK5KSASnJZv8Lulpc04cWO3REESroJXg73DFsOmgbU2BhwV0E20bu2IDZb3VKW4Q==}
@@ -4649,6 +4683,10 @@ snapshots:
     optional: true
 
   '@polka/url@1.0.0-next.29': {}
+
+  '@react-types/shared@3.32.1(react@18.3.0)':
+    dependencies:
+      react: 18.3.0
 
   '@rollup/pluginutils@5.3.0(rollup@4.52.4)':
     dependencies:

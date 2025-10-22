@@ -1,3 +1,43 @@
+import type {As, RightJoinProps, PropsOf, ForwardRefRenderFunction} from "./types";
+import type * as React from "react";
+
+import {forwardRef as baseForwardRef} from "react";
+
+/**
+ * Forward ref
+ * @param component - The component to forward ref to.
+ * @param props - The props to forward ref to.
+ * @param omitKeys - The keys to omit from the props.
+ * @returns The forward ref component.
+ *
+ * @description Forward ref component
+ * @example
+ * const Component = forwardRef<"div", FlexProps>((props, ref) => {
+ *   return <div ref={ref} {...props} />;
+ * });
+ * console.log(Component); // {$$typeof: Symbol(react.forward_ref), propTypes: undefined, defaultProps: undefined, displayName: "Component"}
+ */
+export function forwardRef<
+  Component extends As,
+  Props extends object,
+  OmitKeys extends keyof any = never,
+>(
+  component: React.ForwardRefRenderFunction<
+    Component extends React.ComponentType
+      ? React.ComponentRef<Component>
+      : Component extends keyof React.JSX.IntrinsicElements
+      ? React.ComponentRef<Component>
+      : HTMLElement,
+    React.PropsWithoutRef<
+      RightJoinProps<PropsOf<Component>, Props> & {
+        as?: As;
+      }
+    >
+  >,
+) {
+  return baseForwardRef(component) as ForwardRefRenderFunction<Component, Props, OmitKeys>;
+}
+
 /**
  * Maps the props to the variant props.
  *

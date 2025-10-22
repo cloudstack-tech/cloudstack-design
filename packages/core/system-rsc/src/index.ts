@@ -1,3 +1,9 @@
-export type {As, PropsOf, HTMLCloudStackDesignProps, PropGetter} from "./types";
+export type {
+  As,
+  PropsOf,
+  HTMLCloudStackDesignProps,
+  PropGetter,
+  ForwardRefRenderFunction as InternalForwardRefRenderFunction,
+} from "./types";
 
-export {mapPropsVariants} from "./utils";
+export {forwardRef, mapPropsVariants} from "./utils";
