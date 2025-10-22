@@ -1,0 +1,131 @@
+import {Meta, Controls} from "@storybook/addon-docs/blocks";
+
+import * as StackStories from "./stack.stories";
+
+<Meta of={StackStories} />
+
+# Stack 堆叠布局
+
+设置子元素在一个方向上的堆叠布局，支持灵活的间距和对齐方式。
+
+## 何时使用
+
+- 需要在垂直或水平方向上排列元素
+- 需要在元素之间保持一致的间距
+- 需要在元素之间添加分隔符
+- 需要快速创建简单的布局
+
+## 与其他布局组件的区别
+
+- **Stack**: 专注于单方向堆叠，提供简洁的 API 和分隔符支持
+- **Flex**: 更底层的弹性布局，提供更多的控制选项
+- **Space**: 为内联元素提供间距，不支持主轴对齐和分隔符
+- **Grid**: 二维网格布局，适合复杂的网格结构
+
+## 组件变体
+
+Stack 提供多种使用方式，根据你的偏好选择：
+
+### Stack (基础组件)
+
+```tsx
+<Stack direction="vertical" spacing="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Stack>
+```
+
+### HStack (水平堆叠)
+
+```tsx
+// 直接使用 HStack 组件
+<HStack spacing="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</HStack>
+
+// 或使用 Stack.H 简写
+<Stack.H spacing="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Stack.H>
+
+// 或使用 Stack.Horizontal 完整名称
+<Stack.Horizontal spacing="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Stack.Horizontal>
+```
+
+### VStack (垂直堆叠)
+
+```tsx
+// 直接使用 VStack 组件
+<VStack spacing="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</VStack>
+
+// 或使用 Stack.V 简写
+<Stack.V spacing="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Stack.V>
+
+// 或使用 Stack.Vertical 完整名称
+<Stack.Vertical spacing="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Stack.Vertical>
+```
+
+## 特性
+
+- 🎯 支持垂直和水平方向
+- 📏 预设间距大小（small/medium/large）
+- 🔧 支持自定义间距数值
+- ↔️ 交叉轴对齐（align）
+- ↕️ 主轴对齐（justify）
+- 🔄 支持换行
+- ➗ 支持分隔符
+- 🎨 多种使用方式（Stack/HStack/VStack）
+
+## 属性
+
+<Controls />
+
+## 使用示例
+
+### 基础堆叠
+
+```tsx
+<Stack spacing="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</Stack>
+```
+
+### 带分隔符
+
+```tsx
+<Stack divider={<hr />}>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</Stack>
+```
+
+### 嵌套使用
+
+```tsx
+<VStack spacing="large">
+  <div>Header</div>
+  <HStack spacing="medium">
+    <div>Left</div>
+    <div>Center</div>
+    <div>Right</div>
+  </HStack>
+  <div>Footer</div>
+</VStack>
+```
