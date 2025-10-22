@@ -1,4 +1,8 @@
+import { createRequire } from "node:module";
+import { dirname, join } from "node:path";
 import type {StorybookConfig} from "@storybook/nextjs-vite";
+
+const require = createRequire(import.meta.url);
 
 const config: StorybookConfig = {
   stories: [
@@ -8,15 +12,19 @@ const config: StorybookConfig = {
     // "../../../packages/core/theme/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
-    "@chromatic-com/storybook",
-    "@storybook/addon-docs",
-    "@storybook/addon-a11y",
-    "@storybook/addon-vitest",
+    getAbsolutePath("@chromatic-com/storybook"),
+    getAbsolutePath("@storybook/addon-docs"),
+    getAbsolutePath("@storybook/addon-a11y"),
+    getAbsolutePath("@storybook/addon-vitest"),
   ],
   framework: {
-    name: "@storybook/nextjs-vite",
+    name: getAbsolutePath("@storybook/nextjs-vite"),
     options: {},
   },
   staticDirs: ["../public"],
 };
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, "package.json")));
+}

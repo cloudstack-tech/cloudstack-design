@@ -1,5 +1,5 @@
 ---
-description: 
+description: Cloudstack Design — a modern React component library built with TypeScript, TailwindCSS, and Tsup.
 globs: *
 alwaysApply: true
 ---
