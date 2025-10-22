@@ -10,7 +10,7 @@
     "dev": "pnpm storybook",
     "storybook": "storybook dev -p 6006",
     "build:sb": "storybook build -o ../../storybook-static",
-    "start:sb": "pnpm storybook"
+    "start:sb": "pnpm storybook start"
   },
   "dependencies": {
     "@cloudstack-design/react": "workspace:^",
