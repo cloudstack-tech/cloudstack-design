@@ -1,0 +1,82 @@
+import {Meta, Controls, Canvas} from "@storybook/addon-docs/blocks";
+
+import * as GridStories from "./grid.stories";
+
+<Meta of={GridStories} />
+
+# Grid 网格布局
+
+基于 CSS Grid 的现代网格布局系统，支持灵活的网格配置和响应式设计。
+
+## 何时使用
+
+- 需要创建复杂的二维布局
+- 需要精确控制元素在网格中的位置
+- 需要响应式的网格系统
+- 需要元素跨越多行或多列
+
+## 与其他布局组件的区别
+
+- **Grid**: 二维网格布局，适合需要精确控制行列的复杂布局
+- **Flex**: 一维弹性布局，适合单行或单列的简单布局
+- **Space**: 为内联元素提供间距，适合简单的等距排列
+
+## 特性
+
+- 🎯 支持 1-12 列的预设配置
+- 📏 支持 1-6 行的预设配置
+- 🔄 支持网格流向控制（row/col/dense）
+- 📐 支持自定义间距（单一值或行列分别设置）
+- 📱 完全支持响应式设计
+- 🎨 支持元素自定义跨度（span）
+
+## 属性
+
+<Controls />
+
+## 使用示例
+
+### 基础用法
+
+```tsx
+<Grid cols={3} gap={4}>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</Grid>
+```
+
+### 响应式布局
+
+```tsx
+<Grid className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" gap={4}>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+  <div>Item 4</div>
+</Grid>
+```
+
+### 自定义跨度
+
+```tsx
+<Grid cols={4} gap={4}>
+  <div className="col-span-2">跨 2 列</div>
+  <div>Item</div>
+  <div>Item</div>
+  <div className="col-span-2 row-span-2">跨 2 列 2 行</div>
+  <div>Item</div>
+  <div>Item</div>
+</Grid>
+```
+
+### 不同行列间距
+
+```tsx
+<Grid cols={3} gap={[8, 2]}>
+  {/* 行间距 32px，列间距 8px */}
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</Grid>
+```
