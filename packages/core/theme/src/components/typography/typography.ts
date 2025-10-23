@@ -5,60 +5,101 @@ import {tv} from "../../utils/tv";
 /**
  * Typography wrapper **Tailwind Variants** component
  *
- * const classNames = typography({...})
- *
  * @example
- * <div
- *  className={classNames())}
- * >
- *   Typography
+ * ```tsx
+ * const styles = typography({...})
+ *
+ * <div className={styles}>
+ *   Typography Text
  * </div>
+ * ```
  */
 const typography = tv({
-  base: ["text-foreground"],
+  base: ["transition-colors"],
   variants: {
     size: {
       xs: "text-xs",
       sm: "text-sm",
       base: "text-base",
-      lg: "text-lg",
-      xl: "text-xl",
-      "2xl": "text-2xl",
-      "3xl": "text-3xl",
+      md: "text-lg",
+      lg: "text-xl",
+      xl: "text-2xl",
+      "2xl": "text-3xl",
+      "3xl": "text-4xl",
     },
     weight: {
+      light: "font-light",
       normal: "font-normal",
       medium: "font-medium",
       semibold: "font-semibold",
       bold: "font-bold",
     },
     color: {
-      default: "text-foreground",
-      primary: "text-primary",
-      secondary: "text-secondary",
-      success: "text-success",
-      warning: "text-warning",
-      danger: "text-danger",
+      default: "text-gray-900",
+      primary: "text-blue-600",
+      secondary: "text-purple-600",
+      success: "text-green-600",
+      warning: "text-yellow-600",
+      danger: "text-red-600",
+      muted: "text-gray-500",
+    },
+    align: {
+      left: "text-left",
+      center: "text-center",
+      right: "text-right",
+      justify: "text-justify",
     },
     italic: {
       true: "italic",
+      false: "",
     },
     underline: {
       true: "underline",
+      false: "",
     },
     strikethrough: {
       true: "line-through",
+      false: "",
     },
-    ellipsis: {
-      true: "truncate",
-      line: "[display:-webkit-box] [-webkit-box-orient:vertical] overflow-hidden",
+    truncate: {
+      true: "truncate overflow-hidden whitespace-nowrap text-ellipsis",
+      false: "",
+    },
+    transform: {
+      uppercase: "uppercase",
+      lowercase: "lowercase",
+      capitalize: "capitalize",
+      normal: "normal-case",
+    },
+    lineHeight: {
+      none: "leading-none",
+      tight: "leading-tight",
+      snug: "leading-snug",
+      normal: "leading-normal",
+      relaxed: "leading-relaxed",
+      loose: "leading-loose",
     },
   },
   defaultVariants: {
     size: "base",
     weight: "normal",
     color: "default",
+    italic: false,
+    underline: false,
+    strikethrough: false,
+    truncate: false,
   },
+  compoundVariants: [
+    // disabled + color combinations
+    {
+      color: "default",
+      class: "hover:text-gray-700",
+    },
+    {
+      color: "primary",
+      class: "hover:text-blue-700",
+    },
+  ],
 });
 
 export type TypographyVariantProps = VariantProps<typeof typography>;
