@@ -5,9 +5,8 @@ import {card} from "@cloudstack-design/theme";
 import {ReactRef, useDOMRef} from "@cloudstack-design/react-utils";
 import {objectToDeps} from "@cloudstack-design/shared-utils";
 import {useMemo, useState, useCallback, ReactNode} from "react";
-import {SlotsToClasses} from "@cloudstack-design/theme";
 
-interface Props extends HTMLCloudStackDesignProps<"div"> {
+interface Props extends Omit<HTMLCloudStackDesignProps<"div">, "title"> {
   /**
    * Ref to the DOM node.
    */
@@ -31,7 +30,7 @@ interface Props extends HTMLCloudStackDesignProps<"div"> {
   /**
    * Custom class names for different slots
    */
-  classNames?: SlotsToClasses<CardSlots>;
+  classNames?: Partial<Record<CardSlots, string>>;
 }
 
 export type UseCardProps = Props & CardVariantProps;

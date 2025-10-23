@@ -34,18 +34,19 @@
     "postpack": "clean-package restore"
   },
   "peerDependencies": {
-    "react": ">=18 || >=19.0.0-rc.0",
-    "react-dom": ">=18 || >=19.0.0-rc.0",
+    "@cloudstack-design/system": ">=1.0.0",
     "@cloudstack-design/theme": ">=1.0.0",
-    "@cloudstack-design/system": ">=1.0.0"
+    "react": ">=18 || >=19.0.0-rc.0",
+    "react-dom": ">=18 || >=19.0.0-rc.0"
   },
   "dependencies": {
+    "@cloudstack-design/react-utils": "workspace:*",
     "@cloudstack-design/shared-utils": "workspace:*",
-    "@cloudstack-design/react-utils": "workspace:*"
+    "@floating-ui/react": "^0.27.16"
   },
   "devDependencies": {
-    "@cloudstack-design/theme": "workspace:*",
     "@cloudstack-design/system": "workspace:*",
+    "@cloudstack-design/theme": "workspace:*",
     "clean-package": "2.2.0",
     "react": "18.3.0",
     "react-dom": "18.3.0"

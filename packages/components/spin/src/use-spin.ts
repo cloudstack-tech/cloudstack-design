@@ -14,6 +14,10 @@ interface Props extends HTMLCloudStackDesignProps<"div"> {
    * The label text to show below the spinner
    */
   label?: React.ReactNode;
+  /**
+   * Custom icon component to use instead of the default spinner
+   */
+  icon?: React.ComponentType<{className?: string}>;
 }
 
 export type UseSpinProps = Props & SpinVariantProps;
@@ -21,7 +25,7 @@ export type UseSpinProps = Props & SpinVariantProps;
 export function useSpin(originalProps: UseSpinProps) {
   const [props, variantProps] = mapPropsVariants(originalProps, spin.variantKeys);
 
-  const {ref, as, className, label, children, ...otherProps} = props;
+  const {ref, as, className, label, icon, children, ...otherProps} = props;
 
   const Component = as || "div";
 
@@ -45,6 +49,7 @@ export function useSpin(originalProps: UseSpinProps) {
     Component,
     domRef,
     label,
+    icon,
     children,
     slots,
     baseStyles,

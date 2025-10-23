@@ -14,6 +14,10 @@ interface Props extends HTMLCloudStackDesignProps<"div"> {
    * The description text to show below the icon
    */
   description?: React.ReactNode;
+  /**
+   * Custom icon component to use instead of the default icon
+   */
+  icon?: React.ComponentType<{className?: string}>;
 }
 
 export type UseEmptyProps = Props & EmptyVariantProps;
@@ -21,7 +25,7 @@ export type UseEmptyProps = Props & EmptyVariantProps;
 export function useEmpty(originalProps: UseEmptyProps) {
   const [props, variantProps] = mapPropsVariants(originalProps, empty.variantKeys);
 
-  const {ref, as, className, description, children, ...otherProps} = props;
+  const {ref, as, className, description, icon, children, ...otherProps} = props;
 
   const Component = as || "div";
 
@@ -45,6 +49,7 @@ export function useEmpty(originalProps: UseEmptyProps) {
     Component,
     domRef,
     description,
+    icon,
     children,
     slots,
     baseStyles,

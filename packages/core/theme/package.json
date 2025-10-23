@@ -32,7 +32,7 @@
     "url": "https://github.com/cloudstack-tech/cloudstack-design/issues"
   },
   "scripts": {
-    "build": "tsup src --dts",
+    "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" tsup src --dts",
     "build:fast": "tsup src",
     "dev": "pnpm build:fast --watch",
     "clean": "rimraf dist .turbo",

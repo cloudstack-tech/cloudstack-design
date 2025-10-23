@@ -5,7 +5,6 @@ import {checkbox} from "@cloudstack-design/theme";
 import {ReactRef, useDOMRef} from "@cloudstack-design/react-utils";
 import {objectToDeps, dataAttr} from "@cloudstack-design/shared-utils";
 import {useMemo, useCallback, useState, ReactNode, ChangeEvent} from "react";
-import {SlotsToClasses} from "@cloudstack-design/theme";
 
 interface Props extends Omit<HTMLCloudStackDesignProps<"input">, "onChange"> {
   /**
@@ -59,7 +58,7 @@ interface Props extends Omit<HTMLCloudStackDesignProps<"input">, "onChange"> {
   /**
    * Custom class names for different slots
    */
-  classNames?: SlotsToClasses<CheckboxSlots>;
+  classNames?: Partial<Record<CheckboxSlots, string>>;
   /**
    * Whether to disable animations
    */
@@ -68,8 +67,8 @@ interface Props extends Omit<HTMLCloudStackDesignProps<"input">, "onChange"> {
 
 export type UseCheckboxProps = Props & CheckboxVariantProps;
 
-export function useCheckbox(originalProps: UseCheckboxProps) {
-  const [props, variantProps] = mapPropsVariants(originalProps, checkbox.variantKeys);
+export function useCheckbox(props: UseCheckboxProps) {
+  // const [props, variantProps] = mapPropsVariants(originalProps, checkbox.variantKeys);
 
   const {
     ref,
@@ -121,13 +120,9 @@ export function useCheckbox(originalProps: UseCheckboxProps) {
   const slots = useMemo(
     () =>
       checkbox({
-        ...variantProps,
-        isSelected: isSelected && !isIndeterminate,
-        isIndeterminate,
-        isDisabled,
-        disableAnimation,
+        ...props,
       }),
-    [objectToDeps(variantProps), isSelected, isIndeterminate, isDisabled, disableAnimation],
+    [objectToDeps(props)],
   );
 
   const getBaseProps: PropGetter = useCallback(

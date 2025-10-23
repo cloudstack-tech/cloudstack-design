@@ -1,7 +1,7 @@
-import type { TimePickerVariantProps } from "@cloudstack-design/theme";
+import type {TimePickerVariantProps} from "@cloudstack-design/theme";
 
 import {HTMLCloudStackDesignProps, mapPropsVariants} from "@cloudstack-design/system";
-import { time-picker } from "@cloudstack-design/theme";
+import {timePicker} from "@cloudstack-design/theme";
 import {ReactRef, useDOMRef} from "@cloudstack-design/react-utils";
 import {objectToDeps} from "@cloudstack-design/shared-utils";
 import {useMemo} from "react";
@@ -16,7 +16,7 @@ interface Props extends HTMLCloudStackDesignProps<"div"> {
 export type UseTimePickerProps = Props & TimePickerVariantProps;
 
 export function useTimePicker(originalProps: UseTimePickerProps) {
-  const [props, variantProps] = mapPropsVariants(originalProps, time-picker.variantKeys);
+  const [props, variantProps] = mapPropsVariants(originalProps, timePicker.variantKeys);
 
   const {ref, as, className, ...otherProps} = props;
 
@@ -25,13 +25,13 @@ export function useTimePicker(originalProps: UseTimePickerProps) {
   const domRef = useDOMRef(ref);
 
   const styles = useMemo(
-  () =>
-    time-picker({
-      ...variantProps,
-      className,
-    }),
-  [objectToDeps(variantProps), className],
-);
+    () =>
+      timePicker({
+        ...variantProps,
+        className,
+      }),
+    [objectToDeps(variantProps), className],
+  );
 
   return {Component, styles, domRef, ...otherProps};
 }

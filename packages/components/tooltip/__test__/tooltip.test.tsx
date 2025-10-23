@@ -1,11 +1,11 @@
 import * as React from "react";
 import {render} from "@testing-library/react";
 
-import { Tooltip } from "../src";
+import {Tooltip} from "../src";
 
 describe("Tooltip", () => {
   it("should render correctly", () => {
-   const wrapper = render(<Tooltip />);
+    const wrapper = render(<Tooltip />);
 
     expect(() => wrapper.unmount()).not.toThrow();
   });

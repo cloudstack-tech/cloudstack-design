@@ -7,7 +7,7 @@ import Checkbox from "./checkbox";
 import type {CheckboxProps} from "./checkbox";
 
 export interface CheckboxGroupProps<T = string>
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange"> {
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "defaultValue"> {
   /**
    * The checkbox group label
    */

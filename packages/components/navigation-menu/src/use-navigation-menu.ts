@@ -1,7 +1,7 @@
-import type { NavigationMenuVariantProps } from "@cloudstack-design/theme";
+import type {NavigationMenuVariantProps} from "@cloudstack-design/theme";
 
 import {HTMLCloudStackDesignProps, mapPropsVariants} from "@cloudstack-design/system";
-import { navigation-menu } from "@cloudstack-design/theme";
+import {navigationMenu} from "@cloudstack-design/theme";
 import {ReactRef, useDOMRef} from "@cloudstack-design/react-utils";
 import {objectToDeps} from "@cloudstack-design/shared-utils";
 import {useMemo} from "react";
@@ -16,7 +16,7 @@ interface Props extends HTMLCloudStackDesignProps<"div"> {
 export type UseNavigationMenuProps = Props & NavigationMenuVariantProps;
 
 export function useNavigationMenu(originalProps: UseNavigationMenuProps) {
-  const [props, variantProps] = mapPropsVariants(originalProps, navigation-menu.variantKeys);
+  const [props, variantProps] = mapPropsVariants(originalProps, navigationMenu.variantKeys);
 
   const {ref, as, className, ...otherProps} = props;
 
@@ -25,13 +25,13 @@ export function useNavigationMenu(originalProps: UseNavigationMenuProps) {
   const domRef = useDOMRef(ref);
 
   const styles = useMemo(
-  () =>
-    navigation-menu({
-      ...variantProps,
-      className,
-    }),
-  [objectToDeps(variantProps), className],
-);
+    () =>
+      navigationMenu({
+        ...variantProps,
+        className,
+      }),
+    [objectToDeps(variantProps), className],
+  );
 
   return {Component, styles, domRef, ...otherProps};
 }
