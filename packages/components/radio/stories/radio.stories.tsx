@@ -1,14 +1,13 @@
 import React from "react";
-import {Meta} from "@storybook/react";
-import { radio } from "@cloudstack-design/theme";
+import {Meta} from "@storybook/nextjs-vite";
+import {radio} from "@cloudstack-design/theme";
 
-import { Radio, RadioProps } from "../src";
+import {Radio, RadioProps} from "../src";
 
 export default {
-  title: "Components/Radio",
+  title: "Components/Data Entry 数据输入/Radio 单选框",
   component: Radio,
-  argTypes: {
-  },
+  argTypes: {},
 } as Meta<typeof Radio>;
 
 const defaultProps = {
@@ -17,10 +16,9 @@ const defaultProps = {
 
 const Template = (args: RadioProps) => <Radio {...args} />;
 
-
 export const Default = {
   render: Template,
   args: {
     ...defaultProps,
-  }
-}
+  },
+};

@@ -3,7 +3,7 @@ import {Input, Textarea} from "../src";
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
 const meta = {
-  title: "Components/Input",
+  title: "Components/Data Entry 数据输入/Input 输入框",
   component: Input,
   parameters: {
     layout: "centered",

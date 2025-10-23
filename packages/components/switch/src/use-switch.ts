@@ -1,7 +1,7 @@
-import type { SwitchVariantProps } from "@cloudstack-design/theme";
+import type {SwitchVariantProps} from "@cloudstack-design/theme";
 
 import {HTMLCloudStackDesignProps, mapPropsVariants} from "@cloudstack-design/system";
-import { switch } from "@cloudstack-design/theme";
+import {switchComponent} from "@cloudstack-design/theme";
 import {ReactRef, useDOMRef} from "@cloudstack-design/react-utils";
 import {objectToDeps} from "@cloudstack-design/shared-utils";
 import {useMemo} from "react";
@@ -16,7 +16,7 @@ interface Props extends HTMLCloudStackDesignProps<"div"> {
 export type UseSwitchProps = Props & SwitchVariantProps;
 
 export function useSwitch(originalProps: UseSwitchProps) {
-  const [props, variantProps] = mapPropsVariants(originalProps, switch.variantKeys);
+  const [props, variantProps] = mapPropsVariants(originalProps, switchComponent.variantKeys);
 
   const {ref, as, className, ...otherProps} = props;
 
@@ -25,13 +25,13 @@ export function useSwitch(originalProps: UseSwitchProps) {
   const domRef = useDOMRef(ref);
 
   const styles = useMemo(
-  () =>
-    switch({
-      ...variantProps,
-      className,
-    }),
-  [objectToDeps(variantProps), className],
-);
+    () =>
+      switchComponent({
+        ...variantProps,
+        className,
+      }),
+    [objectToDeps(variantProps), className],
+  );
 
   return {Component, styles, domRef, ...otherProps};
 }

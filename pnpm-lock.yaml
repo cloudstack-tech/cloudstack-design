@@ -204,6 +204,181 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@20.19.19)(@vitest/browser@3.2.4)(jiti@2.6.1)(lightningcss@1.30.1)
 
+  packages/components/accordion:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/affix:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/alert:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/anchor:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/autocomplete:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/badge:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/breadcrumb:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
   packages/components/button:
     dependencies:
       '@cloudstack-design/react-utils':
@@ -225,6 +400,106 @@ importers:
       framer-motion:
         specifier: 11.18.2
         version: 11.18.2(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/card:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/checkbox:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/date-picker:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/descriptions:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
       react:
         specifier: 18.3.0
         version: 18.3.0
@@ -257,7 +532,107 @@ importers:
         specifier: 18.3.0
         version: 18.3.0(react@18.3.0)
 
+  packages/components/drawer:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/dropdown:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/empty:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
   packages/components/flex:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/form:
     dependencies:
       '@cloudstack-design/react-utils':
         specifier: workspace:*
@@ -335,6 +710,281 @@ importers:
         specifier: 18.3.0
         version: 18.3.0(react@18.3.0)
 
+  packages/components/input-group:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/input-otp:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/label:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/menu:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/modal:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/navigation-menu:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/pagination:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/popover:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/progress:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/radio:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/resizable:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
   packages/components/select:
     dependencies:
       '@cloudstack-design/react-utils':
@@ -363,7 +1013,82 @@ importers:
         specifier: 18.3.0
         version: 18.3.0(react@18.3.0)
 
+  packages/components/skeleton:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/slider:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
   packages/components/space:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/spin:
     dependencies:
       '@cloudstack-design/react-utils':
         specifier: workspace:*
@@ -413,7 +1138,257 @@ importers:
         specifier: 18.3.0
         version: 18.3.0(react@18.3.0)
 
+  packages/components/steps:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/switch:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/table:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
   packages/components/tabs:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/tag:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/time-picker:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/timeline:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/toast:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/tooltip:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/typography:
+    dependencies:
+      '@cloudstack-design/react-utils':
+        specifier: workspace:*
+        version: link:../../utilities/react-utils
+      '@cloudstack-design/shared-utils':
+        specifier: workspace:*
+        version: link:../../utilities/shared-utils
+    devDependencies:
+      '@cloudstack-design/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@cloudstack-design/theme':
+        specifier: workspace:*
+        version: link:../../core/theme
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: 18.3.0
+        version: 18.3.0
+      react-dom:
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
+
+  packages/components/upload:
     dependencies:
       '@cloudstack-design/react-utils':
         specifier: workspace:*

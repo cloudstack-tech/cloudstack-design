@@ -3,7 +3,7 @@ import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 import {Grid} from "../src";
 
 const meta = {
-  title: "Components/Layout 布局/Grid 网格布局",
+  title: "Components/Layout 布局/Grid 网格",
   component: Grid,
   parameters: {
     layout: "padded",

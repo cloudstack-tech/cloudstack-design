@@ -3,7 +3,7 @@ import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 import {Stack, HStack, VStack} from "../src";
 
 const meta = {
-  title: "Components/Layout 布局/Stack 堆叠布局",
+  title: "Components/Layout 布局/Stack 堆叠",
   component: Stack,
   parameters: {
     layout: "padded",

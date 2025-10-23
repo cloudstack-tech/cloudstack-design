@@ -1,9 +1,9 @@
-import type {Meta, StoryObj} from "@storybook/react";
+import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
 import {Card} from "../src";
 
 const meta = {
-  title: "Data Display 数据展示/Card 卡片",
+  title: "Components/Data Display 数据展示/Card 卡片",
   component: Card,
   parameters: {
     layout: "centered",

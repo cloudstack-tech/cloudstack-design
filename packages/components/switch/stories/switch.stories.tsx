@@ -1,26 +1,23 @@
 import React from "react";
-import {Meta} from "@storybook/react";
-import { switch } from "@cloudstack-design/theme";
-
-import { Switch, SwitchProps } from "../src";
+import {Meta} from "@storybook/nextjs-vite";
+import {switchComponent} from "@cloudstack-design/theme";
+import {Switch, SwitchProps} from "../src";
 
 export default {
-  title: "Components/Switch",
+  title: "Components/Data Entry 数据输入/Switch 开关",
   component: Switch,
-  argTypes: {
-  },
+  argTypes: {},
 } as Meta<typeof Switch>;
 
 const defaultProps = {
-  ...switch.defaultVariants,
+  ...switchComponent.defaultVariants,
 };
 
 const Template = (args: SwitchProps) => <Switch {...args} />;
-
 
 export const Default = {
   render: Template,
   args: {
     ...defaultProps,
-  }
-}
+  },
+};

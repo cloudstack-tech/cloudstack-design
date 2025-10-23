@@ -3,7 +3,7 @@ import {Select} from "../src";
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
 const meta = {
-  title: "Components/Select",
+  title: "Components/Data Entry 数据输入/Select 选择器",
   component: Select,
   parameters: {
     layout: "centered",

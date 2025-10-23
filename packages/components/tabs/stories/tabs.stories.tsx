@@ -4,7 +4,7 @@ import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 import {Grid2x2, List} from "lucide-react";
 
 const meta = {
-  title: "Components/Tabs",
+  title: "Components/Navigation 导航/Tabs 标签页",
   component: Tabs,
   parameters: {
     layout: "centered",

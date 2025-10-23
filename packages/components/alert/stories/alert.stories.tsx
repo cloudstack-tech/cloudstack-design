@@ -1,9 +1,9 @@
-import type {Meta, StoryObj} from "@storybook/react";
+import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
 import {Alert} from "../src";
 
 const meta = {
-  title: "Feedback 反馈/Alert 警告",
+  title: "Components/Feedback 反馈/Alert 警告提示",
   component: Alert,
   parameters: {
     layout: "centered",

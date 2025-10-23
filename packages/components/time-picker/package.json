@@ -1,0 +1,54 @@
+{
+  "name": "@cloudstack-design/time-picker",
+  "version": "1.0.0",
+  "description": "CloudStack Design TimePicker component",
+  "keywords": [
+    "time-picker"
+  ],
+  "author": "CloudStackDesign <support@cloudstack-design.com>",
+  "homepage": "https://cloudstack-design.com",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudstack-tech/cloudstack-design.git",
+    "directory": "packages/components/time-picker"
+  },
+  "bugs": {
+    "url": "https://github.com/cloudstack-tech/cloudstack-design/issues"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast --watch",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "peerDependencies": {
+    "react": ">=18 || >=19.0.0-rc.0",
+    "react-dom": ">=18 || >=19.0.0-rc.0",
+    "@cloudstack-design/theme": ">=1.0.0",
+    "@cloudstack-design/system": ">=1.0.0"
+  },
+  "dependencies": {
+    "@cloudstack-design/shared-utils": "workspace:*",
+    "@cloudstack-design/react-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudstack-design/theme": "workspace:*",
+    "@cloudstack-design/system": "workspace:*",
+    "clean-package": "2.2.0",
+    "react": "18.3.0",
+    "react-dom": "18.3.0"
+  },
+  "clean-package": "../../../clean-package.config.json"
+}
