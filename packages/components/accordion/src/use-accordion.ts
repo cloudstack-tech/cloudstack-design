@@ -45,7 +45,7 @@ export interface AccordionItemProps {
   extra?: React.ReactNode;
 }
 
-interface Props extends HTMLCloudStackDesignProps<"div"> {
+interface Props extends Omit<HTMLCloudStackDesignProps<"div">, "onChange"> {
   /**
    * Ref to the DOM node.
    */
@@ -84,7 +84,7 @@ interface Props extends HTMLCloudStackDesignProps<"div"> {
   collapsible?: "header" | "icon" | "disabled";
 }
 
-export type UseAccordionProps = Props & Omit<AccordionVariantProps, "isActive" | "isDisabled">;
+export type UseAccordionProps = Props & AccordionVariantProps;
 
 export function useAccordion(originalProps: UseAccordionProps) {
   const [props, variantProps] = mapPropsVariants(originalProps, accordion.variantKeys);

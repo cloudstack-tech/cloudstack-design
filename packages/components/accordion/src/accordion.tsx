@@ -8,11 +8,10 @@ import {UseAccordionProps, useAccordion, AccordionItemProps} from "./use-accordi
 
 export interface AccordionProps extends UseAccordionProps {}
 
-interface AccordionItemInternalProps extends Omit<AccordionItemProps, "key"> {
+interface AccordionItemInternalProps extends Omit<AccordionItemProps, "key" | "expandIcon"> {
   itemKey: string;
   isActive: boolean;
   onToggle: (key: string) => void;
-  size?: "sm" | "md" | "lg";
   expandIconPosition?: "start" | "end";
   expandIcon?: (panelProps: {isActive: boolean; disabled?: boolean}) => React.ReactNode;
   collapsible?: "header" | "icon" | "disabled";
@@ -46,7 +45,6 @@ const AccordionItem = ({
   extra,
   isActive,
   onToggle,
-  size = "md",
   expandIconPosition = "end",
   expandIcon: globalExpandIcon,
   collapsible = "header",
@@ -113,21 +111,21 @@ const AccordionItem = ({
         onClick={collapsible === "icon" ? handleIconClick : undefined}
         style={{cursor: collapsible === "icon" ? "pointer" : undefined}}
       >
-        {iconElement}
+        {typeof iconElement === "function" ? iconElement({isActive, disabled}) : <>{iconElement}</>}
       </span>
     );
   };
 
   return (
     <div
-      className={classNames.item({size, isDisabled: disabled, className})}
+      className={classNames.item({isDisabled: disabled, className})}
       style={style}
       data-disabled={disabled}
       data-active={isActive}
     >
       {/* 头部 */}
       <div
-        className={classNames.header({size, isActive})}
+        className={classNames.header({isActive})}
         onClick={handleHeaderClick}
         role="button"
         tabIndex={disabled ? -1 : 0}
@@ -158,7 +156,7 @@ const AccordionItem = ({
           transition: "height 300ms cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
-        <div ref={contentRef} className={classNames.content({size, isActive})}>
+        <div ref={contentRef} className={classNames.content({isActive})}>
           {children}
         </div>
       </div>
@@ -179,7 +177,6 @@ const Accordion = forwardRef<"div", AccordionProps>((props, ref) => {
     expandIcon,
     collapsible,
     classNames,
-    size,
     ...otherProps
   } = useAccordion({...props, ref});
 
@@ -198,7 +195,6 @@ const Accordion = forwardRef<"div", AccordionProps>((props, ref) => {
             itemKey={itemKey}
             isActive={isItemActive(itemKey)}
             onToggle={handleToggle}
-            size={size}
             expandIconPosition={expandIconPosition}
             expandIcon={expandIcon}
             collapsible={collapsible}

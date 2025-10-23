@@ -4,6 +4,24 @@ import {tv} from "../../utils/tv";
 
 /**
  * Accordion wrapper **Tailwind Variants** component
+ *
+ * @description
+ * 手风琴组件，用于显示和隐藏内容。
+ *
+ * @param {Object} props - 组件属性
+ * @param {string} props.variant - 组件变体
+ * @param {string} props.size - 组件尺寸
+ * @param {boolean} props.isActive - 是否激活
+ * @param {boolean} props.isDisabled - 是否禁用
+ * @param {string} props.indicatorPosition - 指示器位置
+ * @returns {Object} 组件样式对象
+ *
+ * const styles = accordion({...})
+ *
+ * @example
+ * <div role="group" className={styles())}>
+ *   // accordion elements
+ * </div>
  */
 const accordion = tv({
   slots: {
