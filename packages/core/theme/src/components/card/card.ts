@@ -8,41 +8,63 @@ import {tv} from "../../utils/tv";
  * const slots = card({...})
  *
  * @example
+ * ```tsx
  * <div className={slots.base()}>
  *   <div className={slots.header()}>
  *     <h3 className={slots.title()}>Title</h3>
+ *     <ChevronDown className={slots.collapseIcon()} />
  *   </div>
  *   <div className={slots.body()}>
  *     Card Body
  *   </div>
  * </div>
+ * ```
  */
 const card = tv({
   slots: {
-    base: ["border", "bg-white", "transition-all", "duration-150"],
-    header: ["flex", "w-full", "items-center", "justify-between", "p-4"],
-    title: ["text-sm", "font-medium", "text-default-900", "flex-1"],
-    body: ["h-fit", "overflow-hidden", "transition-all", "duration-150", "ease-in-out"],
-    collapseIcon: ["text-default-500", "transition-transform", "duration-200"],
+    base: [
+      "relative",
+      "bg-white",
+      "transition-all",
+      "duration-150",
+      "rounded-lg",
+      "overflow-hidden",
+    ],
+    header: [
+      "flex",
+      "w-full",
+      "items-center",
+      "justify-between",
+      "p-4",
+      "border-b",
+      "border-transparent",
+    ],
+    title: ["text-sm", "font-medium", "text-gray-900", "flex-1", "min-w-0"],
+    body: ["h-fit", "overflow-hidden", "transition-all", "duration-300", "ease-in-out"],
+    collapseIcon: ["text-gray-500", "transition-transform", "duration-200", "flex-shrink-0"],
   },
   variants: {
     variant: {
       cube: {
-        base: "border-default-200",
+        base: "border border-gray-200 shadow-sm",
       },
       flat: {
-        base: ["border-0", "bg-default-100", "hover:bg-default-200"],
+        base: ["border-0", "bg-gray-50", "hover:bg-gray-100"],
+      },
+      bordered: {
+        base: "border border-gray-200",
+      },
+      shadow: {
+        base: "border-0 shadow-md",
       },
     },
     hoverable: {
-      true: {
-        base: "hover:shadow-md",
-      },
+      true: {},
       false: {},
     },
     isCollapsible: {
       true: {
-        header: "cursor-pointer select-none",
+        header: "cursor-pointer select-none hover:bg-gray-50",
       },
       false: {},
     },
@@ -52,17 +74,30 @@ const card = tv({
         collapseIcon: "rotate-0",
       },
       false: {
-        body: "max-h-[1000px]",
+        body: "max-h-[2000px]",
         collapseIcon: "rotate-180",
       },
     },
     hasTitle: {
       true: {
         body: "px-4",
+        header: "border-b-gray-200",
       },
       false: {
         body: "p-4",
       },
+    },
+    fullWidth: {
+      true: {
+        base: "w-full",
+      },
+      false: {},
+    },
+    isDisabled: {
+      true: {
+        base: "opacity-50 cursor-not-allowed pointer-events-none",
+      },
+      false: {},
     },
   },
   defaultVariants: {
@@ -71,13 +106,39 @@ const card = tv({
     isCollapsible: false,
     isCollapsed: false,
     hasTitle: false,
+    fullWidth: false,
+    isDisabled: false,
   },
   compoundVariants: [
+    // hoverable + variant
+    {
+      hoverable: true,
+      variant: "cube",
+      class: {
+        base: "hover:shadow-lg",
+      },
+    },
+    {
+      hoverable: true,
+      variant: "shadow",
+      class: {
+        base: "hover:shadow-xl",
+      },
+    },
+    // hasTitle + isCollapsed
     {
       hasTitle: true,
       isCollapsed: false,
       class: {
         body: "pb-4",
+      },
+    },
+    // variant flat with hoverable false
+    {
+      variant: "flat",
+      hoverable: false,
+      class: {
+        base: "hover:bg-gray-50",
       },
     },
   ],
