@@ -120,7 +120,13 @@
 
 #### Checkbox 多选框
 
-- [ ] 创建组件并完成基础实现
+- [x] 创建组件并完成基础实现
+- [ ] fix: 样式什么的都不符合主题色，还是用的 tw 的自带色，需要修复完善
+- [ ] fix: Controlled 案例里点了切换状态以后，label 变了但是 checkbox 里的勾勾状态没有变
+- [ ] fix: group default value 案例里好像并没有设置上默认值
+- [ ] fix: disabled props 有问题，设置以后既没生效，样式也没有变化
+- [ ] fix: group controlled 案例也有问题，没有办法做到受控
+- [ ] fix: select all 案例同理，也没办法受控
 
 #### Switch 开关
 
