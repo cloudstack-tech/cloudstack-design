@@ -23,15 +23,6 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ["../public"],
-  viteFinal: async (config) => {
-    if (config.build) {
-      config.build.rollupOptions = {
-        ...config.build.rollupOptions,
-        external: [/^@storybook\//],
-      };
-    }
-    return config;
-  },
 };
 export default config;
 
