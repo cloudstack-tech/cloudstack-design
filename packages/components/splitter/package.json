@@ -1,9 +1,13 @@
 {
-  "name": "@cloudstack-design/resizable",
+  "name": "@cloudstack-design/splitter",
   "version": "1.0.0",
-  "description": "CloudStack Design Resizable component",
+  "description": "CloudStack Design Splitter component - draggable resizable panels",
   "keywords": [
-    "resizable"
+    "splitter",
+    "split-panel",
+    "draggable",
+    "layout",
+    "panels"
   ],
   "author": "CloudStackDesign <support@cloudstack-design.com>",
   "homepage": "https://cloudstack-design.com",

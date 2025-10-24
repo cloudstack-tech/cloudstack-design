@@ -1,0 +1,312 @@
+import {Meta, Controls} from "@storybook/addon-docs/blocks";
+
+import * as SplitterStories from "./splitter.stories";
+
+<Meta of={SplitterStories} />
+
+# Splitter 分割面板
+
+用于创建可拖拽调整的分割布局，支持水平和垂直方向。
+
+## 何时使用
+
+- ✅ 需要创建可调整大小的多面板布局
+- ✅ 实现类似 IDE 的编辑器布局
+- ✅ 创建可自定义比例的双栏或多栏布局
+- ✅ 需要用户自定义面板大小的场景
+- ✅ 构建复杂的嵌套布局
+
+## 与其他布局组件的区别
+
+| 特性           | Splitter             | Stack                | Flex                 | Grid                 |
+| -------------- | -------------------- | -------------------- | -------------------- | -------------------- |
+| **可拖拽**     | ✅ 支持拖拽调整      | ❌                   | ❌                   | ❌                   |
+| **方向**       | 水平/垂直            | 水平/垂直            | 多种方向             | 二维网格             |
+| **面板大小**   | 用户可调整           | 固定或自动           | 固定或自动           | 固定或自动           |
+| **嵌套支持**   | ✅ 完美支持          | ✅                   | ✅                   | ✅                   |
+| **适用场景**   | IDE、文件管理器      | 简单堆叠             | 灵活布局             | 卡片网格             |
+
+## 核心特性
+
+- **🎯 拖拽调整**：支持鼠标拖拽调整面板大小
+- **📐 双向布局**：支持水平和垂直方向
+- **🔄 嵌套布局**：支持任意深度的嵌套
+- **🎨 自定义分割条**：可自定义分割条样式和大小
+- **📏 尺寸限制**：支持设置最小/最大尺寸
+- **💾 状态保存**：可通过回调保存面板尺寸
+- **🖱️ 良好体验**：平滑的拖拽动画和视觉反馈
+
+## 组件组成
+
+### Splitter（容器）
+
+主容器组件，管理所有面板的布局和拖拽逻辑。
+
+### SplitterPanel（面板）
+
+单个面板组件，作为 Splitter 的子元素使用。
+
+## 属性
+
+<Controls />
+
+## 使用示例
+
+### 基础用法
+
+```tsx
+import {Splitter, SplitterPanel} from "@cloudstack-design/resizable";
+
+// 水平分割
+<Splitter direction="horizontal">
+  <SplitterPanel>
+    <div>左侧面板</div>
+  </SplitterPanel>
+  <SplitterPanel>
+    <div>右侧面板</div>
+  </SplitterPanel>
+</Splitter>
+```
+
+### 垂直分割
+
+```tsx
+// 垂直分割（上下布局）
+<Splitter direction="vertical">
+  <SplitterPanel>
+    <div>顶部面板</div>
+  </SplitterPanel>
+  <SplitterPanel>
+    <div>底部面板</div>
+  </SplitterPanel>
+</Splitter>
+```
+
+### 三个面板
+
+```tsx
+<Splitter direction="horizontal">
+  <SplitterPanel>左侧</SplitterPanel>
+  <SplitterPanel>中间</SplitterPanel>
+  <SplitterPanel>右侧</SplitterPanel>
+</Splitter>
+```
+
+### 嵌套布局
+
+```tsx
+// 实现复杂的嵌套布局
+<Splitter direction="vertical">
+  <SplitterPanel>
+    <div>顶部标题栏</div>
+  </SplitterPanel>
+  <SplitterPanel>
+    <Splitter direction="horizontal">
+      <SplitterPanel>
+        <div>左侧边栏</div>
+      </SplitterPanel>
+      <SplitterPanel>
+        <div>主内容区</div>
+      </SplitterPanel>
+    </Splitter>
+  </SplitterPanel>
+</Splitter>
+```
+
+### 设置初始大小
+
+```tsx
+<Splitter direction="horizontal">
+  <SplitterPanel defaultSize={30}>
+    <div>占 30%</div>
+  </SplitterPanel>
+  <SplitterPanel defaultSize={70}>
+    <div>占 70%</div>
+  </SplitterPanel>
+</Splitter>
+```
+
+### 尺寸限制
+
+```tsx
+<Splitter direction="horizontal">
+  <SplitterPanel minSize={200} maxSize={400}>
+    <div>最小 200px，最大 400px</div>
+  </SplitterPanel>
+  <SplitterPanel>
+    <div>自动调整</div>
+  </SplitterPanel>
+</Splitter>
+```
+
+### 自定义分割条
+
+```tsx
+<Splitter
+  direction="horizontal"
+  gutterSize={10}
+  gutterRender={(index, direction) => (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#f0f0f0",
+        cursor: direction === "horizontal" ? "col-resize" : "row-resize",
+      }}
+    >
+      <span>⋮</span>
+    </div>
+  )}
+>
+  <SplitterPanel>左侧</SplitterPanel>
+  <SplitterPanel>右侧</SplitterPanel>
+</Splitter>
+```
+
+### 保存面板尺寸
+
+```tsx
+const [sizes, setSizes] = useState([50, 50]);
+
+<Splitter
+  direction="horizontal"
+  onResizeEnd={(newSizes) => {
+    setSizes(newSizes);
+    // 保存到 localStorage
+    localStorage.setItem('panelSizes', JSON.stringify(newSizes));
+  }}
+>
+  <SplitterPanel>左侧</SplitterPanel>
+  <SplitterPanel>右侧</SplitterPanel>
+</Splitter>
+```
+
+## 常见布局示例
+
+### IDE 编辑器布局
+
+```tsx
+<Splitter direction="vertical" style={{height: "100vh"}}>
+  {/* 顶部菜单栏 */}
+  <SplitterPanel defaultSize={8}>
+    <MenuBar />
+  </SplitterPanel>
+  
+  {/* 主要工作区 */}
+  <SplitterPanel>
+    <Splitter direction="horizontal">
+      {/* 左侧文件浏览器 */}
+      <SplitterPanel defaultSize={20} minSize={150}>
+        <FileExplorer />
+      </SplitterPanel>
+      
+      {/* 中间编辑器 */}
+      <SplitterPanel>
+        <Editor />
+      </SplitterPanel>
+    </Splitter>
+  </SplitterPanel>
+  
+  {/* 底部终端 */}
+  <SplitterPanel defaultSize={25}>
+    <Terminal />
+  </SplitterPanel>
+</Splitter>
+```
+
+### 邮件客户端布局
+
+```tsx
+<Splitter direction="horizontal" style={{height: "100vh"}}>
+  {/* 左侧文件夹列表 */}
+  <SplitterPanel defaultSize={20} minSize={150}>
+    <FolderList />
+  </SplitterPanel>
+  
+  {/* 右侧内容区 */}
+  <SplitterPanel>
+    <Splitter direction="vertical">
+      {/* 邮件列表 */}
+      <SplitterPanel defaultSize={40}>
+        <MailList />
+      </SplitterPanel>
+      
+      {/* 邮件内容 */}
+      <SplitterPanel>
+        <MailContent />
+      </SplitterPanel>
+    </Splitter>
+  </SplitterPanel>
+</Splitter>
+```
+
+## 最佳实践
+
+### 设置容器高度
+
+Splitter 需要一个明确的高度才能正常工作：
+
+```tsx
+// ✅ 正确
+<div style={{height: "500px"}}>
+  <Splitter>...</Splitter>
+</div>
+
+// ❌ 错误（没有高度）
+<Splitter>...</Splitter>
+```
+
+### 合理的最小尺寸
+
+为面板设置合理的最小尺寸，避免内容被压缩得太小：
+
+```tsx
+<SplitterPanel minSize={200}>
+  {/* 内容 */}
+</SplitterPanel>
+```
+
+### 嵌套深度
+
+虽然支持任意深度的嵌套，但建议不要超过 3 层，以保持良好的性能和用户体验。
+
+### 响应式设计
+
+结合媒体查询或状态管理，根据屏幕大小动态调整面板布局：
+
+```tsx
+const isMobile = useMediaQuery("(max-width: 768px)");
+
+<Splitter direction={isMobile ? "vertical" : "horizontal"}>
+  {/* 面板 */}
+</Splitter>
+```
+
+## API
+
+### Splitter Props
+
+| 属性          | 类型                                        | 默认值         | 描述                   |
+| ------------- | ------------------------------------------- | -------------- | ---------------------- |
+| direction     | `"horizontal"` \| `"vertical"`              | `"horizontal"` | 分割方向               |
+| gutterSize    | `number`                                    | `4`            | 分割条大小（像素）     |
+| gutterRender  | `(index: number, direction: string) => JSX` | -              | 自定义分割条渲染函数   |
+| onResizeEnd   | `(sizes: number[]) => void`                 | -              | 面板尺寸变化时的回调   |
+
+### SplitterPanel Props
+
+| 属性        | 类型                 | 默认值 | 描述                     |
+| ----------- | -------------------- | ------ | ------------------------ |
+| minSize     | `number` \| `string` | -      | 最小尺寸（像素或百分比） |
+| maxSize     | `number` \| `string` | -      | 最大尺寸（像素或百分比） |
+| defaultSize | `number`             | -      | 初始尺寸（百分比）       |
+| collapsible | `boolean`            | `false` | 是否可折叠               |
+
+## 注意事项
+
+1. **容器高度**：Splitter 需要明确的高度才能正常工作
+2. **面板数量**：至少需要 2 个面板
+3. **拖拽范围**：每个面板最小保留 10% 的空间
+4. **性能**：大量嵌套时注意性能优化
+5. **浏览器兼容**：使用现代浏览器以获得最佳体验
+
