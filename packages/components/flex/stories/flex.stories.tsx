@@ -1,6 +1,7 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
 import {Flex} from "../src";
+import {Box} from "../../stories/Box";
 
 const meta = {
   title: "Components/Layout 布局/Flex 弹性布局",
@@ -31,7 +32,7 @@ const meta = {
     },
     gap: {
       control: "number",
-      description: "间距（会乘以4）",
+      description: "间距（实际像素值会乘以4）",
     },
     inline: {
       control: "boolean",
@@ -44,26 +45,15 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// 示例子元素样式
-const FlexBox = ({className = "", children, ...props}: any) => (
-  <div
-    className={`px-6 py-1 bg-primary text-white rounded-xs ${className}`}
-    style={{textAlign: "center"}}
-    {...props}
-  >
-    {children}
-  </div>
-);
-
 export const Default: Story = {
   args: {
     gap: 4,
   },
   render: (args) => (
     <Flex {...args}>
-      <FlexBox>1</FlexBox>
-      <FlexBox>2</FlexBox>
-      <FlexBox>3</FlexBox>
+      <Box>1</Box>
+      <Box>2</Box>
+      <Box>3</Box>
     </Flex>
   ),
 };
@@ -75,9 +65,9 @@ export const Column: Story = {
   },
   render: (args) => (
     <Flex {...args}>
-      <FlexBox>1</FlexBox>
-      <FlexBox>2</FlexBox>
-      <FlexBox>3</FlexBox>
+      <Box>1</Box>
+      <Box>2</Box>
+      <Box>3</Box>
     </Flex>
   ),
 };
@@ -90,9 +80,9 @@ export const JustifyCenter: Story = {
   },
   render: (args) => (
     <Flex {...args}>
-      <FlexBox>1</FlexBox>
-      <FlexBox>2</FlexBox>
-      <FlexBox>3</FlexBox>
+      <Box>1</Box>
+      <Box>2</Box>
+      <Box>3</Box>
     </Flex>
   ),
 };
@@ -104,9 +94,9 @@ export const JustifyBetween: Story = {
   },
   render: (args) => (
     <Flex {...args}>
-      <FlexBox>1</FlexBox>
-      <FlexBox>2</FlexBox>
-      <FlexBox>3</FlexBox>
+      <Box>1</Box>
+      <Box>2</Box>
+      <Box>3</Box>
     </Flex>
   ),
 };
@@ -119,9 +109,9 @@ export const AlignCenter: Story = {
   },
   render: (args) => (
     <Flex {...args}>
-      <FlexBox className="h-10">短</FlexBox>
-      <FlexBox className="h-20">中</FlexBox>
-      <FlexBox className="h-16">高</FlexBox>
+      <Box className="h-10">短</Box>
+      <Box className="h-20">中</Box>
+      <Box className="h-16">高</Box>
     </Flex>
   ),
 };
@@ -133,9 +123,9 @@ export const FlexGrow: Story = {
   },
   render: (args) => (
     <Flex {...args}>
-      <FlexBox>固定</FlexBox>
-      <FlexBox style={{flex: 1}}>弹性</FlexBox>
-      <FlexBox>固定</FlexBox>
+      <Box>固定</Box>
+      <Box style={{flex: 1}}>弹性</Box>
+      <Box>固定</Box>
     </Flex>
   ),
 };
@@ -148,12 +138,12 @@ export const Wrap: Story = {
   },
   render: (args) => (
     <Flex {...args}>
-      <FlexBox>1</FlexBox>
-      <FlexBox>2</FlexBox>
-      <FlexBox>3</FlexBox>
-      <FlexBox>4</FlexBox>
-      <FlexBox>5</FlexBox>
-      <FlexBox>6</FlexBox>
+      <Box>1</Box>
+      <Box>2</Box>
+      <Box>3</Box>
+      <Box>4</Box>
+      <Box>5</Box>
+      <Box>6</Box>
     </Flex>
   ),
 };
@@ -167,8 +157,8 @@ export const CustomElement: Story = {
   },
   render: (args) => (
     <Flex {...args}>
-      <FlexBox>使用 section 元素</FlexBox>
-      <FlexBox>而不是 div</FlexBox>
+      <Box>使用 section 元素</Box>
+      <Box>而不是 div</Box>
     </Flex>
   ),
 };
@@ -180,33 +170,33 @@ export const DifferentGaps: Story = {
       <div>
         <p className="mb-2 text-sm text-gray-600">gap: 1 (4px)</p>
         <Flex gap={1}>
-          <FlexBox>1</FlexBox>
-          <FlexBox>2</FlexBox>
-          <FlexBox>3</FlexBox>
+          <Box>1</Box>
+          <Box>2</Box>
+          <Box>3</Box>
         </Flex>
       </div>
       <div>
         <p className="mb-2 text-sm text-gray-600">gap: 2 (8px)</p>
         <Flex gap={2}>
-          <FlexBox>1</FlexBox>
-          <FlexBox>2</FlexBox>
-          <FlexBox>3</FlexBox>
+          <Box>1</Box>
+          <Box>2</Box>
+          <Box>3</Box>
         </Flex>
       </div>
       <div>
         <p className="mb-2 text-sm text-gray-600">gap: 4 (16px)</p>
         <Flex gap={4}>
-          <FlexBox>1</FlexBox>
-          <FlexBox>2</FlexBox>
-          <FlexBox>3</FlexBox>
+          <Box>1</Box>
+          <Box>2</Box>
+          <Box>3</Box>
         </Flex>
       </div>
       <div>
         <p className="mb-2 text-sm text-gray-600">gap: 8 (32px)</p>
         <Flex gap={8}>
-          <FlexBox>1</FlexBox>
-          <FlexBox>2</FlexBox>
-          <FlexBox>3</FlexBox>
+          <Box>1</Box>
+          <Box>2</Box>
+          <Box>3</Box>
         </Flex>
       </div>
     </div>
@@ -221,9 +211,9 @@ export const AllJustifyOptions: Story = {
         <div key={justify}>
           <p className="mb-2 text-sm text-gray-600 font-medium">justify: {justify}</p>
           <Flex justify={justify} gap={2} className="w-96 border border-dashed border-gray-300 p-4">
-            <FlexBox>1</FlexBox>
-            <FlexBox>2</FlexBox>
-            <FlexBox>3</FlexBox>
+            <Box>1</Box>
+            <Box>2</Box>
+            <Box>3</Box>
           </Flex>
         </div>
       ))}
@@ -243,48 +233,12 @@ export const AllAlignOptions: Story = {
             gap={2}
             className="h-32 w-96 border border-dashed border-gray-300 p-4"
           >
-            <FlexBox className={align === "stretch" ? "" : "h-10"}>短</FlexBox>
-            <FlexBox className={align === "stretch" ? "" : "h-20"}>中</FlexBox>
-            <FlexBox className={align === "stretch" ? "" : "h-16"}>高</FlexBox>
+            <Box className={align === "stretch" ? "" : "h-10"}>短</Box>
+            <Box className={align === "stretch" ? "" : "h-20"}>中</Box>
+            <Box className={align === "stretch" ? "" : "h-16"}>高</Box>
           </Flex>
         </div>
       ))}
     </div>
-  ),
-};
-
-// 复杂布局示例
-export const ComplexLayout: Story = {
-  render: () => (
-    <Flex
-      direction="col"
-      gap={4}
-      className="w-full max-w-2xl border border-gray-200 rounded-lg p-6"
-    >
-      {/* Header */}
-      <Flex justify="between" align="center" className="border-b border-gray-200 pb-4">
-        <div className="text-lg font-semibold">标题</div>
-        <Flex gap={2}>
-          <button className="px-4 py-2 bg-gray-100 rounded hover:bg-gray-200">取消</button>
-          <button className="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90">
-            确定
-          </button>
-        </Flex>
-      </Flex>
-
-      {/* Content */}
-      <Flex direction="col" gap={3} className="flex-1">
-        <div className="text-sm text-gray-600">这是一个使用 Flex 组件构建的复杂布局示例</div>
-        <Flex gap={4}>
-          <div className="flex-1 p-4 bg-gray-50 rounded">左侧内容</div>
-          <div className="flex-1 p-4 bg-gray-50 rounded">右侧内容</div>
-        </Flex>
-      </Flex>
-
-      {/* Footer */}
-      <Flex justify="end" gap={2} className="border-t border-gray-200 pt-4">
-        <span className="text-sm text-gray-500">Footer 信息</span>
-      </Flex>
-    </Flex>
   ),
 };
