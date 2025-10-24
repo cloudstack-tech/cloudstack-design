@@ -1,6 +1,7 @@
 import {createRequire} from "node:module";
 import {dirname, join} from "node:path";
 import type {StorybookConfig} from "@storybook/nextjs-vite";
+import remarkGfm from "remark-gfm";
 
 const require = createRequire(import.meta.url);
 
@@ -25,7 +26,17 @@ const config: StorybookConfig = {
   ],
   addons: [
     getAbsolutePath("@chromatic-com/storybook"),
-    getAbsolutePath("@storybook/addon-docs"),
+    // workaround: https://storybook.js.org/docs/writing-docs/mdx#markdown-tables-arent-rendering-correctly
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@storybook/addon-vitest"),
   ],

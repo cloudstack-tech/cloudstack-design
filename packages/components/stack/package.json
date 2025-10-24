@@ -41,7 +41,8 @@
   },
   "dependencies": {
     "@cloudstack-design/shared-utils": "workspace:*",
-    "@cloudstack-design/react-utils": "workspace:*"
+    "@cloudstack-design/react-utils": "workspace:*",
+    "@cloudstack-design/flex": "workspace:*"
   },
   "devDependencies": {
     "@cloudstack-design/theme": "workspace:*",

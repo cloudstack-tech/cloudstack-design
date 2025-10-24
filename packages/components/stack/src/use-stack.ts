@@ -1,23 +1,36 @@
 import type {StackVariantProps} from "@cloudstack-design/theme";
+import type {FlexProps} from "@cloudstack-design/flex";
 
-import {HTMLCloudStackDesignProps, mapPropsVariants} from "@cloudstack-design/system";
-import {stack} from "@cloudstack-design/theme";
-import {ReactRef, useDOMRef} from "@cloudstack-design/react-utils";
-import {objectToDeps} from "@cloudstack-design/shared-utils";
-import {useMemo, CSSProperties, ReactNode, Children, isValidElement} from "react";
+import {HTMLCloudStackDesignProps} from "@cloudstack-design/system";
+import {ReactRef} from "@cloudstack-design/react-utils";
+import {useMemo, ReactNode, Children, isValidElement} from "react";
 
 /**
- * Stack spacing size type
+ * Stack 间距大小类型
+ * - small: 8px
+ * - medium: 16px
+ * - large: 24px
+ * - number: 自定义间距（会乘以 4）
  */
 export type StackSize = "small" | "medium" | "large" | number;
 
 /**
- * Stack spacing size mapping (multiplied by 4 to get pixel value)
+ * Stack 间距大小映射（会乘以 4 转换为像素值）
  */
 const stackSizeMap: Record<string, number> = {
   small: 2, // 8px
   medium: 4, // 16px
   large: 6, // 24px
+};
+
+/**
+ * 将 Stack 的方向映射到 Flex 的方向
+ * vertical -> col
+ * horizontal -> row
+ */
+const directionMap: Record<string, FlexProps["direction"]> = {
+  vertical: "col",
+  horizontal: "row",
 };
 
 interface Props extends HTMLCloudStackDesignProps<"div"> {
@@ -38,18 +51,39 @@ interface Props extends HTMLCloudStackDesignProps<"div"> {
 
 export type UseStackProps = Props & StackVariantProps;
 
+/**
+ * useStack Hook
+ *
+ * Stack 组件基于 Flex 组件实现，提供更简洁的堆叠布局 API。
+ * 主要特点：
+ * 1. 简化的方向控制：只有 vertical 和 horizontal
+ * 2. 预设间距：small/medium/large，更符合设计规范
+ * 3. 分隔符支持：可在元素之间插入分隔符
+ * 4. 语义化：HStack 和 VStack 让代码意图更清晰
+ */
 export function useStack(originalProps: UseStackProps) {
-  const [props, variantProps] = mapPropsVariants(originalProps, stack.variantKeys);
-
-  const {ref, as, className, children, spacing = "medium", divider, style, ...otherProps} = props;
+  const {
+    ref,
+    as,
+    className,
+    children,
+    spacing = "medium",
+    divider,
+    style,
+    direction: stackDirection,
+    align,
+    justify,
+    wrap,
+    ...otherProps
+  } = originalProps;
 
   const Component = as || "div";
 
-  const domRef = useDOMRef(ref);
+  // 转换 Stack 的 direction 到 Flex 的 direction
+  const direction = stackDirection || "vertical";
+  const flexDirection = directionMap[direction] || "col";
 
-  const direction = (variantProps as any).direction || "vertical";
-
-  // Calculate spacing size
+  // 计算间距大小（Stack 使用 spacing，Flex 使用 gap）
   const getSpacingSize = (spacingValue: StackSize): number => {
     if (typeof spacingValue === "number") {
       return spacingValue;
@@ -58,9 +92,9 @@ export function useStack(originalProps: UseStackProps) {
     return stackSizeMap[spacingValue] || stackSizeMap.medium;
   };
 
-  const spacingSize = useMemo(() => getSpacingSize(spacing), [spacing]);
+  const gap = useMemo(() => getSpacingSize(spacing), [spacing]);
 
-  // Filter valid children
+  // 过滤有效的子元素
   const childrenArray = useMemo(
     () =>
       Children.toArray(children).filter(
@@ -69,7 +103,7 @@ export function useStack(originalProps: UseStackProps) {
     [children],
   );
 
-  // Insert divider between children if divider is provided
+  // 如果有分隔符，在子元素之间插入分隔符
   const processedChildren = useMemo(() => {
     if (!divider || childrenArray.length === 0) {
       return childrenArray;
@@ -79,6 +113,7 @@ export function useStack(originalProps: UseStackProps) {
 
     childrenArray.forEach((child, index) => {
       result.push(child);
+      // 在非最后一个元素后插入分隔符
       if (index < childrenArray.length - 1) {
         result.push(divider);
       }
@@ -87,43 +122,34 @@ export function useStack(originalProps: UseStackProps) {
     return result;
   }, [childrenArray, divider]);
 
-  const styles = useMemo(
-    () =>
-      stack({
-        ...variantProps,
-        direction,
-        className,
-      }),
-    [objectToDeps(variantProps), direction, className],
-  );
+  // 构建传递给 Flex 的 props
+  // Stack 通过 Flex 实现，将 Stack 的属性映射到 Flex 的属性
+  const flexProps: Partial<FlexProps> = {
+    direction: flexDirection,
+    gap,
+    align,
+    justify,
+    wrap: wrap ? "wrap" : "nowrap",
+    className,
+    style,
+  };
 
-  // Build inline styles for spacing
-  const stackStyle: CSSProperties = useMemo(
-    () => ({
-      gap: `${spacingSize * 4}px`,
-      ...style,
-    }),
-    [spacingSize, style],
-  );
-
-  // Return null if no children
+  // 如果没有子元素，返回 null
   if (childrenArray.length === 0) {
     return {
       Component,
-      styles,
-      domRef,
+      flexProps,
+      ref,
       children: null,
-      style: stackStyle,
       ...otherProps,
     };
   }
 
   return {
     Component,
-    styles,
-    domRef,
+    flexProps,
+    ref,
     children: processedChildren,
-    style: stackStyle,
     ...otherProps,
   };
 }

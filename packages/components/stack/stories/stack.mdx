@@ -6,21 +6,56 @@ import * as StackStories from "./stack.stories";
 
 # Stack 堆叠布局
 
-设置子元素在一个方向上的堆叠布局，支持灵活的间距和对齐方式。
+用于快速创建单方向堆叠布局的组件。Stack 基于 Flex 组件实现，但提供了更简洁的 API 和额外的功能。
+
+## 为什么需要 Stack？
+
+虽然我们已经有了强大的 Flex 组件，但在日常开发中，大多数情况下我们只需要简单的单方向堆叠布局。Stack 组件针对这个常见场景进行了优化：
+
+### Stack vs Flex
+
+| 特性           | Stack                                      | Flex                                          |
+| -------------- | ------------------------------------------ | --------------------------------------------- |
+| **API 复杂度** | 简单，专注堆叠                             | 灵活，更多控制选项                            |
+| **方向**       | `vertical` / `horizontal`                  | `row` / `col` / `row-reverse` / `col-reverse` |
+| **间距**       | 预设值 `small` / `medium` / `large` 或数字 | 仅数字                                        |
+| **分隔符**     | ✅ 内置支持                                | ❌ 需要手动实现                               |
+| **语义化**     | HStack / VStack 让代码意图更清晰           | 需要通过 direction 属性判断                   |
+| **适用场景**   | 简单的单方向堆叠                           | 复杂的 flexbox 布局                           |
+
+### Stack vs Space
+
+| 特性         | Stack                        | Space                    |
+| ------------ | ---------------------------- | ------------------------ |
+| **元素类型** | 块级元素                     | 内联元素                 |
+| **包裹元素** | 不添加额外包裹               | 为每个子元素添加包裹元素 |
+| **对齐控制** | 支持 align 和 justify        | 仅支持 align             |
+| **分隔符**   | ✅ 支持                      | ✅ 支持                  |
+| **适用场景** | 卡片列表、表单布局、页面区块 | 按钮组、标签组、内联文本 |
+
+### Stack vs Grid
+
+| 特性         | Stack              | Grid                   |
+| ------------ | ------------------ | ---------------------- |
+| **维度**     | 一维（单方向）     | 二维（行和列）         |
+| **复杂度**   | 简单               | 复杂                   |
+| **适用场景** | 列表、表单、导航栏 | 卡片网格、画廊、仪表板 |
 
 ## 何时使用
 
-- 需要在垂直或水平方向上排列元素
-- 需要在元素之间保持一致的间距
-- 需要在元素之间添加分隔符
-- 需要快速创建简单的布局
+- ✅ 需要在垂直或水平方向上排列元素
+- ✅ 需要在元素之间保持一致的间距
+- ✅ 需要在元素之间添加分隔符
+- ✅ 需要快速创建简单的布局
+- ✅ 想要更语义化的代码（HStack/VStack）
 
-## 与其他布局组件的区别
+## 核心优势
 
-- **Stack**: 专注于单方向堆叠，提供简洁的 API 和分隔符支持
-- **Flex**: 更底层的弹性布局，提供更多的控制选项
-- **Space**: 为内联元素提供间距，不支持主轴对齐和分隔符
-- **Grid**: 二维网格布局，适合复杂的网格结构
+- **🎯 简洁的 API**：专注于堆叠场景，去除不必要的选项
+- **📐 预设间距**：small/medium/large 符合设计规范，无需每次计算
+- **🔧 分隔符支持**：内置分隔符功能，无需手动在元素间插入
+- **💬 语义化**：HStack 和 VStack 让代码意图一目了然
+- **♻️ 复用 Flex**：基于 Flex 实现，无需维护独立的布局系统
 
 ## 组件变体
 
@@ -89,43 +124,133 @@ Stack 提供多种使用方式，根据你的偏好选择：
 - 🔄 支持换行
 - ➗ 支持分隔符
 - 🎨 多种使用方式（Stack/HStack/VStack）
+- ♻️ 基于 Flex 实现，保证一致性
 
 ## 属性
 
 <Controls />
+
+## 实现细节
+
+Stack 基于 Flex 组件实现，通过以下映射关系：
+
+```tsx
+// 方向映射
+Stack direction="vertical"   -> Flex direction="col"
+Stack direction="horizontal" -> Flex direction="row"
+
+// 间距映射
+Stack spacing="small"   -> Flex gap={2}  (8px)
+Stack spacing="medium"  -> Flex gap={4}  (16px)
+Stack spacing="large"   -> Flex gap={6}  (24px)
+Stack spacing={n}       -> Flex gap={n}
+
+// 其他属性直接传递给 Flex
+align, justify, wrap, className, style 等
+```
+
+这种设计的好处：
+
+- **代码复用**：不需要维护两套独立的 flexbox 系统
+- **一致性**：Stack 和 Flex 的渲染结果完全一致
+- **可维护性**：Flex 的改进会自动应用到 Stack
 
 ## 使用示例
 
 ### 基础堆叠
 
 ```tsx
+import {Stack} from "@cloudstack-design/stack";
+
 <Stack spacing="medium">
   <div>Item 1</div>
   <div>Item 2</div>
   <div>Item 3</div>
-</Stack>
+</Stack>;
+```
+
+### 使用 HStack 和 VStack
+
+```tsx
+import {HStack, VStack} from "@cloudstack-design/stack";
+
+// 水平堆叠
+<HStack spacing="small">
+  <Button>Cancel</Button>
+  <Button>Confirm</Button>
+</HStack>
+
+// 垂直堆叠
+<VStack spacing="large">
+  <Card>Card 1</Card>
+  <Card>Card 2</Card>
+</VStack>
+```
+
+### 预设间距
+
+```tsx
+// small: 8px
+<Stack spacing="small">...</Stack>
+
+// medium: 16px (默认)
+<Stack spacing="medium">...</Stack>
+
+// large: 24px
+<Stack spacing="large">...</Stack>
+
+// 自定义数值（会乘以 4）
+<Stack spacing={8}>...</Stack> // 32px
 ```
 
 ### 带分隔符
 
 ```tsx
-<Stack divider={<hr />}>
+// 垂直分隔线
+<Stack divider={<hr className="border-gray-200" />}>
+  <div>Section 1</div>
+  <div>Section 2</div>
+</Stack>
+
+// 水平分隔线
+<HStack divider={<div className="w-px h-full bg-gray-200" />}>
   <div>Item 1</div>
   <div>Item 2</div>
-  <div>Item 3</div>
-</Stack>
+</HStack>
+```
+
+### 对齐方式
+
+```tsx
+// 交叉轴对齐
+<HStack align="center">...</HStack>
+<VStack align="start">...</VStack>
+
+// 主轴对齐
+<HStack justify="between">...</HStack>
+<VStack justify="center">...</VStack>
 ```
 
 ### 嵌套使用
 
 ```tsx
 <VStack spacing="large">
-  <div>Header</div>
-  <HStack spacing="medium">
-    <div>Left</div>
-    <div>Center</div>
-    <div>Right</div>
+  <Header />
+  <HStack spacing="medium" justify="between">
+    <Sidebar />
+    <Content />
+    <Aside />
   </HStack>
-  <div>Footer</div>
+  <Footer />
 </VStack>
+```
+
+### 响应式布局
+
+```tsx
+// 结合 Tailwind 的响应式类名
+<Stack direction="vertical" spacing="medium" className="md:flex-row">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+</Stack>
 ```

@@ -2,6 +2,8 @@ import path from "node:path";
 import {fileURLToPath} from "node:url";
 
 import {defineConfig} from "vitest/config";
+// @ts-ignore
+// FIXME: Fix type error. One possible solution is to change the moduleResolution in `tsconfig.json` to `bundler`.
 import {storybookTest} from "@storybook/addon-vitest/vitest-plugin";
 
 const dirname =
