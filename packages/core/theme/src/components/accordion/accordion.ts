@@ -6,7 +6,14 @@ import {tv} from "../../utils/tv";
  * Accordion wrapper **Tailwind Variants** component
  *
  * @description
- * 手风琴组件，用于显示和隐藏内容。
+ * 手风琴（折叠面板）组件，用于展示和隐藏大量内容。
+ * 采用了统一的设计系统颜色和样式，提供流畅的交互体验。
+ *
+ * 主要特点：
+ * - 使用设计系统的统一颜色变量（default-xxx）
+ * - 去除了 focus ring 效果，避免视觉干扰
+ * - 支持多种变体和尺寸
+ * - 平滑的展开/收起动画
  *
  * @param {Object} props - 组件属性
  * @param {string} props.variant - 组件变体
@@ -34,12 +41,11 @@ const accordion = tv({
       "w-full",
       "text-left",
       "transition-all",
-      "duration-200",
+      "duration-150",
+      // 去除 ring 效果，使用更简洁的 focus 样式
       "focus:outline-none",
-      "focus:ring-2",
-      "focus:ring-primary/20",
-      "focus:ring-offset-2",
-      "hover:bg-gray-50/50",
+      // 使用设计系统颜色
+      "hover:bg-default-100",
       "group-data-[disabled=true]:cursor-not-allowed",
       "group-data-[disabled=true]:hover:bg-transparent",
     ],
@@ -48,30 +54,35 @@ const accordion = tv({
     indicator: [
       "transition-transform",
       "duration-200",
-      "text-gray-500",
+      // 使用设计系统颜色
+      "text-default-500",
       "group-data-[disabled=true]:opacity-50",
     ],
   },
   variants: {
     variant: {
+      // 默认变体：透明背景，简洁清爽
       default: {
         base: "bg-transparent",
         item: "",
         header: "",
       },
+      // 填充变体：浅色背景，层次分明
       filled: {
-        base: "bg-gray-50",
-        item: "bg-white",
+        base: "bg-default-50",
+        item: "bg-content1",
         header: "",
       },
+      // 边框变体：带边框，对齐 Card 组件样式
       bordered: {
-        base: "border border-default rounded-lg overflow-hidden",
-        item: "border-b border-default last:border-b-0",
+        base: "border border-default/20 overflow-hidden",
+        item: "border-b border-default/20 last:border-b-0",
         header: "",
       },
+      // 阴影变体：带阴影和边框，参考 Card 组件
       shadow: {
-        base: "shadow-lg bg-white rounded-lg overflow-hidden",
-        item: "border-b border-gray-100 last:border-b-0",
+        base: "shadow-sm border border-default/20 bg-content1 overflow-hidden",
+        item: "border-b border-default/20 last:border-b-0",
         header: "",
       },
     },
@@ -91,7 +102,8 @@ const accordion = tv({
     },
     isActive: {
       true: {
-        header: "bg-primary/5",
+        // 激活状态：使用淡淡的主题色背景
+        header: "bg-default-100",
         content: "opacity-100",
       },
       false: {
