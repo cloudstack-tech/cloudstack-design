@@ -31,6 +31,13 @@ interface Props extends HTMLCloudStackDesignProps<"div"> {
    */
   pull?: number;
   /**
+   * Order of the grid item
+   * Items are laid out in ascending order by order value
+   * Items with the same order value are laid out in source order
+   * @default undefined
+   */
+  order?: number;
+  /**
    * Column start position
    * Can be a number (1-13) or "auto"
    * Negative values count from the end
@@ -73,6 +80,7 @@ export function useGridItem(originalProps: UseGridItemProps) {
     offset,
     push,
     pull,
+    order,
     colStart,
     colEnd,
     rowStart,
@@ -144,11 +152,16 @@ export function useGridItem(originalProps: UseGridItemProps) {
       computedStyle.gridRowEnd = rowEnd;
     }
 
+    // Handle order
+    if (order !== undefined) {
+      computedStyle.order = order;
+    }
+
     return {
       ...computedStyle,
       ...style,
     };
-  }, [offset, push, pull, colStart, colEnd, rowStart, rowEnd, style]);
+  }, [offset, push, pull, order, colStart, colEnd, rowStart, rowEnd, style]);
 
   return {
     Component,

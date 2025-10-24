@@ -380,6 +380,147 @@ export const WithPushPull: Story = {
   ),
 };
 
+export const WithOrder: Story = {
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <p className="mb-2 text-sm text-gray-600 font-semibold">
+          使用 order 改变元素顺序（源代码顺序 1-2-3-4）
+        </p>
+        <Grid cols={4} gap={4}>
+          <Grid.Item order={4}>
+            <Box>源码第1个 (order=4)</Box>
+          </Grid.Item>
+          <Grid.Item order={1}>
+            <Box>源码第2个 (order=1)</Box>
+          </Grid.Item>
+          <Grid.Item order={3}>
+            <Box>源码第3个 (order=3)</Box>
+          </Grid.Item>
+          <Grid.Item order={2}>
+            <Box>源码第4个 (order=2)</Box>
+          </Grid.Item>
+        </Grid>
+        <p className="mt-2 text-xs text-gray-500">
+          显示顺序：order=1, 2, 3, 4（由小到大）
+        </p>
+      </div>
+
+      <div>
+        <p className="mb-2 text-sm text-gray-600 font-semibold">负数 order 值</p>
+        <Grid cols={5} gap={4}>
+          <Grid.Item>
+            <Box>默认 (order=0)</Box>
+          </Grid.Item>
+          <Grid.Item order={1}>
+            <Box>order=1</Box>
+          </Grid.Item>
+          <Grid.Item order={-1}>
+            <Box>order=-1</Box>
+          </Grid.Item>
+          <Grid.Item order={2}>
+            <Box>order=2</Box>
+          </Grid.Item>
+          <Grid.Item order={-2}>
+            <Box>order=-2</Box>
+          </Grid.Item>
+        </Grid>
+        <p className="mt-2 text-xs text-gray-500">
+          显示顺序：-2, -1, 0(默认), 1, 2
+        </p>
+      </div>
+
+      <div>
+        <p className="mb-2 text-sm text-gray-600 font-semibold">
+          响应式场景：移动端改变顺序
+        </p>
+        <Grid cols={12} gap={4}>
+          <Grid.Item span={12} className="md:col-span-8 md:order-2">
+            <Box>主要内容 (移动端第一，桌面端第二)</Box>
+          </Grid.Item>
+          <Grid.Item span={12} className="md:col-span-4 md:order-1">
+            <Box>侧边栏 (移动端第二，桌面端第一)</Box>
+          </Grid.Item>
+        </Grid>
+        <p className="mt-2 text-xs text-gray-500">
+          提示：调整浏览器宽度查看效果
+        </p>
+      </div>
+
+      <div>
+        <p className="mb-2 text-sm text-gray-600 font-semibold">
+          实战场景：商品列表优先级排序
+        </p>
+        <Grid cols={12} gap={4}>
+          <Grid.Item span={4} order={3}>
+            <Box className="opacity-70">普通商品</Box>
+          </Grid.Item>
+          <Grid.Item span={4} order={1}>
+            <Box className="border-2 border-red-500">热门推荐</Box>
+          </Grid.Item>
+          <Grid.Item span={4} order={5}>
+            <Box className="opacity-50">滞销商品</Box>
+          </Grid.Item>
+          <Grid.Item span={4} order={2}>
+            <Box className="border-2 border-yellow-500">新品上架</Box>
+          </Grid.Item>
+          <Grid.Item span={4} order={4}>
+            <Box className="opacity-70">普通商品</Box>
+          </Grid.Item>
+          <Grid.Item span={4} order={6}>
+            <Box className="opacity-50">即将下架</Box>
+          </Grid.Item>
+        </Grid>
+        <p className="mt-2 text-xs text-gray-500">
+          通过 order 控制商品展示优先级
+        </p>
+      </div>
+
+      <div>
+        <p className="mb-2 text-sm text-gray-600 font-semibold">
+          与 Ant Design 对齐：完整示例
+        </p>
+        <div className="space-y-4">
+          <div>
+            <p className="mb-2 text-xs text-gray-500">默认顺序 (1-2-3-4)</p>
+            <Grid cols={4} gap={2}>
+              <Grid.Item>
+                <Box>1</Box>
+              </Grid.Item>
+              <Grid.Item>
+                <Box>2</Box>
+              </Grid.Item>
+              <Grid.Item>
+                <Box>3</Box>
+              </Grid.Item>
+              <Grid.Item>
+                <Box>4</Box>
+              </Grid.Item>
+            </Grid>
+          </div>
+          <div>
+            <p className="mb-2 text-xs text-gray-500">使用 order 改变顺序 (4-3-2-1)</p>
+            <Grid cols={4} gap={2}>
+              <Grid.Item order={4}>
+                <Box>1 (order=4)</Box>
+              </Grid.Item>
+              <Grid.Item order={3}>
+                <Box>2 (order=3)</Box>
+              </Grid.Item>
+              <Grid.Item order={2}>
+                <Box>3 (order=2)</Box>
+              </Grid.Item>
+              <Grid.Item order={1}>
+                <Box>4 (order=1)</Box>
+              </Grid.Item>
+            </Grid>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
 export const GridItemSpan: Story = {
   render: () => (
     <div className="space-y-8">

@@ -38,9 +38,9 @@
 - [x] 创建组件并完成基础实现
 - [x] docs: 网格的 Storybook 文档写的很差，样式什么的都不符合主题色，需要修复完善
 - [x] feat: 支持能够单独配置 gap-x 和 gap-y
-- [ ] feat: 支持配置 offset 列偏移，对齐 Ant Design，（在此基础上看看能不能实现负数是往左偏移）
-- [ ] feat: 支持配置 push、pull 列排序配置项，通过使用 push 和 pull 类就可以很容易的改变列（column）的顺序，对齐 Ant Design
-- [ ] feat: 支持配置 order 配置项，通过 order 来改变元素的排序，对齐 Ant Design
+- [x] feat: 支持配置 offset 列偏移，对齐 Ant Design，（在此基础上看看能不能实现负数是往左偏移）
+- [x] feat: 支持配置 push、pull 列排序配置项，通过使用 push 和 pull 类就可以很容易的改变列（column）的顺序，对齐 Ant Design
+- [x] feat: 支持配置 order 配置项，通过 order 来改变元素的排序，对齐 Ant Design
 - [ ]
 
 #### Space 间距
