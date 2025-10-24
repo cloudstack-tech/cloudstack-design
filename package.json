@@ -23,7 +23,9 @@
     "start:sb": "pnpm --filter @cloudstack-design/storybook start:sb",
     "init:cmp": "plop component",
     "init:pkg": "plop package",
-    "init:hook": "plop hook"
+    "init:hook": "plop hook",
+    "test": "jest --verbose --config ./jest.config.js",
+    "clean": "jest --clearCache"
   },
   "devDependencies": {
     "@swc/core": "^1.13.5",
@@ -45,7 +47,13 @@
     "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
     "turbo": "^2.5.8",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "jest": "^30.0.4",
+    "jest-environment-jsdom": "^30.0.4",
+    "jest-watch-typeahead": "3.0.1",
+    "eslint": "^9.26.0",
+    "eslint-plugin-jest": "^29.0.1",
+    "eslint-plugin-prettier": "^5.2.6"
   },
   "dependencies": {
     "@storybook/nextjs-vite": "^9.1.13",

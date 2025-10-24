@@ -29,6 +29,14 @@ const meta = {
       control: "number",
       description: "间距（实际像素值会乘以4）",
     },
+    gapX: {
+      control: "number",
+      description: "列间距（实际像素值会乘以4，优先级高于gap）",
+    },
+    gapY: {
+      control: "number",
+      description: "行间距（实际像素值会乘以4，优先级高于gap）",
+    },
   },
 } satisfies Meta<typeof Grid>;
 
@@ -120,16 +128,42 @@ export const DifferentGaps: Story = {
 
 export const RowAndColumnGaps: Story = {
   render: () => (
-    <div>
-      <p className="mb-2 text-sm text-gray-600">行间距 32px，列间距 8px</p>
-      <Grid cols={3} gap={[8, 2]}>
-        <Box>Item 1</Box>
-        <Box>Item 2</Box>
-        <Box>Item 3</Box>
-        <Box>Item 4</Box>
-        <Box>Item 5</Box>
-        <Box>Item 6</Box>
-      </Grid>
+    <div className="space-y-8">
+      <div>
+        <p className="mb-2 text-sm text-gray-600">使用 gap 数组：行间距 32px，列间距 8px</p>
+        <Grid cols={3} gap={[8, 2]}>
+          <Box>Item 1</Box>
+          <Box>Item 2</Box>
+          <Box>Item 3</Box>
+          <Box>Item 4</Box>
+          <Box>Item 5</Box>
+          <Box>Item 6</Box>
+        </Grid>
+      </div>
+      <div>
+        <p className="mb-2 text-sm text-gray-600">使用 gapX 和 gapY：行间距 32px，列间距 8px</p>
+        <Grid cols={3} gapX={2} gapY={8}>
+          <Box>Item 1</Box>
+          <Box>Item 2</Box>
+          <Box>Item 3</Box>
+          <Box>Item 4</Box>
+          <Box>Item 5</Box>
+          <Box>Item 6</Box>
+        </Grid>
+      </div>
+      <div>
+        <p className="mb-2 text-sm text-gray-600">
+          优先级测试：gap=4，gapX=8（列间距 32px 覆盖 gap）
+        </p>
+        <Grid cols={3} gap={4} gapX={8}>
+          <Box>Item 1</Box>
+          <Box>Item 2</Box>
+          <Box>Item 3</Box>
+          <Box>Item 4</Box>
+          <Box>Item 5</Box>
+          <Box>Item 6</Box>
+        </Grid>
+      </div>
     </div>
   ),
 };
@@ -235,5 +269,215 @@ export const CustomElement: Story = {
       <Box>Item 2</Box>
       <Box>Item 3</Box>
     </Grid>
+  ),
+};
+
+export const WithOffset: Story = {
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <p className="mb-2 text-sm text-gray-600">基础偏移 (offset=1，跳过第一列)</p>
+        <Grid cols={6} gap={4}>
+          <Grid.Item>
+            <Box>普通</Box>
+          </Grid.Item>
+          <Grid.Item offset={1}>
+            <Box>offset=1</Box>
+          </Grid.Item>
+          <Grid.Item>
+            <Box>普通</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+      <div>
+        <p className="mb-2 text-sm text-gray-600">多个偏移示例</p>
+        <Grid cols={12} gap={2}>
+          <Grid.Item span={3}>
+            <Box>span=3</Box>
+          </Grid.Item>
+          <Grid.Item span={3} offset={2}>
+            <Box>span=3, offset=2</Box>
+          </Grid.Item>
+          <Grid.Item span={2}>
+            <Box>span=2</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+      <div>
+        <p className="mb-2 text-sm text-gray-600">居中布局 (使用 offset)</p>
+        <Grid cols={12} gap={4}>
+          <Grid.Item span={8} offset={2}>
+            <Box>居中内容 (span=8, offset=2)</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+      <div>
+        <p className="mb-2 text-sm text-gray-600">负数偏移 (实验性: 从右侧计算)</p>
+        <Grid cols={12} gap={2}>
+          <Grid.Item span={3}>
+            <Box>左侧</Box>
+          </Grid.Item>
+          <Grid.Item span={3} offset={-4}>
+            <Box>offset=-4 (从右数)</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+    </div>
+  ),
+};
+
+export const WithPushPull: Story = {
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <p className="mb-2 text-sm text-gray-600 font-semibold">Push: 向右推动元素</p>
+        <Grid cols={12} gap={2}>
+          <Grid.Item span={4}>
+            <Box>普通列 (span=4)</Box>
+          </Grid.Item>
+          <Grid.Item span={4} push={2}>
+            <Box>push=2 向右推</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+      <div>
+        <p className="mb-2 text-sm text-gray-600 font-semibold">Pull: 向左拉动元素</p>
+        <Grid cols={12} gap={2}>
+          <Grid.Item span={4} push={8}>
+            <Box>push=8 (先到右侧)</Box>
+          </Grid.Item>
+          <Grid.Item span={4} pull={4}>
+            <Box>pull=4 向左拉</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+      <div>
+        <p className="mb-2 text-sm text-gray-600 font-semibold">改变列顺序 (Ant Design 经典用例)</p>
+        <Grid cols={12} gap={2}>
+          <Grid.Item span={6} push={6}>
+            <Box>左侧内容 (push=6 推到右边)</Box>
+          </Grid.Item>
+          <Grid.Item span={6} pull={6}>
+            <Box>右侧内容 (pull=6 拉到左边)</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+      <div>
+        <p className="mb-2 text-sm text-gray-600 font-semibold">组合使用</p>
+        <Grid cols={24} gap={2}>
+          <Grid.Item span={6}>
+            <Box>Item 1</Box>
+          </Grid.Item>
+          <Grid.Item span={6} push={2}>
+            <Box>Item 2 (push=2)</Box>
+          </Grid.Item>
+          <Grid.Item span={6} push={4}>
+            <Box>Item 3 (push=4)</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+    </div>
+  ),
+};
+
+export const GridItemSpan: Story = {
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <p className="mb-2 text-sm text-gray-600">使用 Grid.Item span 属性</p>
+        <Grid cols={6} gap={4}>
+          <Grid.Item span={2}>
+            <Box>span=2</Box>
+          </Grid.Item>
+          <Grid.Item span={3}>
+            <Box>span=3</Box>
+          </Grid.Item>
+          <Grid.Item span={1}>
+            <Box>1</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+      <div>
+        <p className="mb-2 text-sm text-gray-600">跨行和跨列</p>
+        <Grid cols={4} gap={4}>
+          <Grid.Item span={2} rowSpan={2}>
+            <Box className="h-full flex items-center justify-center">
+              span=2
+              <br />
+              rowSpan=2
+            </Box>
+          </Grid.Item>
+          <Grid.Item>
+            <Box>1</Box>
+          </Grid.Item>
+          <Grid.Item>
+            <Box>2</Box>
+          </Grid.Item>
+          <Grid.Item>
+            <Box>3</Box>
+          </Grid.Item>
+          <Grid.Item>
+            <Box>4</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+    </div>
+  ),
+};
+
+export const AdvancedPositioning: Story = {
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <p className="mb-2 text-sm text-gray-600">精确定位 (colStart, colEnd)</p>
+        <Grid cols={6} gap={2}>
+          <Grid.Item colStart={1} colEnd={3}>
+            <Box>colStart=1, colEnd=3</Box>
+          </Grid.Item>
+          <Grid.Item colStart={4} colEnd={7}>
+            <Box>colStart=4, colEnd=7</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+      <div>
+        <p className="mb-2 text-sm text-gray-600">使用负数从末尾计算</p>
+        <Grid cols={6} gap={2}>
+          <Grid.Item colStart={1} colEnd={3}>
+            <Box>开始 (1-3)</Box>
+          </Grid.Item>
+          <Grid.Item colStart={-3} colEnd={-1}>
+            <Box>结尾 (倒数3到倒数1)</Box>
+          </Grid.Item>
+        </Grid>
+      </div>
+    </div>
+  ),
+};
+
+export const ResponsiveLayout: Story = {
+  render: () => (
+    <div>
+      <p className="mb-2 text-sm text-gray-600">响应式布局 + offset</p>
+      <Grid cols={12} gap={4}>
+        <Grid.Item
+          span={12}
+          className="sm:col-span-10 sm:col-start-2 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4"
+        >
+          <Box>响应式居中内容</Box>
+        </Grid.Item>
+        <Grid.Item span={12} className="sm:col-span-6 md:col-span-4 lg:col-span-3">
+          <Box>Card 1</Box>
+        </Grid.Item>
+        <Grid.Item span={12} className="sm:col-span-6 md:col-span-4 lg:col-span-3">
+          <Box>Card 2</Box>
+        </Grid.Item>
+        <Grid.Item span={12} className="sm:col-span-6 md:col-span-4 lg:col-span-3">
+          <Box>Card 3</Box>
+        </Grid.Item>
+        <Grid.Item span={12} className="sm:col-span-6 md:col-span-4 lg:col-span-3">
+          <Box>Card 4</Box>
+        </Grid.Item>
+      </Grid>
+    </div>
   ),
 };
