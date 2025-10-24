@@ -2,6 +2,8 @@ import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
 import {Space} from "../src";
 import {Button} from "../../button/src";
+import {Text} from "../../typography/src";
+import {Divider} from "../../divider/src";
 
 const meta = {
   title: "Components/Layout 布局/Space 间距",
@@ -160,19 +162,19 @@ export const WithAlignment: Story = {
 
 export const WithSplit: Story = {
   render: () => (
-    <Space split={<span className="text-gray-400">|</span>}>
-      <a href="#" className="text-primary hover:underline">
+    <Space split={<Divider orientation="vertical" className="h-3" />}>
+      <Text as="a" href="#" color="primary" className="hover:underline cursor-pointer">
         首页
-      </a>
-      <a href="#" className="text-primary hover:underline">
+      </Text>
+      <Text as="a" href="#" color="primary" className="hover:underline cursor-pointer">
         产品
-      </a>
-      <a href="#" className="text-primary hover:underline">
+      </Text>
+      <Text as="a" href="#" color="primary" className="hover:underline cursor-pointer">
         关于我们
-      </a>
-      <a href="#" className="text-primary hover:underline">
+      </Text>
+      <Text as="a" href="#" color="primary" className="hover:underline cursor-pointer">
         联系方式
-      </a>
+      </Text>
     </Space>
   ),
 };

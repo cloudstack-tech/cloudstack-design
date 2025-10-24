@@ -20,7 +20,7 @@ const typography = tv({
     size: {
       xs: "text-xs",
       sm: "text-sm",
-      base: "text-base",
+      base: "text-sm",
       md: "text-lg",
       lg: "text-xl",
       xl: "text-2xl",
@@ -36,7 +36,7 @@ const typography = tv({
     },
     color: {
       default: "text-gray-900",
-      primary: "text-blue-600",
+      primary: "text-primary",
       secondary: "text-purple-600",
       success: "text-green-600",
       warning: "text-yellow-600",

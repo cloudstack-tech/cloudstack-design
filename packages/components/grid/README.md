@@ -180,18 +180,18 @@ function App() {
 
 ## Grid.Item API
 
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `span` | `1-12 \| "full"` | - | 列宽（跨列数） |
-| `rowSpan` | `1-6 \| "full"` | - | 行高（跨行数） |
-| `offset` | `number` | - | 列偏移（正数向右，负数向左） |
-| `push` | `number` | - | 向右推动（使用相对定位） |
-| `pull` | `number` | - | 向左拉动（使用相对定位） |
-| `order` | `number` | `0` | 排序顺序（数值越小越靠前） |
-| `colStart` | `number \| "auto"` | - | 列起始位置 |
-| `colEnd` | `number \| "auto"` | - | 列结束位置 |
-| `rowStart` | `number \| "auto"` | - | 行起始位置 |
-| `rowEnd` | `number \| "auto"` | - | 行结束位置 |
+| 属性       | 类型               | 默认值 | 说明                         |
+| ---------- | ------------------ | ------ | ---------------------------- |
+| `span`     | `1-12 \| "full"`   | -      | 列宽（跨列数）               |
+| `rowSpan`  | `1-6 \| "full"`    | -      | 行高（跨行数）               |
+| `offset`   | `number`           | -      | 列偏移（正数向右，负数向左） |
+| `push`     | `number`           | -      | 向右推动（使用相对定位）     |
+| `pull`     | `number`           | -      | 向左拉动（使用相对定位）     |
+| `order`    | `number`           | `0`    | 排序顺序（数值越小越靠前）   |
+| `colStart` | `number \| "auto"` | -      | 列起始位置                   |
+| `colEnd`   | `number \| "auto"` | -      | 列结束位置                   |
+| `rowStart` | `number \| "auto"` | -      | 行起始位置                   |
+| `rowEnd`   | `number \| "auto"` | -      | 行结束位置                   |
 
 ## Contribution
 

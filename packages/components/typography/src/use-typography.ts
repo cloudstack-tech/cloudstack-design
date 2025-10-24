@@ -1,7 +1,7 @@
-import type { TypographyVariantProps } from "@cloudstack-design/theme";
+import type {TypographyVariantProps} from "@cloudstack-design/theme";
 
 import {HTMLCloudStackDesignProps, mapPropsVariants} from "@cloudstack-design/system";
-import { typography } from "@cloudstack-design/theme";
+import {typography} from "@cloudstack-design/theme";
 import {ReactRef, useDOMRef} from "@cloudstack-design/react-utils";
 import {objectToDeps} from "@cloudstack-design/shared-utils";
 import {useMemo} from "react";
@@ -25,13 +25,13 @@ export function useTypography(originalProps: UseTypographyProps) {
   const domRef = useDOMRef(ref);
 
   const styles = useMemo(
-  () =>
-    typography({
-      ...variantProps,
-      className,
-    }),
-  [objectToDeps(variantProps), className],
-);
+    () =>
+      typography({
+        ...variantProps,
+        className,
+      }),
+    [objectToDeps(variantProps), className],
+  );
 
   return {Component, styles, domRef, ...otherProps};
 }

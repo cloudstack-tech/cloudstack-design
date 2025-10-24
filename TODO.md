@@ -13,6 +13,7 @@
 - [x] 创建组件并完成基础实现
 - [ ] feat: Primary Button 其他变体样式完善（Flat、Light）
 - [ ] feat/fix: 使用 Space.Compact 实现 ButtonGroup 时会发现紧挨着的 Button 的边框会有重叠，修复一下
+- [ ]
 
 #### Typography 排版
 
@@ -46,6 +47,7 @@
 #### Space 间距
 
 - [x] 创建组件并完成基础实现
+- [x] feat: With Split 案例有点难看，字有点太大了，不符合我其他的设计理念都，可以改成用排版里的 Text 组件
 - [ ]
 
 #### Stack 堆叠
