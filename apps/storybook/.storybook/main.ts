@@ -4,6 +4,17 @@ import type {StorybookConfig} from "@storybook/nextjs-vite";
 
 const require = createRequire(import.meta.url);
 
+/**
+ * FIXME: 修改 moduleResolution 为 bundler 后，Storybook 文档案例无法正常构建，需要修改为 node
+ *
+ * ✗ Build failed in 626ms
+ * => Failed to build the preview
+ * [vite]: Rollup failed to resolve import "@storybook/addon-docs/blocks" from "D:/rokuko/cloudstack-design/packages/components/flex/stories/flex.mdx".
+ * This is most likely unintended because it can break your application at runtime.
+ * If you do want to externalize this module explicitly add it to
+ * `build.rollupOptions.external`
+ */
+
 const config: StorybookConfig = {
   stories: [
     "./welcome.mdx",
@@ -26,6 +37,7 @@ const config: StorybookConfig = {
 };
 export default config;
 
+// see: https://storybook.js.org/docs/faq#how-do-i-fix-module-resolution-in-special-environments
 function getAbsolutePath(value: string): any {
   return dirname(require.resolve(join(value, "package.json")));
 }
